@@ -1084,3 +1084,37 @@ footer p {
         padding: 35px 25px;
     }
 }
+/* ================= PLAYER ROLES ================= */
+
+.rank {
+    display: inline-block;
+    padding: 5px 9px;
+    border: 1px solid #333;
+    background: #151515;
+    border-radius: 2px;
+}
+
+.rank.founder {
+    color: #fff;
+    border-color: #777;
+}
+
+.rank.president {
+    color: #ddd;
+    border-color: #666;
+}
+
+.rank.vice-president {
+    color: #bbb;
+    border-color: #555;
+}
+
+.rank.governor {
+    color: #aaa;
+    border-color: #555;
+}
+
+.rank.civilian {
+    color: #777;
+    border-color: #333;
+}
