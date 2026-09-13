@@ -14,42 +14,84 @@ const DISCORD_LINK = "https://discord.gg/EsDQqvrx7";
 
 
 /* ==========================================
+   ELYSIUM PLAYERS
+   EDIT THIS LIST WHENEVER YOU WANT
+========================================== */
+
+const players = [
+    { name: "Masumbaccha", role: "Founder" },
+    { name: "Shinchan0n", role: "President" },
+    { name: "Wixzen", role: "Vice-President" },
+
+    { name: "11k", role: "Governor" },
+    { name: "Blazebeacon", role: "Governor" },
+
+    { name: "Ahil", role: "Civilian" },
+    { name: "Arabicveled", role: "Civilian" },
+    { name: "Someone", role: "Civilian" },
+    { name: "Ishan", role: "Civilian" },
+    { name: "Mzxwan", role: "Civilian" },
+    { name: "Nivio", role: "Civilian" },
+    { name: "NotFlint", role: "Civilian" },
+    { name: "608ms", role: "Civilian" },
+    { name: "Amayy", role: "Civilian" },
+    { name: "Athubroplayz", role: "Civilian" },
+    { name: "EliteYshh", role: "Civilian" },
+    { name: "Greenery", role: "Civilian" },
+    { name: "KomAP", role: "Civilian" },
+    { name: "Ghost", role: "Civilian" },
+    { name: "Mepp00", role: "Civilian" },
+    { name: "Rain", role: "Civilian" },
+    { name: "seish", role: "Civilian" },
+    { name: "Rachitified", role: "Civilian" },
+    { name: "Kat", role: "Civilian" },
+    { name: "Ahha", role: "Civilian" },
+    { name: "Hunt Vantage", role: "Civilian" },
+    { name: "Ily", role: "Civilian" },
+    { name: "Itx Ammar", role: "Civilian" },
+    { name: "Purplix", role: "Civilian" }
+];
+
+
+/* ==========================================
    NAVIGATION
 ========================================== */
 
 function showSection(sectionName) {
 
-    const sections =
-        document.querySelectorAll(".section");
+    const sections = document.querySelectorAll(".section");
 
     sections.forEach(section => {
         section.classList.remove("active");
     });
 
-    const selected =
-        document.getElementById(sectionName);
+    const selected = document.getElementById(sectionName);
 
     if (selected) {
         selected.classList.add("active");
     }
 
-    const navButtons =
-        document.querySelectorAll("nav button");
+    const navButtons = document.querySelectorAll("nav button");
 
     navButtons.forEach(button => {
+
         button.classList.remove("active");
 
         if (
-            button.innerText.toLowerCase() ===
-            sectionName
+            button.innerText
+                .toLowerCase()
+                .trim() === sectionName.toLowerCase()
         ) {
             button.classList.add("active");
         }
+
     });
 
-    document
-        .getElementById("navMenu")
-        .classList.remove("open");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navMenu) {
+        navMenu.classList.remove("open");
+    }
 
     window.scrollTo({
         top: 0,
@@ -64,9 +106,11 @@ function showSection(sectionName) {
 
 function toggleMenu() {
 
-    document
-        .getElementById("navMenu")
-        .classList.toggle("open");
+    const navMenu = document.getElementById("navMenu");
+
+    if (navMenu) {
+        navMenu.classList.toggle("open");
+    }
 }
 
 
@@ -76,14 +120,14 @@ function toggleMenu() {
 
 function copyIP() {
 
-    if (
-        SERVER_IP ===
-        "YOUR-SERVER-IP-HERE"
-    ) {
+    const message = document.getElementById("copyMessage");
 
-        document.getElementById("copyMessage")
-            .innerText =
-            "Set your server IP in script.js first.";
+    if (SERVER_IP === "YOUR-SERVER-IP-HERE") {
+
+        if (message) {
+            message.innerText =
+                "Set your server IP in script.js first.";
+        }
 
         return;
     }
@@ -92,23 +136,22 @@ function copyIP() {
         .writeText(SERVER_IP)
         .then(() => {
 
-            document.getElementById("copyMessage")
-                .innerText =
-                "✓ Server IP copied: " + SERVER_IP;
+            if (message) {
 
-            setTimeout(() => {
+                message.innerText =
+                    "✓ Server IP copied: " + SERVER_IP;
 
-                document.getElementById("copyMessage")
-                    .innerText = "";
+                setTimeout(() => {
 
-            }, 3000);
+                    message.innerText = "";
+
+                }, 3000);
+            }
 
         })
         .catch(() => {
 
-            alert(
-                "Server IP: " + SERVER_IP
-            );
+            alert("Server IP: " + SERVER_IP);
 
         });
 }
@@ -120,27 +163,23 @@ function copyIP() {
 
 function toggleRule(button) {
 
-    const rule =
-        button.parentElement;
+    const rule = button.parentElement;
 
     const currentlyOpen =
         rule.classList.contains("open");
 
+    document.querySelectorAll(".rule").forEach(item => {
 
-    document
-        .querySelectorAll(".rule")
-        .forEach(item => {
+        item.classList.remove("open");
 
-            item.classList.remove("open");
+        const symbol =
+            item.querySelector("b");
 
-            const symbol =
-                item.querySelector("b");
+        if (symbol) {
+            symbol.innerText = "+";
+        }
 
-            if (symbol) {
-                symbol.innerText = "+";
-            }
-        });
-
+    });
 
     if (!currentlyOpen) {
 
@@ -152,7 +191,69 @@ function toggleRule(button) {
         if (symbol) {
             symbol.innerText = "−";
         }
+
     }
+}
+
+
+/* ==========================================
+   CREATE PLAYER CARDS
+========================================== */
+
+function loadPlayers() {
+
+    const grid =
+        document.getElementById("playersGrid");
+
+    if (!grid) {
+        return;
+    }
+
+    grid.innerHTML = "";
+
+    players.forEach(player => {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "player-card";
+
+        card.dataset.name =
+            player.name;
+
+        const avatar =
+            document.createElement("div");
+
+        avatar.className = "avatar";
+
+        avatar.innerText =
+            player.name.charAt(0).toUpperCase();
+
+        const name =
+            document.createElement("h3");
+
+        name.innerText =
+            player.name;
+
+        const rank =
+            document.createElement("span");
+
+        rank.className =
+            "rank " +
+            player.role
+                .toLowerCase()
+                .replace(/\s+/g, "-");
+
+        rank.innerText =
+            player.role.toUpperCase();
+
+        card.appendChild(avatar);
+        card.appendChild(name);
+        card.appendChild(rank);
+
+        grid.appendChild(card);
+
+    });
 }
 
 
@@ -162,30 +263,36 @@ function toggleRule(button) {
 
 function searchPlayers() {
 
+    const searchBox =
+        document.getElementById("playerSearch");
+
+    const noPlayers =
+        document.getElementById("noPlayers");
+
+    if (!searchBox) {
+        return;
+    }
+
     const input =
-        document
-            .getElementById("playerSearch")
-            .value
+        searchBox.value
             .toLowerCase()
             .trim();
 
-    const players =
+    const playerCards =
         document.querySelectorAll(".player-card");
 
     let found = false;
 
-
-    players.forEach(player => {
+    playerCards.forEach(player => {
 
         const name =
-            player
-                .dataset
-                .name
+            player.dataset.name
                 .toLowerCase();
 
         if (name.includes(input)) {
 
             player.style.display = "";
+
             found = true;
 
         } else {
@@ -193,13 +300,15 @@ function searchPlayers() {
             player.style.display = "none";
 
         }
+
     });
 
+    if (noPlayers) {
 
-    document
-        .getElementById("noPlayers")
-        .style.display =
-        found ? "none" : "block";
+        noPlayers.style.display =
+            found ? "none" : "block";
+
+    }
 }
 
 
@@ -207,16 +316,13 @@ function searchPlayers() {
    EVENT COUNTDOWN
 ========================================== */
 
-
 /*
-    CHANGE THIS DATE TO YOUR EVENT DATE.
+   CHANGE THIS DATE WHEN YOUR EVENT DATE
+   CHANGES.
 
-    Example:
-
-    September 18, 2026 21:00:00
-
-    = 18 September 2026
-      9:00 PM
+   Current:
+   18 September 2026
+   9:00 PM
 */
 
 const eventDate =
@@ -236,11 +342,9 @@ function updateCountdown() {
     const countdown =
         document.getElementById("countdown");
 
-
     if (!countdown) {
         return;
     }
-
 
     if (difference <= 0) {
 
@@ -250,13 +354,11 @@ function updateCountdown() {
         return;
     }
 
-
     const days =
         Math.floor(
             difference /
             (1000 * 60 * 60 * 24)
         );
-
 
     const hours =
         Math.floor(
@@ -267,7 +369,6 @@ function updateCountdown() {
             (1000 * 60 * 60)
         );
 
-
     const minutes =
         Math.floor(
             (
@@ -277,7 +378,6 @@ function updateCountdown() {
             (1000 * 60)
         );
 
-
     const seconds =
         Math.floor(
             (
@@ -286,7 +386,6 @@ function updateCountdown() {
             ) /
             1000
         );
-
 
     countdown.innerText =
         `${days}D ${hours}H ${minutes}M ${seconds}S`;
@@ -316,6 +415,12 @@ function showEvent(event) {
     const text =
         document.getElementById("modalText");
 
+    if (!modal || !title || !text) {
+        return;
+    }
+
+
+    /* PVP */
 
     if (event === "pvp") {
 
@@ -327,9 +432,10 @@ function showEvent(event) {
             "fight your opponents and prove " +
             "your worth. More event information " +
             "will be announced on Discord.";
-
     }
 
+
+    /* END WAR */
 
     else if (event === "endwar") {
 
@@ -341,9 +447,10 @@ function showEvent(event) {
             "for the ultimate battle in the End. " +
             "Follow Discord announcements for " +
             "the final event information.";
-
     }
 
+
+    /* MEDIA EVENT */
 
     else if (event === "media") {
 
@@ -354,7 +461,6 @@ function showEvent(event) {
             "The Elysium Media event has been " +
             "completed. Check the official Discord " +
             "for the winner announcement.";
-
     }
 
 
@@ -362,33 +468,45 @@ function showEvent(event) {
 }
 
 
+/* ==========================================
+   CLOSE MODAL
+========================================== */
+
 function closeModal() {
 
-    document
-        .getElementById("eventModal")
-        .classList.remove("show");
+    const modal =
+        document.getElementById("eventModal");
+
+    if (modal) {
+
+        modal.classList.remove("show");
+
+    }
 }
 
 
 /* ==========================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
+   MODAL OUTSIDE CLICK
 ========================================== */
 
-document
-    .getElementById("eventModal")
-    .addEventListener(
+const eventModal =
+    document.getElementById("eventModal");
+
+if (eventModal) {
+
+    eventModal.addEventListener(
         "click",
         function(event) {
 
-            if (
-                event.target ===
-                this
-            ) {
+            if (event.target === this) {
+
                 closeModal();
+
             }
 
         }
     );
+}
 
 
 /* ==========================================
@@ -400,7 +518,9 @@ document.addEventListener(
     function(event) {
 
         if (event.key === "Escape") {
+
             closeModal();
+
         }
 
     }
@@ -411,9 +531,15 @@ document.addEventListener(
    DISCORD LINK
 ========================================== */
 
-document
-    .getElementById("discordLink")
-    .href = DISCORD_LINK;
+const discordLink =
+    document.getElementById("discordLink");
+
+if (discordLink) {
+
+    discordLink.href =
+        DISCORD_LINK;
+
+}
 
 
 /* ==========================================
@@ -421,15 +547,17 @@ document
 ========================================== */
 
 /*
-   This is ONLY demonstration data.
+   IMPORTANT:
+   This is NOT the 30-player roster.
+
+   This is only the fake ONLINE counter
+   shown on the homepage.
 
    It does NOT connect to Minecraft.
-
-   Remove this section when you have
-   a real server API.
 */
 
 let demoPlayers = 12;
+
 
 setInterval(() => {
 
@@ -438,8 +566,7 @@ setInterval(() => {
             Math.random() * 3
         ) - 1;
 
-    demoPlayers +=
-        randomChange;
+    demoPlayers += randomChange;
 
 
     if (demoPlayers < 0) {
@@ -452,16 +579,26 @@ setInterval(() => {
     }
 
 
-    document
-        .getElementById("playerCount")
-        .innerText =
-        `${demoPlayers} / 50`;
+    const playerCount =
+        document.getElementById(
+            "playerCount"
+        );
+
+
+    if (playerCount) {
+
+        playerCount.innerText =
+            `${demoPlayers} / 50`;
+
+    }
 
 }, 5000);
 
 
 /* ==========================================
-   START HOME PAGE
+   START WEBSITE
 ========================================== */
+
+loadPlayers();
 
 showSection("home");
