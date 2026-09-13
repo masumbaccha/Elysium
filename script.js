@@ -8,9 +8,9 @@
    EDIT THESE
 ========================================== */
 
-const SERVER_IP = "YOUR-SERVER-IP-HERE";
+const SERVER_IP = "elysiumsmp.playwithbao.com";
 
-const DISCORD_LINK = "https://discord.gg/YOURINVITE";
+const DISCORD_LINK = "https://discord.gg/EsDQqvrx7";
 
 
 /* ==========================================
