@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -20,19 +21,18 @@
         rel="stylesheet"
         href="style.css"
     >
+
 </head>
 
 
 <body>
-
-    <!-- BACKGROUND -->
 
     <div class="background"></div>
 
 
     <!-- ================= NAVBAR ================= -->
 
-    <header class="navbar">
+    <nav class="navbar">
 
         <div
             class="logo"
@@ -50,39 +50,58 @@
         </button>
 
 
-        <nav id="navMenu">
+        <div
+            class="nav-menu"
+            id="navMenu"
+        >
 
-            <button onclick="showSection('home')">
+            <button
+                class="nav-btn active"
+                onclick="showSection('home')"
+            >
                 HOME
             </button>
 
-            <button onclick="showSection('rules')">
+            <button
+                class="nav-btn"
+                onclick="showSection('rules')"
+            >
                 RULES
             </button>
 
-            <button onclick="showSection('players')">
+            <button
+                class="nav-btn"
+                onclick="showSection('players')"
+            >
                 PLAYERS
             </button>
 
-            <button onclick="showSection('events')">
+            <button
+                class="nav-btn"
+                onclick="showSection('events')"
+            >
                 EVENTS
             </button>
 
-            <button onclick="showSection('pvp')">
+            <button
+                class="nav-btn"
+                onclick="showSection('pvp')"
+            >
                 PVP
             </button>
 
-            <button onclick="showSection('discord')">
+            <button
+                class="nav-btn"
+                onclick="showSection('discord')"
+            >
                 DISCORD
             </button>
 
-        </nav>
+        </div>
 
-    </header>
+    </nav>
 
 
-
-    <!-- ================= MAIN ================= -->
 
     <main>
 
@@ -96,8 +115,6 @@
 
             <div class="hero">
 
-                <div class="hero-line"></div>
-
                 <p class="eyebrow">
                     WELCOME TO
                 </p>
@@ -106,12 +123,12 @@
                     ELYSIUM
                 </h1>
 
-                <div class="subtitle">
+                <p class="hero-subtitle">
                     SURVIVE. BUILD. CONQUER.
-                </div>
+                </p>
 
 
-                <div class="status">
+                <div class="server-status">
 
                     <span class="status-dot"></span>
 
@@ -120,47 +137,45 @@
                 </div>
 
 
-                <div class="server-stats">
+                <div class="stats">
 
+                    <div class="stat-card">
 
-                    <div class="stat">
+                        <span class="stat-number" id="playerCount">
+                            12 / 50
+                        </span>
 
-                        <span>
+                        <span class="stat-label">
                             PLAYERS
                         </span>
 
-                        <strong id="playerCount">
-                            12 / 50
-                        </strong>
-
                     </div>
 
 
-                    <div class="stat">
+                    <div class="stat-card">
 
-                        <span>
+                        <span class="stat-number">
+                            1.21+
+                        </span>
+
+                        <span class="stat-label">
                             VERSION
                         </span>
 
-                        <strong>
-                            1.21+
-                        </strong>
-
                     </div>
 
 
-                    <div class="stat">
+                    <div class="stat-card">
 
-                        <span>
+                        <span class="stat-number">
+                            JAVA + BEDROCK
+                        </span>
+
+                        <span class="stat-label">
                             PLATFORM
                         </span>
 
-                        <strong>
-                            JAVA + BEDROCK
-                        </strong>
-
                     </div>
-
 
                 </div>
 
@@ -168,7 +183,7 @@
                 <div class="hero-buttons">
 
                     <button
-                        class="primary-btn"
+                        class="primary-button"
                         onclick="copyIP()"
                     >
                         JOIN SERVER
@@ -176,7 +191,7 @@
 
 
                     <button
-                        class="secondary-btn"
+                        class="secondary-button"
                         onclick="showSection('events')"
                     >
                         VIEW EVENTS
@@ -185,7 +200,10 @@
                 </div>
 
 
-                <p id="copyMessage"></p>
+                <p
+                    id="copyMessage"
+                    class="copy-message"
+                ></p>
 
             </div>
 
@@ -193,13 +211,12 @@
 
             <div class="home-cards">
 
-
                 <div
                     class="info-card"
                     onclick="showSection('rules')"
                 >
 
-                    <span>
+                    <span class="card-number">
                         01
                     </span>
 
@@ -208,7 +225,7 @@
                     </h3>
 
                     <p>
-                        Know the laws of Elysium.
+                        Play fair. Respect everyone.
                     </p>
 
                 </div>
@@ -219,7 +236,7 @@
                     onclick="showSection('players')"
                 >
 
-                    <span>
+                    <span class="card-number">
                         02
                     </span>
 
@@ -239,7 +256,7 @@
                     onclick="showSection('pvp')"
                 >
 
-                    <span>
+                    <span class="card-number">
                         03
                     </span>
 
@@ -248,7 +265,7 @@
                     </h3>
 
                     <p>
-                        Prove your worth.
+                        Rise through the Elysium tier list.
                     </p>
 
                 </div>
@@ -259,7 +276,7 @@
                     onclick="showSection('events')"
                 >
 
-                    <span>
+                    <span class="card-number">
                         04
                     </span>
 
@@ -268,11 +285,10 @@
                     </h3>
 
                     <p>
-                        Take part in the action.
+                        Battles, wars and community events.
                     </p>
 
                 </div>
-
 
             </div>
 
@@ -305,7 +321,10 @@
 
                 <div class="rule">
 
-                    <button onclick="toggleRule(this)">
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
                         <span>
                             01 — RESPECT EVERYONE
@@ -320,9 +339,11 @@
 
                     <div class="rule-content">
 
-                        Treat every member with respect.
-                        Harassment, discrimination and
-                        targeted toxicity are not allowed.
+                        <p>
+                            Treat every player with respect.
+                            Harassment, discrimination and targeted
+                            toxicity are not allowed.
+                        </p>
 
                     </div>
 
@@ -332,7 +353,10 @@
 
                 <div class="rule">
 
-                    <button onclick="toggleRule(this)">
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
                         <span>
                             02 — NO CHEATING
@@ -347,10 +371,10 @@
 
                     <div class="rule-content">
 
-                        Hacks, cheats and unfair
-                        modifications that provide
-                        an advantage over other players
-                        are prohibited.
+                        <p>
+                            Hacks, cheats and unfair modifications
+                            that give players an advantage are prohibited.
+                        </p>
 
                     </div>
 
@@ -360,7 +384,10 @@
 
                 <div class="rule">
 
-                    <button onclick="toggleRule(this)">
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
                         <span>
                             03 — NO GRIEFING
@@ -375,9 +402,10 @@
 
                     <div class="rule-content">
 
-                        Do not destroy, modify or
-                        sabotage another player's
-                        builds without their permission.
+                        <p>
+                            Do not destroy, damage or intentionally
+                            sabotage another player's builds.
+                        </p>
 
                     </div>
 
@@ -387,7 +415,10 @@
 
                 <div class="rule">
 
-                    <button onclick="toggleRule(this)">
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
                         <span>
                             04 — NO STEALING
@@ -402,9 +433,10 @@
 
                     <div class="rule-content">
 
-                        Do not take another player's
-                        items or resources without
-                        permission.
+                        <p>
+                            Do not take items, resources or valuables
+                            belonging to another player.
+                        </p>
 
                     </div>
 
@@ -414,7 +446,10 @@
 
                 <div class="rule">
 
-                    <button onclick="toggleRule(this)">
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
                         <span>
                             05 — EXPLOITS
@@ -429,9 +464,10 @@
 
                     <div class="rule-content">
 
-                        Report serious bugs and exploits
-                        to staff instead of abusing them
-                        for an unfair advantage.
+                        <p>
+                            If you discover a bug or exploit,
+                            report it to the staff instead of abusing it.
+                        </p>
 
                     </div>
 
@@ -441,7 +477,10 @@
 
                 <div class="rule">
 
-                    <button onclick="toggleRule(this)">
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
                         <span>
                             06 — STAFF DECISIONS
@@ -456,14 +495,14 @@
 
                     <div class="rule-content">
 
-                        Respect staff decisions.
-                        If you believe a decision is unfair,
-                        contact administration through Discord.
+                        <p>
+                            Staff decisions are made to keep Elysium
+                            fair and enjoyable for everyone.
+                        </p>
 
                     </div>
 
                 </div>
-
 
             </div>
 
@@ -491,37 +530,29 @@
             </div>
 
 
-            <div class="search-wrapper">
+            <div class="player-search">
 
                 <input
-                    id="playerSearch"
-                    class="search"
                     type="text"
-                    placeholder="Search players..."
+                    id="playerSearch"
+                    placeholder="SEARCH PLAYERS..."
                     oninput="searchPlayers()"
                 >
 
             </div>
 
 
-            <!-- IMPORTANT:
-                 JavaScript creates all player cards here.
-                 DO NOT add individual players here.
-            -->
-
             <div
                 class="players-grid"
                 id="playersGrid"
-            >
-            </div>
+            ></div>
 
 
             <p
                 id="noPlayers"
-                class="no-results"
-                style="display: none;"
+                class="no-players"
             >
-                No players found.
+                NO PLAYERS FOUND.
             </p>
 
         </section>
@@ -548,16 +579,14 @@
             </div>
 
 
-            <div class="event-grid">
+            <div class="events-grid">
 
 
-                <!-- PVP EVENT -->
-
-                <article class="event-card">
+                <div class="event-card">
 
                     <div class="event-top">
 
-                        <span class="event-tag">
+                        <span class="event-tag upcoming">
                             UPCOMING
                         </span>
 
@@ -574,44 +603,35 @@
 
 
                     <p>
-
                         Enter the arena and prove
-                        your worth. Only the strongest
-                        will survive.
-
+                        who deserves the top spot.
                     </p>
-
-
-                    <div class="countdown-label">
-                        STARTS IN
-                    </div>
 
 
                     <div
                         id="countdown"
                         class="countdown"
                     >
-                        Loading...
+                        LOADING...
                     </div>
 
 
                     <button
+                        class="event-button"
                         onclick="showEvent('pvp')"
                     >
-                        EVENT DETAILS
+                        DETAILS
                     </button>
 
-                </article>
+                </div>
 
 
 
-                <!-- END WAR -->
-
-                <article class="event-card">
+                <div class="event-card">
 
                     <div class="event-top">
 
-                        <span class="event-tag">
+                        <span class="event-tag upcoming">
                             UPCOMING
                         </span>
 
@@ -628,31 +648,27 @@
 
 
                     <p>
-
-                        Prepare for an intense battle
-                        in the End. Gear up and fight
-                        for victory.
-
+                        Gear up for the ultimate battle
+                        in the End.
                     </p>
 
 
                     <button
+                        class="event-button"
                         onclick="showEvent('endwar')"
                     >
-                        EVENT DETAILS
+                        DETAILS
                     </button>
 
-                </article>
+                </div>
 
 
 
-                <!-- MEDIA EVENT -->
-
-                <article class="event-card completed">
+                <div class="event-card">
 
                     <div class="event-top">
 
-                        <span class="event-tag">
+                        <span class="event-tag completed">
                             COMPLETED
                         </span>
 
@@ -669,22 +685,19 @@
 
 
                     <p>
-
-                        The Elysium Media event has
-                        concluded. Check the winner
-                        announcement.
-
+                        The community media event
+                        has been completed.
                     </p>
 
 
                     <button
+                        class="event-button"
                         onclick="showEvent('media')"
                     >
-                        VIEW EVENT
+                        DETAILS
                     </button>
 
-                </article>
-
+                </div>
 
             </div>
 
@@ -692,7 +705,7 @@
 
 
 
-        <!-- ================= PVP ================= -->
+        <!-- ================= PVP TIER LIST ================= -->
 
         <section
             id="pvp"
@@ -706,16 +719,196 @@
                 </p>
 
                 <h2>
-                    LEADERBOARD
+                    TIER LIST
                 </h2>
 
             </div>
 
 
-            <div class="leaderboard">
+
+            <!-- TIER CATEGORY TABS -->
+
+            <div class="tier-tabs">
 
 
-                <div class="leader header-row">
+                <button
+                    class="tier-tab active"
+                    onclick="changeTier('overall', this)"
+                >
+
+                    <span>
+                        🏆
+                    </span>
+
+                    <small>
+                        OVERALL
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('ltms', this)"
+                >
+
+                    <span>
+                        ⚔
+                    </span>
+
+                    <small>
+                        LTMs
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('vanilla', this)"
+                >
+
+                    <span>
+                        ⬡
+                    </span>
+
+                    <small>
+                        VANILLA
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('uhc', this)"
+                >
+
+                    <span>
+                        ♥
+                    </span>
+
+                    <small>
+                        UHC
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('pot', this)"
+                >
+
+                    <span>
+                        ⚗
+                    </span>
+
+                    <small>
+                        POT
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('netherop', this)"
+                >
+
+                    <span>
+                        ◉
+                    </span>
+
+                    <small>
+                        NETHEROP
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('smp', this)"
+                >
+
+                    <span>
+                        ◈
+                    </span>
+
+                    <small>
+                        SMP
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('sword', this)"
+                >
+
+                    <span>
+                        🗡
+                    </span>
+
+                    <small>
+                        SWORD
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('axe', this)"
+                >
+
+                    <span>
+                        🔨
+                    </span>
+
+                    <small>
+                        AXE
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('mace', this)"
+                >
+
+                    <span>
+                        ⚒
+                    </span>
+
+                    <small>
+                        MACE
+                    </small>
+
+                </button>
+
+            </div>
+
+
+
+            <!-- TIER LIST -->
+
+            <div class="tier-list">
+
+
+                <div class="tier-header">
 
                     <span>
                         #
@@ -726,117 +919,432 @@
                     </span>
 
                     <span>
-                        KILLS
+                        REGION
                     </span>
 
                     <span>
-                        WINS
+                        TIERS
                     </span>
 
                 </div>
 
 
-                <div class="leader">
 
-                    <span class="position first">
-                        1
-                    </span>
+                <!-- PLAYER 1 -->
 
-                    <strong>
-                        Masumbaccha
-                    </strong>
+                <div class="tier-player">
 
-                    <span>
-                        87
-                    </span>
+                    <div class="tier-rank rank-1">
+                        1.
+                    </div>
 
-                    <span>
-                        24
-                    </span>
+
+                    <div class="tier-player-info">
+
+                        <div class="minecraft-head">
+
+                            <img
+                                src="https://mc-heads.net/avatar/Masumbaccha/64"
+                                alt="Masumbaccha"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Masumbaccha
+                            </h3>
+
+                            <p>
+                                ⚔ Combat Grandmaster
+                                <span>
+                                    (450 points)
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="region na">
+                        NA
+                    </div>
+
+
+                    <div class="tier-badges">
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
+
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="leader">
 
-                    <span class="position second">
-                        2
-                    </span>
+                <!-- PLAYER 2 -->
 
-                    <strong>
-                        Shinchan0n
-                    </strong>
+                <div class="tier-player">
 
-                    <span>
-                        73
-                    </span>
+                    <div class="tier-rank rank-2">
+                        2.
+                    </div>
 
-                    <span>
-                        20
-                    </span>
+
+                    <div class="tier-player-info">
+
+                        <div class="minecraft-head">
+
+                            <img
+                                src="https://mc-heads.net/avatar/Shinchan0n/64"
+                                alt="Shinchan0n"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Shinchan0n
+                            </h3>
+
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (330 points)
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="region na">
+                        NA
+                    </div>
+
+
+                    <div class="tier-badges">
+
+                        <span class="tier-badge ht3">
+                            HT3
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="leader">
 
-                    <span class="position third">
-                        3
-                    </span>
+                <!-- PLAYER 3 -->
 
-                    <strong>
-                        Wixzen
-                    </strong>
+                <div class="tier-player">
 
-                    <span>
-                        61
-                    </span>
+                    <div class="tier-rank rank-3">
+                        3.
+                    </div>
 
-                    <span>
-                        18
-                    </span>
+
+                    <div class="tier-player-info">
+
+                        <div class="minecraft-head">
+
+                            <img
+                                src="https://mc-heads.net/avatar/Wixzen/64"
+                                alt="Wixzen"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Wixzen
+                            </h3>
+
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (326 points)
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="region eu">
+                        EU
+                    </div>
+
+
+                    <div class="tier-badges">
+
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
+
+                        <span class="tier-badge lt3">
+                            LT3
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
+
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
+
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="leader">
 
-                    <span class="position">
-                        4
-                    </span>
+                <!-- PLAYER 4 -->
 
-                    <strong>
-                        11k
-                    </strong>
+                <div class="tier-player">
 
-                    <span>
-                        48
-                    </span>
+                    <div class="tier-rank">
+                        4.
+                    </div>
 
-                    <span>
-                        14
-                    </span>
+
+                    <div class="tier-player-info">
+
+                        <div class="minecraft-head">
+
+                            <img
+                                src="https://mc-heads.net/avatar/11k/64"
+                                alt="11k"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                11k
+                            </h3>
+
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (290 points)
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="region na">
+                        NA
+                    </div>
+
+
+                    <div class="tier-badges">
+
+                        <span class="tier-badge lt3">
+                            LT3
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht2">
+                            HT2
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="leader">
 
-                    <span class="position">
-                        5
-                    </span>
+                <!-- PLAYER 5 -->
 
-                    <strong>
-                        Blazebeacon
-                    </strong>
+                <div class="tier-player">
 
-                    <span>
-                        39
-                    </span>
+                    <div class="tier-rank">
+                        5.
+                    </div>
 
-                    <span>
-                        11
-                    </span>
+
+                    <div class="tier-player-info">
+
+                        <div class="minecraft-head">
+
+                            <img
+                                src="https://mc-heads.net/avatar/Blazebeacon/64"
+                                alt="Blazebeacon"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Blazebeacon
+                            </h3>
+
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (260 points)
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="region eu">
+                        EU
+                    </div>
+
+
+                    <div class="tier-badges">
+
+                        <span class="tier-badge lt3">
+                            LT3
+                        </span>
+
+                        <span class="tier-badge ht4">
+                            HT4
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
+
+                        <span class="tier-badge ht2">
+                            HT2
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -844,11 +1352,8 @@
             </div>
 
 
-            <p class="leader-note">
-
-                PvP statistics are currently
-                displayed as sample data.
-
+            <p class="tier-note">
+                TIER LIST • ELYSIUM SMP
             </p>
 
         </section>
@@ -864,27 +1369,17 @@
 
             <div class="discord-box">
 
-                <div class="discord-symbol">
-                    ✦
-                </div>
-
-
                 <p class="eyebrow">
-                    JOIN THE COMMUNITY
+                    ELYSIUM COMMUNITY
                 </p>
-
 
                 <h2>
                     ELYSIUM DISCORD
                 </h2>
 
-
                 <p>
-
-                    Stay updated with announcements,
-                    events, server news and the
-                    Elysium community.
-
+                    Join the community, get updates,
+                    participate in events and stay connected.
                 </p>
 
 
@@ -902,7 +1397,6 @@
 
         </section>
 
-
     </main>
 
 
@@ -917,7 +1411,7 @@
         <div class="modal-box">
 
             <button
-                class="close-modal"
+                class="modal-close"
                 onclick="closeModal()"
             >
                 ×
@@ -935,11 +1429,12 @@
 
 
             <p id="modalText">
+                Event information.
             </p>
 
 
             <button
-                class="primary-btn"
+                class="primary-button"
                 onclick="closeModal()"
             >
                 CLOSE
@@ -955,15 +1450,13 @@
 
     <footer>
 
-        <div class="footer-logo">
+        <strong>
             ✧ ELYSIUM SMP ✧
-        </div>
+        </strong>
 
-
-        <p>
+        <span>
             SURVIVE • BUILD • CONQUER
-        </p>
-
+        </span>
 
         <small>
             © 2026 Elysium SMP
@@ -972,8 +1465,6 @@
     </footer>
 
 
-
-    <!-- ================= JAVASCRIPT ================= -->
 
     <script src="script.js"></script>
 
