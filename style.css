@@ -1,911 +1,1828 @@
+/* =========================================================
+   ELYSIUM SMP
+   MAIN STYLESHEET
+========================================================= */
+
+
+/* ================= RESET ================= */
+
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
+
 body {
+
     background: #060606;
+
     color: #eeeeee;
+
     font-family: Arial, Helvetica, sans-serif;
+
     min-height: 100vh;
+
     overflow-x: hidden;
+
 }
+
 
 
 /* ================= BACKGROUND ================= */
 
 .background {
+
     position: fixed;
+
     inset: 0;
-    z-index: -10;
+
+    z-index: -1;
 
     background:
-        linear-gradient(
-            rgba(4, 4, 4, 0.94),
-            rgba(4, 4, 4, 0.98)
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.035),
+            transparent 30%
         ),
-        repeating-linear-gradient(
-            45deg,
-            #111 0,
-            #111 2px,
-            #090909 2px,
-            #090909 7px
-        );
+
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255,255,255,0.025),
+            transparent 35%
+        ),
+
+        #060606;
+
 }
 
-.background::before {
+
+.background::after {
+
     content: "";
+
     position: absolute;
-    inset: 0;
+
+    inset: -100%;
 
     background-image:
+
         radial-gradient(
-            rgba(255,255,255,0.12) 1px,
+            rgba(255,255,255,0.15) 1px,
             transparent 1px
         );
 
-    background-size: 38px 38px;
+    background-size: 45px 45px;
 
-    animation: moveParticles 25s linear infinite;
+    animation:
+        moveParticles 35s linear infinite;
+
+    opacity: 0.18;
+
 }
 
+
 @keyframes moveParticles {
+
     from {
-        background-position: 0 0;
+
+        transform:
+            translate(0, 0);
+
     }
 
     to {
-        background-position: 500px 500px;
+
+        transform:
+            translate(45px, 45px);
+
     }
+
 }
 
 
-/* ================= NAVBAR ================= */
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
     min-height: 70px;
 
+    padding:
+        15px 6%;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 15px 6%;
+    gap: 20px;
 
-    background: rgba(8, 8, 8, 0.94);
+    background:
+        rgba(6, 6, 6, 0.88);
 
-    border-bottom: 1px solid #292929;
+    border-bottom:
+        1px solid #1b1b1b;
 
-    backdrop-filter: blur(15px);
+    backdrop-filter:
+        blur(15px);
+
 }
 
+
 .logo {
-    cursor: pointer;
 
     font-size: 21px;
-    font-weight: bold;
+
+    font-weight: 800;
 
     letter-spacing: 4px;
 
+    cursor: pointer;
+
     transition: 0.25s;
+
 }
+
 
 .logo:hover {
-    text-shadow: 0 0 18px rgba(255,255,255,0.4);
+
+    text-shadow:
+        0 0 18px
+        rgba(255,255,255,0.45);
+
 }
 
-nav {
+
+.nav-menu {
+
     display: flex;
+
     align-items: center;
-    gap: 4px;
+
+    gap: 6px;
+
 }
 
-nav button {
-    padding: 10px 13px;
+
+.nav-btn {
+
+    padding:
+        10px 14px;
 
     background: transparent;
 
-    color: #888;
-
     border: none;
 
+    border-radius: 4px;
+
+    color: #777777;
+
     font-size: 11px;
+
     font-weight: bold;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
 
     cursor: pointer;
 
     transition: 0.2s;
+
 }
 
-nav button:hover,
-nav button.active {
-    color: white;
-    background: #181818;
+
+.nav-btn:hover {
+
+    color: #ffffff;
+
+    background: #151515;
+
 }
+
+
+.nav-btn.active {
+
+    color: #ffffff;
+
+    background: #181818;
+
+}
+
 
 .menu-toggle {
+
     display: none;
 
     background: transparent;
 
-    border: 1px solid #333;
+    border: none;
 
     color: white;
 
-    padding: 8px 12px;
+    font-size: 25px;
 
     cursor: pointer;
+
 }
 
 
-/* ================= SECTIONS ================= */
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .section {
+
     display: none;
 
     min-height: 85vh;
 
-    padding: 90px 7%;
+    padding:
+        90px 7%;
 
-    animation: sectionIn 0.45s ease;
+    animation:
+        sectionIn 0.45s ease;
+
 }
+
 
 .section.active {
+
     display: block;
+
 }
 
+
 @keyframes sectionIn {
+
     from {
+
         opacity: 0;
-        transform: translateY(15px);
+
+        transform:
+            translateY(15px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
+
 }
 
 
-/* ================= HOME ================= */
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
+
     max-width: 1000px;
 
-    margin: auto;
+    margin:
+        70px auto 80px;
 
     text-align: center;
 
-    padding-top: 60px;
 }
 
-.hero-line {
-    width: 80px;
-    height: 1px;
-
-    background: #777;
-
-    margin: auto auto 25px;
-}
 
 .eyebrow {
-    color: #777;
+
+    margin-bottom: 15px;
+
+    color: #777777;
 
     font-size: 11px;
+
+    font-weight: bold;
 
     letter-spacing: 5px;
 
-    margin-bottom: 18px;
 }
 
+
 .hero h1 {
-    font-size: clamp(60px, 12vw, 130px);
+
+    font-size:
+        clamp(60px, 12vw, 130px);
+
+    font-weight: 900;
 
     letter-spacing: 12px;
 
-    line-height: 1;
+    line-height: 0.9;
 
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.12),
-        0 0 40px rgba(255,255,255,0.05);
+    text-indent: 12px;
 
-    animation: glow 3s ease-in-out infinite alternate;
+    animation:
+        titleGlow 4s ease-in-out infinite;
+
 }
 
-@keyframes glow {
-    from {
+
+@keyframes titleGlow {
+
+    0%,
+    100% {
+
         text-shadow:
-            0 0 5px rgba(255,255,255,0.08);
+            0 0 10px
+            rgba(255,255,255,0.05);
+
     }
 
-    to {
+    50% {
+
         text-shadow:
-            0 0 35px rgba(255,255,255,0.18);
+            0 0 35px
+            rgba(255,255,255,0.15);
+
     }
+
 }
 
-.subtitle {
-    margin-top: 20px;
 
-    color: #999;
+.hero-subtitle {
 
-    letter-spacing: 8px;
+    margin-top: 28px;
+
+    color: #999999;
 
     font-size: 13px;
+
+    letter-spacing: 7px;
+
 }
 
-.status {
+
+.server-status {
+
+    margin-top: 30px;
+
     display: inline-flex;
+
     align-items: center;
 
-    margin-top: 40px;
+    gap: 9px;
 
-    padding: 10px 18px;
-
-    background: #101010;
-
-    border: 1px solid #303030;
-
-    color: #aaa;
+    color: #999999;
 
     font-size: 11px;
 
+    font-weight: bold;
+
     letter-spacing: 2px;
+
 }
 
-.status-dot {
-    width: 8px;
-    height: 8px;
 
-    margin-right: 9px;
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
 
     border-radius: 50%;
 
     background: #72ff72;
 
-    box-shadow: 0 0 12px #72ff72;
-}
+    box-shadow:
+        0 0 12px
+        rgba(114,255,114,0.7);
 
-.server-stats {
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 12px;
-
-    margin-top: 25px;
-}
-
-.stat {
-    min-width: 160px;
-
-    padding: 17px 20px;
-
-    background: rgba(15,15,15,0.9);
-
-    border: 1px solid #292929;
-
-    transition: 0.25s;
-}
-
-.stat:hover {
-    transform: translateY(-5px);
-
-    border-color: #555;
-}
-
-.stat span {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #666;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-}
-
-.stat strong {
-    font-size: 13px;
-
-    letter-spacing: 1px;
-}
-
-.hero-buttons {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-top: 35px;
-
-    flex-wrap: wrap;
-}
-
-.primary-btn,
-.secondary-btn,
-.event-card button,
-.discord-button {
-    padding: 13px 25px;
-
-    font-family: inherit;
-
-    font-weight: bold;
-
-    font-size: 11px;
-
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-
-    transition: 0.25s;
-}
-
-.primary-btn {
-    background: white;
-
-    color: #080808;
-
-    border: 1px solid white;
-}
-
-.primary-btn:hover {
-    background: #ccc;
-
-    transform: translateY(-3px);
-}
-
-.secondary-btn {
-    background: #111;
-
-    color: white;
-
-    border: 1px solid #444;
-}
-
-.secondary-btn:hover {
-    background: #1c1c1c;
-
-    border-color: #777;
-
-    transform: translateY(-3px);
-}
-
-#copyMessage {
-    height: 20px;
-
-    margin-top: 13px;
-
-    color: #aaa;
-
-    font-size: 11px;
 }
 
 
-/* HOME CARDS */
 
-.home-cards {
-    max-width: 1050px;
+/* =========================================================
+   STATS
+========================================================= */
 
-    margin: 80px auto 0;
+.stats {
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
+        repeat(3, 1fr);
 
-    gap: 13px;
-}
+    gap: 12px;
 
-.info-card {
-    padding: 25px;
+    max-width: 650px;
 
-    background: rgba(12,12,12,0.9);
+    margin:
+        35px auto;
 
-    border: 1px solid #252525;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.info-card:hover {
-    transform: translateY(-7px);
-
-    background: #151515;
-
-    border-color: #555;
-}
-
-.info-card span {
-    color: #555;
-
-    font-size: 10px;
-}
-
-.info-card h3 {
-    margin: 15px 0 8px;
-
-    font-size: 18px;
-
-    letter-spacing: 2px;
-}
-
-.info-card p {
-    color: #777;
-
-    font-size: 12px;
 }
 
 
-/* ================= PAGE TITLES ================= */
+.stat-card {
 
-.page-title {
-    text-align: center;
-
-    margin-bottom: 45px;
-}
-
-.page-title p {
-    color: #666;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-}
-
-.page-title h2 {
-    margin-top: 10px;
-
-    font-size: clamp(30px, 5vw, 48px);
-
-    letter-spacing: 5px;
-}
-
-
-/* ================= RULES ================= */
-
-.rules-container {
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.rule {
-    margin-bottom: 10px;
+    padding: 20px;
 
     background: #0d0d0d;
 
-    border: 1px solid #272727;
+    border:
+        1px solid #1e1e1e;
+
+    border-radius: 5px;
+
+    transition: 0.2s;
+
 }
 
-.rule button {
-    width: 100%;
+
+.stat-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color: #333333;
+
+}
+
+
+.stat-number {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #eeeeee;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+}
+
+
+.stat-label {
+
+    color: #666666;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-buttons {
 
     display: flex;
 
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
+}
+
+
+.primary-button,
+.secondary-button,
+.discord-button {
+
+    display: inline-flex;
+
     align-items: center;
+
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding:
+        0 22px;
+
+    border-radius: 3px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+
+}
+
+
+.primary-button {
+
+    background: #eeeeee;
+
+    border: 1px solid #eeeeee;
+
+    color: #080808;
+
+}
+
+
+.primary-button:hover {
+
+    background: #ffffff;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(255,255,255,0.08);
+
+}
+
+
+.secondary-button {
+
+    background: #111111;
+
+    border: 1px solid #292929;
+
+    color: #bbbbbb;
+
+}
+
+
+.secondary-button:hover {
+
+    color: white;
+
+    border-color: #444444;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.copy-message {
+
+    min-height: 18px;
+
+    margin-top: 14px;
+
+    color: #777777;
+
+    font-size: 11px;
+
+}
+
+
+
+/* =========================================================
+   HOME CARDS
+========================================================= */
+
+.home-cards {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.info-card {
+
+    padding: 28px 22px;
+
+    background: #0d0d0d;
+
+    border:
+        1px solid #1b1b1b;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+}
+
+
+.info-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color: #383838;
+
+    background: #101010;
+
+}
+
+
+.card-number {
+
+    color: #444444;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+.info-card h3 {
+
+    margin:
+        20px 0 8px;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.info-card p {
+
+    color: #666666;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+
+
+/* =========================================================
+   PAGE TITLES
+========================================================= */
+
+.page-title {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+
+}
+
+
+.page-title p {
+
+    margin-bottom: 8px;
+
+    color: #555555;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+}
+
+
+.page-title h2 {
+
+    font-size: clamp(30px, 5vw, 55px);
+
+    letter-spacing: 5px;
+
+}
+
+
+
+/* =========================================================
+   RULES
+========================================================= */
+
+.rules-container {
+
+    max-width: 850px;
+
+    margin: auto;
+
+}
+
+
+.rule {
+
+    margin-bottom: 8px;
+
+    background: #0d0d0d;
+
+    border:
+        1px solid #1e1e1e;
+
+}
+
+
+.rule-button {
+
+    width: 100%;
+
+    padding:
+        22px;
+
+    display: flex;
+
     justify-content: space-between;
 
-    padding: 20px;
+    align-items: center;
 
     background: transparent;
 
     border: none;
 
-    color: white;
+    color: #dddddd;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
 
     text-align: left;
 
     cursor: pointer;
+
 }
 
-.rule button:hover {
-    background: #151515;
+
+.rule-button b {
+
+    color: #777777;
+
+    font-size: 20px;
+
+    font-weight: normal;
+
 }
 
-.rule button b {
-    color: #777;
-
-    font-size: 18px;
-}
 
 .rule-content {
+
     max-height: 0;
 
     overflow: hidden;
 
-    padding: 0 20px;
+    transition:
+        max-height 0.3s ease;
 
-    color: #888;
+}
+
+
+.rule-content p {
+
+    padding:
+        0 22px 22px;
+
+    color: #777777;
+
+    font-size: 12px;
 
     line-height: 1.7;
 
-    font-size: 13px;
-
-    transition:
-        max-height 0.3s ease,
-        padding 0.3s ease;
 }
+
 
 .rule.open .rule-content {
-    max-height: 150px;
 
-    padding: 0 20px 20px;
+    max-height: 200px;
+
 }
 
 
-/* ================= PLAYERS ================= */
 
-.search-wrapper {
-    display: flex;
+/* =========================================================
+   PLAYERS
+========================================================= */
 
-    justify-content: center;
+.player-search {
 
-    margin-bottom: 30px;
+    max-width: 500px;
+
+    margin:
+        0 auto 30px;
+
 }
 
-.search {
-    width: min(500px, 100%);
+
+.player-search input {
+
+    width: 100%;
 
     padding: 15px 18px;
 
-    background: #101010;
+    background: #0d0d0d;
 
-    border: 1px solid #303030;
-
-    color: white;
+    border:
+        1px solid #222222;
 
     outline: none;
 
-    font-family: inherit;
+    color: white;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
 }
 
-.search:focus {
-    border-color: #666;
+
+.player-search input:focus {
+
+    border-color: #444444;
+
 }
+
 
 .players-grid {
-    max-width: 1000px;
+
+    max-width: 1100px;
 
     margin: auto;
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(190px, 1fr));
+        repeat(4, 1fr);
 
-    gap: 13px;
+    gap: 10px;
+
 }
+
 
 .player-card {
-    padding: 28px 20px;
 
-    text-align: center;
+    padding: 20px;
 
-    background: #101010;
+    background: #0d0d0d;
 
-    border: 1px solid #292929;
+    border:
+        1px solid #1d1d1d;
 
-    transition: 0.3s;
+    transition: 0.2s;
+
 }
+
 
 .player-card:hover {
-    transform: translateY(-7px);
 
-    border-color: #666;
+    transform:
+        translateY(-3px);
 
-    background: #151515;
+    border-color: #383838;
+
 }
 
+
 .avatar {
-    width: 62px;
-    height: 62px;
+
+    width: 52px;
+
+    height: 52px;
+
+    margin-bottom: 15px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    margin: 0 auto 15px;
+    background: #1a1a1a;
 
-    background: #222;
+    border:
+        1px solid #303030;
 
-    border: 1px solid #444;
-
-    font-size: 24px;
+    font-size: 20px;
 
     font-weight: bold;
+
 }
+
 
 .player-card h3 {
-    margin-bottom: 10px;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
 }
+
 
 .rank {
-    color: #777;
 
-    font-size: 9px;
+    display: inline-block;
 
-    letter-spacing: 2px;
+    padding:
+        5px 9px;
+
+    background: #151515;
+
+    border:
+        1px solid #333333;
+
+    border-radius: 2px;
+
+    font-size: 8px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
 }
 
-.no-results {
-    display: none;
 
-    text-align: center;
+.rank.founder {
+
+    color: #ffffff;
+
+}
+
+
+.rank.president {
+
+    color: #dddddd;
+
+}
+
+
+.rank.vice-president {
+
+    color: #bbbbbb;
+
+}
+
+
+.rank.governor {
+
+    color: #aaaaaa;
+
+}
+
+
+.rank.civilian {
+
+    color: #777777;
+
+}
+
+
+.no-players {
+
+    display: none;
 
     margin-top: 30px;
 
-    color: #666;
+    text-align: center;
+
+    color: #555555;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
 }
 
 
-/* ================= EVENTS ================= */
 
-.event-grid {
-    max-width: 1050px;
+/* =========================================================
+   EVENTS
+========================================================= */
+
+.events-grid {
+
+    max-width: 1100px;
 
     margin: auto;
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(270px, 1fr));
+        repeat(3, 1fr);
 
-    gap: 16px;
+    gap: 14px;
+
 }
+
 
 .event-card {
-    padding: 30px;
 
-    background: #101010;
+    padding: 28px;
 
-    border: 1px solid #292929;
+    background: #0d0d0d;
 
-    transition: 0.3s;
+    border:
+        1px solid #1d1d1d;
+
+    transition: 0.25s;
+
 }
+
 
 .event-card:hover {
-    transform: translateY(-8px);
 
-    border-color: #666;
+    transform:
+        translateY(-4px);
+
+    border-color: #383838;
+
 }
 
-.event-card.completed {
-    opacity: 0.75;
-}
 
 .event-top {
+
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
+
 }
+
 
 .event-tag {
-    color: #777;
 
-    font-size: 9px;
+    padding:
+        5px 8px;
 
-    letter-spacing: 2px;
+    font-size: 8px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    border:
+        1px solid #333333;
+
 }
+
+
+.event-tag.upcoming {
+
+    color: #dddddd;
+
+}
+
+
+.event-tag.completed {
+
+    color: #666666;
+
+}
+
 
 .event-symbol {
-    color: #aaa;
 
-    font-size: 20px;
+    color: #777777;
+
+    font-size: 24px;
+
 }
+
 
 .event-card h3 {
-    margin: 20px 0 12px;
 
-    font-size: 25px;
+    margin:
+        35px 0 10px;
+
+    font-size: 17px;
 
     letter-spacing: 2px;
+
 }
+
 
 .event-card p {
-    min-height: 65px;
 
-    margin-bottom: 20px;
+    min-height: 50px;
 
-    color: #777;
+    color: #666666;
 
-    font-size: 13px;
+    font-size: 12px;
 
     line-height: 1.7;
+
 }
 
-.countdown-label {
-    color: #555;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 7px;
-}
 
 .countdown {
-    margin-bottom: 22px;
+
+    margin:
+        20px 0;
+
+    color: #bbbbbb;
+
+    font-size: 11px;
 
     font-weight: bold;
 
     letter-spacing: 2px;
-}
 
-.event-card button {
-    background: #eee;
-
-    color: #080808;
-
-    border: 1px solid #eee;
-}
-
-.event-card button:hover {
-    background: #bbb;
-
-    transform: translateY(-2px);
 }
 
 
-/* ================= PVP ================= */
+.event-button {
 
-.leaderboard {
-    max-width: 900px;
+    width: 100%;
 
-    margin: auto;
+    padding: 12px;
 
-    border: 1px solid #292929;
+    background: #111111;
 
-    overflow: hidden;
-}
+    border:
+        1px solid #292929;
 
-.leader {
-    display: grid;
+    color: #aaaaaa;
 
-    grid-template-columns:
-        60px 1fr 100px 100px;
-
-    align-items: center;
-
-    padding: 18px 20px;
-
-    border-bottom: 1px solid #222;
-
-    background: #101010;
-
-    transition: 0.2s;
-}
-
-.leader:last-child {
-    border-bottom: none;
-}
-
-.leader:not(.header-row):hover {
-    background: #181818;
-
-    transform: translateX(5px);
-}
-
-.header-row {
-    background: #191919;
-
-    color: #666;
+    cursor: pointer;
 
     font-size: 9px;
 
+    font-weight: bold;
+
     letter-spacing: 2px;
+
+    transition: 0.2s;
+
 }
 
-.position {
-    color: #777;
+
+.event-button:hover {
+
+    color: white;
+
+    border-color: #444444;
+
 }
 
-.first {
-    color: #fff;
+
+
+/* =========================================================
+   PVP TIER TABS
+========================================================= */
+
+.tier-tabs {
+
+    max-width: 1120px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    overflow-x: auto;
+
+    background: #0d131b;
+
+    border:
+        1px solid #1d2936;
+
+    border-bottom: none;
+
+    border-radius:
+        16px 16px 0 0;
+
+    scrollbar-width: none;
+
 }
 
-.second {
-    color: #bbb;
+
+.tier-tabs::-webkit-scrollbar {
+
+    display: none;
+
 }
 
-.third {
-    color: #999;
+
+.tier-tab {
+
+    min-width: 105px;
+
+    height: 72px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    background: transparent;
+
+    border: none;
+
+    border-bottom:
+        2px solid transparent;
+
+    color: #566273;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    font-family: inherit;
+
 }
 
-.leader-note {
+
+.tier-tab span {
+
+    font-size: 22px;
+
+    line-height: 1;
+
+}
+
+
+.tier-tab small {
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+}
+
+
+.tier-tab:hover {
+
+    background: #111a24;
+
+    color: #b9c3cf;
+
+}
+
+
+.tier-tab.active {
+
+    color: #ffffff;
+
+    border-bottom-color: #ffffff;
+
+    background: #111821;
+
+}
+
+
+
+/* =========================================================
+   TIER LIST
+========================================================= */
+
+.tier-list {
+
+    max-width: 1120px;
+
+    margin: auto;
+
+    padding:
+        0 10px 10px;
+
+    background: #101721;
+
+    border:
+        1px solid #1d2936;
+
+    border-radius:
+        0 0 16px 16px;
+
+    overflow: hidden;
+
+}
+
+
+.tier-header {
+
+    display: grid;
+
+    grid-template-columns:
+        155px
+        minmax(380px, 1fr)
+        80px
+        minmax(360px, 1fr);
+
+    align-items: center;
+
+    padding:
+        16px 15px;
+
+    color: #3f4b5c;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    background: #101721;
+
+}
+
+
+
+/* =========================================================
+   TIER PLAYER
+========================================================= */
+
+.tier-player {
+
+    min-height: 78px;
+
+    display: grid;
+
+    grid-template-columns:
+        155px
+        minmax(380px, 1fr)
+        80px
+        minmax(360px, 1fr);
+
+    align-items: center;
+
+    margin-bottom: 8px;
+
+    background: #131c27;
+
+    border:
+        1px solid #202d3c;
+
+    border-radius: 11px;
+
+    overflow: hidden;
+
+    transition: 0.2s;
+
+}
+
+
+.tier-player:hover {
+
+    background: #17212d;
+
+    border-color: #34465a;
+
+    transform:
+        translateX(3px);
+
+}
+
+
+
+/* =========================================================
+   TIER RANK
+========================================================= */
+
+.tier-rank {
+
+    height: 100%;
+
+    min-height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 20px;
+
+    color: #f2f4f7;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    font-style: italic;
+
+}
+
+
+.rank-1 {
+
+    background:
+        linear-gradient(
+            120deg,
+            #f3b82f,
+            #e7a923
+        );
+
+    color: white;
+
+    font-size: 34px;
+
+}
+
+
+.rank-2 {
+
+    background:
+        linear-gradient(
+            120deg,
+            #9daab2,
+            #7d8b95
+        );
+
+}
+
+
+.rank-3 {
+
+    background:
+        linear-gradient(
+            120deg,
+            #bd6726,
+            #98501c
+        );
+
+}
+
+
+
+/* =========================================================
+   TIER PLAYER INFO
+========================================================= */
+
+.tier-player-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding:
+        8px 15px;
+
+}
+
+
+.minecraft-head {
+
+    width: 62px;
+
+    height: 62px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+}
+
+
+.minecraft-head img {
+
+    width: 100%;
+
+    height: 100%;
+
+    image-rendering: pixelated;
+
+}
+
+
+.tier-player-info h3 {
+
+    margin:
+        0 0 5px;
+
+    color: #dce5ef;
+
+    font-size: 21px;
+
+}
+
+
+.tier-player-info p {
+
+    margin: 0;
+
+    color: #8da1b7;
+
+    font-size: 13px;
+
+}
+
+
+.tier-player-info p span {
+
+    color: #71869d;
+
+}
+
+
+
+/* =========================================================
+   REGION
+========================================================= */
+
+.region {
+
+    width: 42px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+}
+
+
+.region.na {
+
+    background: #45242b;
+
+    color: #e75d70;
+
+}
+
+
+.region.eu {
+
+    background: #173d23;
+
+    color: #64e47a;
+
+}
+
+
+
+/* =========================================================
+   TIER BADGES
+========================================================= */
+
+.tier-badges {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        10px 12px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.tier-badge {
+
+    min-width: 34px;
+
+    padding:
+        5px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background: #182230;
+
+    border:
+        1px solid #29394b;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+}
+
+
+
+/* HIGH TIERS */
+
+.tier-badge.ht1 {
+
+    color: #ffd447;
+
+    border-color: #554718;
+
+    background: #292719;
+
+}
+
+
+.tier-badge.ht2 {
+
+    color: #f4c84b;
+
+    border-color: #493d20;
+
+    background: #27251b;
+
+}
+
+
+.tier-badge.ht3 {
+
+    color: #d99345;
+
+    border-color: #523721;
+
+    background: #29221b;
+
+}
+
+
+.tier-badge.ht4 {
+
+    color: #9b9bd0;
+
+    border-color: #36365c;
+
+    background: #222337;
+
+}
+
+
+
+/* LOW TIERS */
+
+.tier-badge.lt1 {
+
+    color: #ffd447;
+
+    border-color: #554718;
+
+    background: #292719;
+
+}
+
+
+.tier-badge.lt2 {
+
+    color: #a8b4c4;
+
+    border-color: #354353;
+
+    background: #202936;
+
+}
+
+
+.tier-badge.lt3 {
+
+    color: #c47d3d;
+
+    border-color: #56381f;
+
+    background: #2a241f;
+
+}
+
+
+
+/* =========================================================
+   TIER NOTE
+========================================================= */
+
+.tier-note {
+
     text-align: center;
 
     margin-top: 20px;
 
-    color: #555;
+    color: #465466;
 
     font-size: 10px;
+
+    letter-spacing: 2px;
+
 }
 
 
-/* ================= DISCORD ================= */
+
+/* =========================================================
+   DISCORD
+========================================================= */
 
 .discord-box {
+
     max-width: 700px;
 
-    margin: 40px auto;
+    margin:
+        70px auto;
 
-    padding: 75px 35px;
+    padding:
+        70px 30px;
 
     text-align: center;
 
-    background: #101010;
+    background: #0d0d0d;
 
-    border: 1px solid #292929;
+    border:
+        1px solid #222222;
+
 }
 
-.discord-symbol {
-    margin-bottom: 20px;
-
-    color: #aaa;
-
-    font-size: 30px;
-}
 
 .discord-box h2 {
+
     margin-bottom: 20px;
 
-    font-size: clamp(30px, 6vw, 48px);
+    font-size: 35px;
 
     letter-spacing: 4px;
+
 }
 
-.discord-box > p:not(.eyebrow) {
+
+.discord-box p:not(.eyebrow) {
+
     max-width: 500px;
 
-    margin: 0 auto 30px;
+    margin:
+        0 auto 30px;
 
-    color: #777;
+    color: #666666;
 
     font-size: 13px;
 
     line-height: 1.8;
+
 }
 
-.discord-button {
-    display: inline-block;
 
-    text-decoration: none;
+.discord-button {
+
+    background: #eeeeee;
+
+    color: #080808;
+
+    border:
+        1px solid #eeeeee;
+
+}
+
+
+.discord-button:hover {
 
     background: white;
 
-    color: black;
+    transform:
+        translateY(-2px);
 
-    border: 1px solid white;
-}
-
-.discord-button:hover {
-    background: #ccc;
-
-    transform: translateY(-3px);
 }
 
 
-/* ================= MODAL ================= */
+
+/* =========================================================
+   MODAL
+========================================================= */
 
 .modal {
+
     position: fixed;
 
     inset: 0;
@@ -915,206 +1832,581 @@ nav button.active {
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
 
-    background: rgba(0,0,0,0.8);
+    background:
+        rgba(0,0,0,0.75);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter:
+        blur(8px);
+
 }
+
 
 .modal.show {
+
     display: flex;
+
 }
+
 
 .modal-box {
+
     position: relative;
 
-    width: min(550px, 100%);
+    width: 100%;
 
-    padding: 45px;
+    max-width: 500px;
 
-    background: #101010;
+    padding:
+        45px 35px;
 
-    border: 1px solid #444;
+    text-align: center;
 
-    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+    background: #0d0d0d;
 
-    animation: modalIn 0.25s ease;
+    border:
+        1px solid #292929;
+
+    animation:
+        modalIn 0.25s ease;
+
 }
 
+
 @keyframes modalIn {
+
     from {
+
         opacity: 0;
-        transform: scale(0.95);
+
+        transform:
+            scale(0.96)
+            translateY(10px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            scale(1)
+            translateY(0);
+
     }
+
 }
 
-.modal-box h2 {
-    margin-bottom: 18px;
 
-    letter-spacing: 3px;
-}
+.modal-close {
 
-.modal-box p:not(.eyebrow) {
-    margin-bottom: 25px;
-
-    color: #888;
-
-    line-height: 1.7;
-}
-
-.close-modal {
     position: absolute;
 
-    top: 15px;
-    right: 18px;
+    top: 12px;
+
+    right: 15px;
 
     background: transparent;
 
     border: none;
 
-    color: #777;
+    color: #666666;
 
     font-size: 28px;
 
     cursor: pointer;
+
 }
 
-.close-modal:hover {
+
+.modal-close:hover {
+
     color: white;
+
 }
 
 
-/* ================= FOOTER ================= */
+.modal-box h2 {
 
-footer {
-    padding: 40px 20px;
+    margin-bottom: 20px;
 
-    text-align: center;
-
-    border-top: 1px solid #222;
-
-    color: #666;
-}
-
-.footer-logo {
-    color: #ddd;
-
-    font-weight: bold;
+    font-size: 30px;
 
     letter-spacing: 3px;
-}
 
-footer p {
-    margin: 12px 0;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
 }
 
 
-/* ================= MOBILE ================= */
+.modal-box p:not(.eyebrow) {
+
+    margin-bottom: 25px;
+
+    color: #777777;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding:
+        40px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border-top:
+        1px solid #161616;
+
+    background: #060606;
+
+}
+
+
+footer strong {
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+}
+
+
+footer span {
+
+    color: #555555;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+footer small {
+
+    margin-top: 8px;
+
+    color: #3f3f3f;
+
+    font-size: 9px;
+
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .home-cards {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .players-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+
+    .events-grid {
+
+        grid-template-columns:
+            1fr;
+
+        max-width: 600px;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PVP TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .tier-header {
+
+        display: none;
+
+    }
+
+
+    .tier-player {
+
+        grid-template-columns:
+            75px
+            1fr
+            80px;
+
+    }
+
+
+    .tier-badges {
+
+        grid-column:
+            2 / 4;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 750px) {
 
+
     .navbar {
+
         flex-wrap: wrap;
+
     }
+
 
     .menu-toggle {
+
         display: block;
+
     }
 
-    nav {
+
+    .nav-menu {
+
         display: none;
 
         width: 100%;
 
         flex-direction: column;
 
+        align-items: stretch;
+
         padding-top: 10px;
+
     }
 
-    nav.open {
+
+    .nav-menu.open {
+
         display: flex;
+
     }
 
-    nav button {
+
+    .nav-btn {
+
         width: 100%;
 
-        padding: 12px;
+        text-align: left;
+
     }
+
 
     .section {
-        padding: 70px 5%;
+
+        padding:
+            70px 5%;
+
     }
+
 
     .hero {
-        padding-top: 30px;
+
+        margin-top: 35px;
+
     }
+
 
     .hero h1 {
-        letter-spacing: 5px;
+
+        font-size:
+            clamp(50px, 17vw, 90px);
+
+        letter-spacing: 7px;
+
+        text-indent: 7px;
+
     }
 
-    .subtitle {
+
+    .hero-subtitle {
+
+        font-size: 9px;
+
         letter-spacing: 4px;
 
-        font-size: 10px;
     }
 
-    .leader {
+
+    .stats {
+
         grid-template-columns:
-            40px 1fr 65px 65px;
+            1fr;
 
-        padding: 16px 12px;
+        max-width: 300px;
 
-        font-size: 12px;
     }
 
-    .modal-box {
-        padding: 35px 25px;
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        max-width: 300px;
+
+        margin-left: auto;
+
+        margin-right: auto;
+
     }
-}
-/* ================= PLAYER ROLES ================= */
 
-.rank {
-    display: inline-block;
-    padding: 5px 9px;
-    border: 1px solid #333;
-    background: #151515;
-    border-radius: 2px;
+
+    .home-cards {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .players-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .discord-box {
+
+        padding:
+            50px 20px;
+
+    }
+
+
+    .discord-box h2 {
+
+        font-size: 25px;
+
+    }
+
+
+    /* PVP */
+
+    .tier-tabs {
+
+        border-radius:
+            10px 10px 0 0;
+
+    }
+
+
+    .tier-tab {
+
+        min-width: 82px;
+
+        height: 65px;
+
+    }
+
+
+    .tier-tab span {
+
+        font-size: 18px;
+
+    }
+
+
+    .tier-tab small {
+
+        font-size: 8px;
+
+    }
+
+
+    .tier-list {
+
+        padding:
+            0 6px 6px;
+
+    }
+
+
+    .tier-player {
+
+        display: grid;
+
+        grid-template-columns:
+            65px 1fr;
+
+        padding: 0;
+
+    }
+
+
+    .tier-rank {
+
+        min-height: 100%;
+
+        padding-left: 15px;
+
+        font-size: 25px;
+
+    }
+
+
+    .tier-player-info {
+
+        padding: 12px;
+
+    }
+
+
+    .tier-player > .region {
+
+        grid-column: 1;
+
+        margin:
+            0 auto 12px;
+
+    }
+
+
+    .tier-badges {
+
+        grid-column: 2;
+
+        padding:
+            0 12px 14px;
+
+    }
+
+
+    .tier-player-info h3 {
+
+        font-size: 16px;
+
+    }
+
+
+    .tier-player-info p {
+
+        font-size: 10px;
+
+    }
+
+
+    .minecraft-head {
+
+        width: 50px;
+
+        height: 50px;
+
+    }
+
+
+    .tier-badges {
+
+        gap: 5px;
+
+    }
+
+
+    .tier-badge {
+
+        min-width: 31px;
+
+        padding: 4px;
+
+        font-size: 9px;
+
+    }
+
 }
 
-.rank.founder {
-    color: #fff;
-    border-color: #777;
-}
 
-.rank.president {
-    color: #ddd;
-    border-color: #666;
-}
 
-.rank.vice-president {
-    color: #bbb;
-    border-color: #555;
-}
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-.rank.governor {
-    color: #aaa;
-    border-color: #555;
-}
+@media (max-width: 450px) {
 
-.rank.civilian {
-    color: #777;
-    border-color: #333;
+    .players-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .tier-player {
+
+        grid-template-columns:
+            55px 1fr;
+
+    }
+
+
+    .tier-player-info {
+
+        gap: 9px;
+
+    }
+
+
+    .tier-player-info h3 {
+
+        font-size: 14px;
+
+    }
+
+
+    .tier-player-info p {
+
+        font-size: 9px;
+
+    }
+
+
+    .tier-badge {
+
+        min-width: 28px;
+
+        font-size: 8px;
+
+    }
+
 }
