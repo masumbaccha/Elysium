@@ -369,12 +369,12 @@ input {
 
 
 /* ==========================================
-   PLAYER SKIN
+   SMALL PLAYER SKIN
 ========================================== */
 
 .avatar {
-    width: 96px;
-    height: 96px;
+    width: 52px;
+    height: 52px;
 
     margin-bottom: 15px;
 
@@ -406,7 +406,7 @@ input {
 }
 
 .avatar span {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -529,8 +529,7 @@ input {
         transform 0.25s;
 }
 
-.player-profile-modal.show
-.player-profile-box {
+.player-profile-modal.show .player-profile-box {
     transform:
         translateY(0)
         scale(1);
@@ -1018,11 +1017,6 @@ input {
             repeat(2, 1fr);
     }
 
-    .avatar {
-        width: 80px;
-        height: 80px;
-    }
-
     .events-grid {
         grid-template-columns: 1fr;
     }
@@ -1043,11 +1037,6 @@ input {
 
     .players-grid {
         grid-template-columns: 1fr;
-    }
-
-    .avatar {
-        width: 96px;
-        height: 96px;
     }
 
     .home-content h1 {
