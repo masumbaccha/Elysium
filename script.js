@@ -208,38 +208,48 @@ const players = [
 
 function showSection(sectionId) {
 
-    const sections = document.querySelectorAll(".section");
+    const sections =
+        document.querySelectorAll(".section");
 
     sections.forEach(section => {
         section.classList.remove("active");
     });
 
-    const selectedSection = document.getElementById(sectionId);
+    const selectedSection =
+        document.getElementById(sectionId);
 
     if (selectedSection) {
         selectedSection.classList.add("active");
     }
 
-    const navLinks = document.querySelectorAll(".nav-link");
+    /* Correct HTML class: nav-btn */
+    const navButtons =
+        document.querySelectorAll(".nav-btn");
 
-    navLinks.forEach(link => {
-        link.classList.remove("active");
+    navButtons.forEach(button => {
+        button.classList.remove("active");
     });
 
-    const activeLink = document.querySelector(
-        `.nav-link[data-section="${sectionId}"]`
-    );
+    navButtons.forEach(button => {
 
-    if (activeLink) {
-        activeLink.classList.add("active");
-    }
+        const onclick =
+            button.getAttribute("onclick");
+
+        if (
+            onclick &&
+            onclick.includes(`'${sectionId}'`)
+        ) {
+            button.classList.add("active");
+        }
+    });
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 
-    const menu = document.getElementById("mobileMenu");
+    const menu =
+        document.getElementById("navMenu");
 
     if (menu) {
         menu.classList.remove("open");
@@ -253,7 +263,8 @@ function showSection(sectionId) {
 
 function toggleMenu() {
 
-    const menu = document.getElementById("mobileMenu");
+    const menu =
+        document.getElementById("navMenu");
 
     if (menu) {
         menu.classList.toggle("open");
@@ -267,19 +278,50 @@ function toggleMenu() {
 
 function copyIP() {
 
-    navigator.clipboard.writeText(SERVER_IP);
+    if (
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+    ) {
 
-    const button = document.getElementById("copyButton");
+        navigator.clipboard.writeText(SERVER_IP)
+            .then(() => {
 
-    if (!button) return;
+                const message =
+                    document.getElementById("copyMessage");
 
-    const originalText = button.innerText;
+                if (!message) return;
 
-    button.innerText = "COPIED!";
+                message.textContent =
+                    "SERVER IP COPIED!";
+
+                setTimeout(() => {
+                    message.textContent = "";
+                }, 2000);
+
+            })
+            .catch(() => {
+                showCopyFallback();
+            });
+
+    } else {
+        showCopyFallback();
+    }
+}
+
+
+function showCopyFallback() {
+
+    const message =
+        document.getElementById("copyMessage");
+
+    if (!message) return;
+
+    message.textContent =
+        `IP: ${SERVER_IP}`;
 
     setTimeout(() => {
-        button.innerText = originalText;
-    }, 1500);
+        message.textContent = "";
+    }, 3000);
 }
 
 
@@ -287,17 +329,27 @@ function copyIP() {
    RULE TOGGLE
 ========================================== */
 
-function toggleRule(element) {
+function toggleRule(button) {
 
-    const content = element.querySelector(".rule-content");
+    const rule =
+        button.closest(".rule");
+
+    if (!rule) return;
+
+    const content =
+        rule.querySelector(".rule-content");
 
     if (!content) return;
 
-    element.classList.toggle("open");
+    rule.classList.toggle("open");
 
-    if (element.classList.contains("open")) {
-        content.style.maxHeight = content.scrollHeight + "px";
+    if (rule.classList.contains("open")) {
+
+        content.style.maxHeight =
+            content.scrollHeight + "px";
+
     } else {
+
         content.style.maxHeight = "0";
     }
 }
@@ -309,18 +361,29 @@ function toggleRule(element) {
 
 function createPlayerModal() {
 
-    if (document.getElementById("playerProfileModal")) {
+    if (
+        document.getElementById(
+            "playerProfileModal"
+        )
+    ) {
         return;
     }
 
-    const modal = document.createElement("div");
+    const modal =
+        document.createElement("div");
 
-    modal.id = "playerProfileModal";
-    modal.className = "player-profile-modal";
+    modal.id =
+        "playerProfileModal";
+
+    modal.className =
+        "player-profile-modal";
 
     modal.innerHTML = `
-        <div class="player-profile-overlay"
-             onclick="closePlayerProfile()"></div>
+
+        <div
+            class="player-profile-overlay"
+            onclick="closePlayerProfile()"
+        ></div>
 
         <div class="player-profile-box">
 
@@ -332,20 +395,36 @@ function createPlayerModal() {
                 ×
             </button>
 
-            <div class="profile-avatar" id="profileAvatar"></div>
+            <div
+                class="profile-avatar"
+                id="profileAvatar"
+            ></div>
 
             <h2 id="profileName"></h2>
 
-            <div class="profile-role" id="profileRole"></div>
+            <div
+                class="profile-role"
+                id="profileRole"
+            ></div>
 
             <div class="profile-section">
-                <span>ABOUT</span>
+
+                <span>
+                    ABOUT
+                </span>
+
                 <p id="profileAbout"></p>
+
             </div>
 
             <div class="profile-section">
-                <span>MAIN GAMEMODE</span>
+
+                <span>
+                    MAIN GAMEMODE
+                </span>
+
                 <p id="profileGamemode"></p>
+
             </div>
 
         </div>
@@ -364,28 +443,41 @@ function openPlayerProfile(player) {
     createPlayerModal();
 
     const modal =
-        document.getElementById("playerProfileModal");
+        document.getElementById(
+            "playerProfileModal"
+        );
 
     const avatar =
-        document.getElementById("profileAvatar");
+        document.getElementById(
+            "profileAvatar"
+        );
 
     const name =
-        document.getElementById("profileName");
+        document.getElementById(
+            "profileName"
+        );
 
     const role =
-        document.getElementById("profileRole");
+        document.getElementById(
+            "profileRole"
+        );
 
     const about =
-        document.getElementById("profileAbout");
+        document.getElementById(
+            "profileAbout"
+        );
 
     const gamemode =
-        document.getElementById("profileGamemode");
+        document.getElementById(
+            "profileGamemode"
+        );
 
     avatar.innerHTML = "";
 
     if (player.skin) {
 
-        const image = document.createElement("img");
+        const image =
+            document.createElement("img");
 
         image.src =
             `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/256`;
@@ -414,14 +506,18 @@ function openPlayerProfile(player) {
         player.role || "Civilian";
 
     about.textContent =
-        player.about || "No information added yet.";
+        player.about ||
+        "No information added yet.";
 
     gamemode.textContent =
-        player.gamemode || "Not specified";
+        player.gamemode ||
+        "Not specified";
 
     modal.classList.add("show");
 
-    document.body.classList.add("profile-open");
+    document.body.classList.add(
+        "profile-open"
+    );
 }
 
 
@@ -432,13 +528,17 @@ function openPlayerProfile(player) {
 function closePlayerProfile() {
 
     const modal =
-        document.getElementById("playerProfileModal");
+        document.getElementById(
+            "playerProfileModal"
+        );
 
     if (!modal) return;
 
     modal.classList.remove("show");
 
-    document.body.classList.remove("profile-open");
+    document.body.classList.remove(
+        "profile-open"
+    );
 }
 
 
@@ -449,10 +549,14 @@ function closePlayerProfile() {
 function loadPlayers(list = players) {
 
     const grid =
-        document.getElementById("playersGrid");
+        document.getElementById(
+            "playersGrid"
+        );
 
     const noPlayers =
-        document.getElementById("noPlayers");
+        document.getElementById(
+            "noPlayers"
+        );
 
     if (!grid) return;
 
@@ -461,14 +565,16 @@ function loadPlayers(list = players) {
     if (list.length === 0) {
 
         if (noPlayers) {
-            noPlayers.style.display = "block";
+            noPlayers.style.display =
+                "block";
         }
 
         return;
     }
 
     if (noPlayers) {
-        noPlayers.style.display = "none";
+        noPlayers.style.display =
+            "none";
     }
 
     list.forEach(player => {
@@ -482,12 +588,14 @@ function loadPlayers(list = players) {
         card.dataset.name =
             player.name.toLowerCase();
 
-        /* ENTIRE CARD IS CLICKABLE */
+        /* Entire card clickable */
         card.onclick = function () {
             openPlayerProfile(player);
         };
 
+
         /* SKIN */
+
         const avatar =
             document.createElement("div");
 
@@ -522,14 +630,18 @@ function loadPlayers(list = players) {
                 `<span>${player.name.charAt(0).toUpperCase()}</span>`;
         }
 
+
         /* NAME */
+
         const playerName =
             document.createElement("h3");
 
         playerName.textContent =
             player.name;
 
+
         /* ROLE */
+
         const rank =
             document.createElement("p");
 
@@ -538,6 +650,7 @@ function loadPlayers(list = players) {
 
         rank.textContent =
             player.role;
+
 
         card.appendChild(avatar);
         card.appendChild(playerName);
@@ -555,16 +668,22 @@ function loadPlayers(list = players) {
 function searchPlayers() {
 
     const input =
-        document.getElementById("playerSearch");
+        document.getElementById(
+            "playerSearch"
+        );
 
     if (!input) return;
 
     const searchTerm =
-        input.value.trim().toLowerCase();
+        input.value
+            .trim()
+            .toLowerCase();
 
     const filteredPlayers =
         players.filter(player =>
-            player.name.toLowerCase().includes(searchTerm)
+            player.name
+                .toLowerCase()
+                .includes(searchTerm)
         );
 
     loadPlayers(filteredPlayers);
@@ -572,33 +691,46 @@ function searchPlayers() {
 
 
 /* ==========================================
-   PVP TIER
+   PVP TIER SYSTEM
 ========================================== */
 
-function changeTier(element, tier) {
+function changeTier(tier, element) {
+
+    /* Remove active from all buttons */
 
     const tierButtons =
-        document.querySelectorAll(".tier-button");
+        document.querySelectorAll(
+            ".tier-tab"
+        );
 
     tierButtons.forEach(button => {
         button.classList.remove("active");
     });
 
-    element.classList.add("active");
+
+    /* Activate clicked button */
+
+    if (element) {
+        element.classList.add("active");
+    }
+
+
+    /*
+       Your current HTML has one .tier-list.
+       Keep it visible for now.
+
+       This also prevents the old JS
+       from breaking the tier buttons.
+    */
 
     const tierLists =
-        document.querySelectorAll(".tier-list");
+        document.querySelectorAll(
+            ".tier-list"
+        );
 
     tierLists.forEach(list => {
-        list.classList.remove("active");
+        list.classList.add("active");
     });
-
-    const selectedTier =
-        document.getElementById(tier);
-
-    if (selectedTier) {
-        selectedTier.classList.add("active");
-    }
 }
 
 
@@ -607,16 +739,35 @@ function changeTier(element, tier) {
 ========================================== */
 
 const eventDate =
-    new Date("September 18, 2026 21:00:00").getTime();
+    new Date(
+        "September 18, 2026 21:00:00"
+    ).getTime();
 
 
 function updateCountdown() {
+
+    const countdown =
+        document.getElementById(
+            "countdown"
+        );
+
+    if (!countdown) return;
 
     const now =
         new Date().getTime();
 
     const distance =
         eventDate - now;
+
+
+    if (distance <= 0) {
+
+        countdown.textContent =
+            "EVENT STARTED";
+
+        return;
+    }
+
 
     const days =
         Math.floor(
@@ -645,41 +796,9 @@ function updateCountdown() {
             1000
         );
 
-    const daysElement =
-        document.getElementById("days");
 
-    const hoursElement =
-        document.getElementById("hours");
-
-    const minutesElement =
-        document.getElementById("minutes");
-
-    const secondsElement =
-        document.getElementById("seconds");
-
-    if (!daysElement) return;
-
-    if (distance < 0) {
-
-        daysElement.innerText = "00";
-        hoursElement.innerText = "00";
-        minutesElement.innerText = "00";
-        secondsElement.innerText = "00";
-
-        return;
-    }
-
-    daysElement.innerText =
-        String(days).padStart(2, "0");
-
-    hoursElement.innerText =
-        String(hours).padStart(2, "0");
-
-    minutesElement.innerText =
-        String(minutes).padStart(2, "0");
-
-    secondsElement.innerText =
-        String(seconds).padStart(2, "0");
+    countdown.textContent =
+        `${days}D ${hours}H ${minutes}M ${seconds}S`;
 }
 
 
@@ -687,56 +806,86 @@ function updateCountdown() {
    EVENT MODAL
 ========================================== */
 
-function openEvent(title, description) {
+function showEvent(type) {
 
     const modal =
-        document.getElementById("eventModal");
+        document.getElementById(
+            "eventModal"
+        );
 
-    const modalTitle =
-        document.getElementById("eventModalTitle");
+    const title =
+        document.getElementById(
+            "modalTitle"
+        );
 
-    const modalDescription =
-        document.getElementById("eventModalDescription");
+    const text =
+        document.getElementById(
+            "modalText"
+        );
 
     if (!modal) return;
 
-    if (modalTitle) {
-        modalTitle.textContent =
-            title;
+
+    if (type === "pvp") {
+
+        title.textContent =
+            "ELYSIUM PVP";
+
+        text.textContent =
+            "Enter the arena and prove who deserves the top spot. Elysium PvP is coming soon.";
+
     }
 
-    if (modalDescription) {
-        modalDescription.textContent =
-            description;
+    else if (type === "endwar") {
+
+        title.textContent =
+            "END WAR";
+
+        text.textContent =
+            "Gear up for the ultimate battle in the End. Prepare your team and fight for victory.";
+
     }
+
+    else if (type === "media") {
+
+        title.textContent =
+            "MEDIA EVENT";
+
+        text.textContent =
+            "The Elysium community media event has been completed.";
+
+    }
+
+    else {
+
+        title.textContent =
+            "ELYSIUM EVENT";
+
+        text.textContent =
+            "Event information.";
+
+    }
+
 
     modal.classList.add("show");
 }
 
 
-function closeEventModal() {
+/* ==========================================
+   CLOSE EVENT MODAL
+========================================== */
+
+function closeModal() {
 
     const modal =
-        document.getElementById("eventModal");
+        document.getElementById(
+            "eventModal"
+        );
 
     if (!modal) return;
 
     modal.classList.remove("show");
 }
-
-
-/* ==========================================
-   ESC KEY
-========================================== */
-
-document.addEventListener("keydown", function (event) {
-
-    if (event.key !== "Escape") return;
-
-    closeEventModal();
-    closePlayerProfile();
-
-});
 
 
 /* ==========================================
@@ -759,30 +908,53 @@ function openDiscord() {
 function updatePlayerCount() {
 
     const playerCount =
-        document.getElementById("playerCount");
+        document.getElementById(
+            "playerCount"
+        );
 
     if (!playerCount) return;
 
     playerCount.textContent =
-        "12/50";
+        "12 / 50";
 }
+
+
+/* ==========================================
+   ESC KEY
+========================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        closeModal();
+        closePlayerProfile();
+    }
+);
 
 
 /* ==========================================
    INITIALIZE
 ========================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
 
-    loadPlayers();
+        loadPlayers();
 
-    updateCountdown();
+        updateCountdown();
 
-    updatePlayerCount();
+        updatePlayerCount();
 
-    setInterval(
-        updateCountdown,
-        1000
-    );
+        setInterval(
+            updateCountdown,
+            1000
+        );
 
-});
+    }
+);
