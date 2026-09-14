@@ -319,7 +319,8 @@ function createPlayerModal() {
     modal.className = "player-profile-modal";
 
     modal.innerHTML = `
-        <div class="player-profile-overlay" onclick="closePlayerProfile()"></div>
+        <div class="player-profile-overlay"
+             onclick="closePlayerProfile()"></div>
 
         <div class="player-profile-box">
 
@@ -362,13 +363,23 @@ function openPlayerProfile(player) {
 
     createPlayerModal();
 
-    const modal = document.getElementById("playerProfileModal");
+    const modal =
+        document.getElementById("playerProfileModal");
 
-    const avatar = document.getElementById("profileAvatar");
-    const name = document.getElementById("profileName");
-    const role = document.getElementById("profileRole");
-    const about = document.getElementById("profileAbout");
-    const gamemode = document.getElementById("profileGamemode");
+    const avatar =
+        document.getElementById("profileAvatar");
+
+    const name =
+        document.getElementById("profileName");
+
+    const role =
+        document.getElementById("profileRole");
+
+    const about =
+        document.getElementById("profileAbout");
+
+    const gamemode =
+        document.getElementById("profileGamemode");
 
     avatar.innerHTML = "";
 
@@ -379,9 +390,11 @@ function openPlayerProfile(player) {
         image.src =
             `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/256`;
 
-        image.alt = `${player.name} Minecraft skin`;
+        image.alt =
+            `${player.name} Minecraft skin`;
 
         image.onerror = function () {
+
             avatar.innerHTML =
                 `<span>${player.name.charAt(0).toUpperCase()}</span>`;
         };
@@ -394,9 +407,11 @@ function openPlayerProfile(player) {
             `<span>${player.name.charAt(0).toUpperCase()}</span>`;
     }
 
-    name.textContent = player.name;
+    name.textContent =
+        player.name;
 
-    role.textContent = player.role || "Civilian";
+    role.textContent =
+        player.role || "Civilian";
 
     about.textContent =
         player.about || "No information added yet.";
@@ -416,7 +431,8 @@ function openPlayerProfile(player) {
 
 function closePlayerProfile() {
 
-    const modal = document.getElementById("playerProfileModal");
+    const modal =
+        document.getElementById("playerProfileModal");
 
     if (!modal) return;
 
@@ -432,9 +448,11 @@ function closePlayerProfile() {
 
 function loadPlayers(list = players) {
 
-    const grid = document.getElementById("playersGrid");
+    const grid =
+        document.getElementById("playersGrid");
 
-    const noPlayers = document.getElementById("noPlayers");
+    const noPlayers =
+        document.getElementById("noPlayers");
 
     if (!grid) return;
 
@@ -455,26 +473,40 @@ function loadPlayers(list = players) {
 
     list.forEach(player => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
 
-        card.className = "player-card";
+        card.className =
+            "player-card";
 
-        card.dataset.name = player.name.toLowerCase();
+        card.dataset.name =
+            player.name.toLowerCase();
 
-        const avatar = document.createElement("div");
+        /* ENTIRE CARD IS CLICKABLE */
+        card.onclick = function () {
+            openPlayerProfile(player);
+        };
 
-        avatar.className = "avatar";
+        /* SKIN */
+        const avatar =
+            document.createElement("div");
+
+        avatar.className =
+            "avatar";
 
         if (player.skin) {
 
-            const image = document.createElement("img");
+            const image =
+                document.createElement("img");
 
             image.src =
                 `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/128`;
 
-            image.alt = `${player.name} Minecraft skin`;
+            image.alt =
+                `${player.name} Minecraft skin`;
 
-            image.loading = "lazy";
+            image.loading =
+                "lazy";
 
             image.onerror = function () {
 
@@ -490,23 +522,26 @@ function loadPlayers(list = players) {
                 `<span>${player.name.charAt(0).toUpperCase()}</span>`;
         }
 
-        const playerName = document.createElement("h3");
+        /* NAME */
+        const playerName =
+            document.createElement("h3");
 
-        playerName.textContent = player.name;
+        playerName.textContent =
+            player.name;
 
-        const rank = document.createElement("p");
+        /* ROLE */
+        const rank =
+            document.createElement("p");
 
-        rank.className = "rank role";
+        rank.className =
+            "rank role";
 
-        rank.textContent = player.role;
+        rank.textContent =
+            player.role;
 
         card.appendChild(avatar);
         card.appendChild(playerName);
         card.appendChild(rank);
-
-        card.addEventListener("click", () => {
-            openPlayerProfile(player);
-        });
 
         grid.appendChild(card);
     });
@@ -519,17 +554,18 @@ function loadPlayers(list = players) {
 
 function searchPlayers() {
 
-    const input = document.getElementById("playerSearch");
+    const input =
+        document.getElementById("playerSearch");
 
     if (!input) return;
 
-    const searchTerm = input.value
-        .trim()
-        .toLowerCase();
+    const searchTerm =
+        input.value.trim().toLowerCase();
 
-    const filteredPlayers = players.filter(player =>
-        player.name.toLowerCase().includes(searchTerm)
-    );
+    const filteredPlayers =
+        players.filter(player =>
+            player.name.toLowerCase().includes(searchTerm)
+        );
 
     loadPlayers(filteredPlayers);
 }
@@ -576,29 +612,37 @@ const eventDate =
 
 function updateCountdown() {
 
-    const now = new Date().getTime();
+    const now =
+        new Date().getTime();
 
-    const distance = eventDate - now;
+    const distance =
+        eventDate - now;
 
     const days =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
 
     const hours =
         Math.floor(
-            (distance % (1000 * 60 * 60 * 24))
-            / (1000 * 60 * 60)
+            (distance %
+                (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
         );
 
     const minutes =
         Math.floor(
-            (distance % (1000 * 60 * 60))
-            / (1000 * 60)
+            (distance %
+                (1000 * 60 * 60)) /
+            (1000 * 60)
         );
 
     const seconds =
         Math.floor(
-            (distance % (1000 * 60))
-            / 1000
+            (distance %
+                (1000 * 60)) /
+            1000
         );
 
     const daysElement =
@@ -657,11 +701,13 @@ function openEvent(title, description) {
     if (!modal) return;
 
     if (modalTitle) {
-        modalTitle.textContent = title;
+        modalTitle.textContent =
+            title;
     }
 
     if (modalDescription) {
-        modalDescription.textContent = description;
+        modalDescription.textContent =
+            description;
     }
 
     modal.classList.add("show");
@@ -717,13 +763,8 @@ function updatePlayerCount() {
 
     if (!playerCount) return;
 
-    /*
-       Demo count.
-       Replace this with your live server API
-       later if required.
-    */
-
-    playerCount.textContent = "12/50";
+    playerCount.textContent =
+        "12/50";
 }
 
 
@@ -739,6 +780,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updatePlayerCount();
 
-    setInterval(updateCountdown, 1000);
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
 });
