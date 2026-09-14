@@ -1,432 +1,977 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elysium SMP</title>
-    <link rel="stylesheet" href="style.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Elysium SMP — Survive. Build. Conquer."
+    >
+
+    <title>✧ ELYSIUM SMP ✧</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 
 <body>
 
     <!-- BACKGROUND -->
+
     <div class="background"></div>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo" onclick="showSection('home')">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div
+            class="logo"
+            onclick="showSection('home')"
+        >
             ✧ ELYSIUM ✧
         </div>
 
-        <div class="nav-links">
-            <button onclick="showSection('home')">Home</button>
-            <button onclick="showSection('rules')">Rules</button>
-            <button onclick="showSection('players')">Players</button>
-            <button onclick="showSection('events')">Events</button>
-            <button onclick="showSection('pvp')">PvP</button>
-            <button onclick="showSection('discord')">Discord</button>
-        </div>
 
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    </nav>
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
 
 
-    <!-- HOME -->
-    <section id="home" class="section">
+        <nav id="navMenu">
 
-        <div class="hero">
-            <div class="hero-content">
+            <button onclick="showSection('home')">
+                HOME
+            </button>
 
-                <p class="small-title">WELCOME TO</p>
+            <button onclick="showSection('rules')">
+                RULES
+            </button>
 
-                <h1>✧ ELYSIUM ✧</h1>
+            <button onclick="showSection('players')">
+                PLAYERS
+            </button>
 
-                <p class="hero-subtitle">
-                    SURVIVE • BUILD • CONQUER
+            <button onclick="showSection('events')">
+                EVENTS
+            </button>
+
+            <button onclick="showSection('pvp')">
+                PVP
+            </button>
+
+            <button onclick="showSection('discord')">
+                DISCORD
+            </button>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+
+        <!-- ================= HOME ================= -->
+
+        <section
+            id="home"
+            class="section active"
+        >
+
+            <div class="hero">
+
+                <div class="hero-line"></div>
+
+                <p class="eyebrow">
+                    WELCOME TO
                 </p>
 
-                <p class="hero-description">
-                    A chill Minecraft survival experience where
-                    alliances are formed, empires rise, and wars begin.
-                </p>
+                <h1>
+                    ELYSIUM
+                </h1>
+
+                <div class="subtitle">
+                    SURVIVE. BUILD. CONQUER.
+                </div>
+
+
+                <div class="status">
+
+                    <span class="status-dot"></span>
+
+                    SERVER ONLINE
+
+                </div>
+
+
+                <div class="server-stats">
+
+
+                    <div class="stat">
+
+                        <span>
+                            PLAYERS
+                        </span>
+
+                        <strong id="playerCount">
+                            12 / 50
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>
+                            VERSION
+                        </span>
+
+                        <strong>
+                            1.21+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>
+                            PLATFORM
+                        </span>
+
+                        <strong>
+                            JAVA + BEDROCK
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
 
                 <div class="hero-buttons">
-                    <button class="main-btn" onclick="copyIP()">
-                        COPY SERVER IP
-                    </button>
-
-                    <button class="secondary-btn" onclick="showSection('discord')">
-                        JOIN DISCORD
-                    </button>
-                </div>
-
-                <div class="server-info">
-
-                    <div class="info-card">
-                        <span class="info-number">JAVA</span>
-                        <span class="info-label">EDITION</span>
-                    </div>
-
-                    <div class="info-card">
-                        <span class="info-number">BEDROCK</span>
-                        <span class="info-label">SUPPORTED</span>
-                    </div>
-
-                    <div class="info-card">
-                        <span class="info-number">24/7</span>
-                        <span class="info-label">SERVER</span>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </section>
-
-
-    <!-- RULES -->
-    <section id="rules" class="section">
-
-        <div class="section-container">
-
-            <div class="section-heading">
-                <p>SERVER GUIDELINES</p>
-                <h2>RULES</h2>
-            </div>
-
-            <div class="rules-container">
-
-                <div class="rule">
-                    <button class="rule-question" onclick="toggleRule(this)">
-                        <span>01. Respect Everyone</span>
-                        <span>+</span>
-                    </button>
-
-                    <div class="rule-answer">
-                        Treat every player with respect. Harassment,
-                        bullying and unnecessary toxicity are not allowed.
-                    </div>
-                </div>
-
-
-                <div class="rule">
-                    <button class="rule-question" onclick="toggleRule(this)">
-                        <span>02. No Hacking</span>
-                        <span>+</span>
-                    </button>
-
-                    <div class="rule-answer">
-                        Hacked clients, unfair advantages and cheats
-                        are strictly prohibited.
-                    </div>
-                </div>
-
-
-                <div class="rule">
-                    <button class="rule-question" onclick="toggleRule(this)">
-                        <span>03. No Griefing</span>
-                        <span>+</span>
-                    </button>
-
-                    <div class="rule-answer">
-                        Do not destroy or modify another player's builds
-                        without permission.
-                    </div>
-                </div>
-
-
-                <div class="rule">
-                    <button class="rule-question" onclick="toggleRule(this)">
-                        <span>04. No Exploiting</span>
-                        <span>+</span>
-                    </button>
-
-                    <div class="rule-answer">
-                        Exploiting server-breaking glitches or bugs
-                        may result in punishment.
-                    </div>
-                </div>
-
-
-                <div class="rule">
-                    <button class="rule-question" onclick="toggleRule(this)">
-                        <span>05. PvP Rules</span>
-                        <span>+</span>
-                    </button>
-
-                    <div class="rule-answer">
-                        PvP is allowed where permitted. Do not abuse
-                        glitches or combat-log during official events.
-                    </div>
-                </div>
-
-
-                <div class="rule">
-                    <button class="rule-question" onclick="toggleRule(this)">
-                        <span>06. Have Fun</span>
-                        <span>+</span>
-                    </button>
-
-                    <div class="rule-answer">
-                        Build, explore, make friends and enjoy Elysium.
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PLAYERS -->
-    <section id="players" class="section">
-
-        <div class="section-container">
-
-            <div class="section-heading">
-                <p>MEET THE COMMUNITY</p>
-                <h2>PLAYERS</h2>
-            </div>
-
-            <div class="player-search">
-                <input
-                    type="text"
-                    id="playerSearch"
-                    placeholder="Search player..."
-                    oninput="searchPlayers()"
-                >
-            </div>
-
-            <div id="playersGrid" class="players-grid"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- EVENTS -->
-    <section id="events" class="section">
-
-        <div class="section-container">
-
-            <div class="section-heading">
-                <p>WHAT'S HAPPENING</p>
-                <h2>EVENTS</h2>
-            </div>
-
-
-            <div class="events-grid">
-
-                <div class="event-card">
-
-                    <div class="event-date">
-                        UPCOMING
-                    </div>
-
-                    <h3>ELYSIUM END WAR</h3>
-
-                    <p>
-                        The final battle begins.
-                        Gather your team, prepare your gear
-                        and fight for glory.
-                    </p>
-
-                    <div class="countdown" id="countdown">
-                        Loading...
-                    </div>
 
                     <button
-                        class="main-btn"
-                        onclick="openEventModal()">
-                        VIEW EVENT
+                        class="primary-btn"
+                        onclick="copyIP()"
+                    >
+                        JOIN SERVER
                     </button>
 
-                </div>
-
-
-                <div class="event-card">
-
-                    <div class="event-date">
-                        COMMUNITY
-                    </div>
-
-                    <h3>SCREENSHOT EVENT</h3>
-
-                    <p>
-                        Capture your best Elysium moments
-                        and submit them to the community.
-                    </p>
 
                     <button
                         class="secondary-btn"
-                        onclick="showSection('discord')">
-                        JOIN EVENT
+                        onclick="showSection('events')"
+                    >
+                        VIEW EVENTS
                     </button>
 
                 </div>
 
+
+                <p id="copyMessage"></p>
+
             </div>
 
-        </div>
-
-    </section>
 
 
-    <!-- PVP -->
-    <section id="pvp" class="section pvp-section">
+            <div class="home-cards">
 
-        <!-- MINECRAFT VIDEO BACKGROUND -->
-        <video
-            class="pvp-video"
-            autoplay
-            muted
-            loop
-            playsinline
+
+                <div
+                    class="info-card"
+                    onclick="showSection('rules')"
+                >
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        RULES
+                    </h3>
+
+                    <p>
+                        Know the laws of Elysium.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="info-card"
+                    onclick="showSection('players')"
+                >
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        PLAYERS
+                    </h3>
+
+                    <p>
+                        Meet the people of Elysium.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="info-card"
+                    onclick="showSection('pvp')"
+                >
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        PVP
+                    </h3>
+
+                    <p>
+                        Prove your worth.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="info-card"
+                    onclick="showSection('events')"
+                >
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        EVENTS
+                    </h3>
+
+                    <p>
+                        Take part in the action.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RULES ================= -->
+
+        <section
+            id="rules"
+            class="section"
         >
-            <source src="mc-sword.mp4.mp4" type="video/mp4">
-        </video>
 
-        <!-- DARK OVERLAY -->
-        <div class="pvp-overlay"></div>
+            <div class="page-title">
+
+                <p>
+                    ELYSIUM SMP
+                </p>
+
+                <h2>
+                    SERVER RULES
+                </h2>
+
+            </div>
 
 
-        <!-- PVP CONTENT -->
-        <div class="pvp-content">
+            <div class="rules-container">
 
-            <div class="section-container">
 
-                <div class="section-heading">
-                    <p>PROVE YOUR WORTH</p>
-                    <h2>ELYSIUM PVP</h2>
+                <div class="rule">
+
+                    <button onclick="toggleRule(this)">
+
+                        <span>
+                            01 — RESPECT EVERYONE
+                        </span>
+
+                        <b>
+                            +
+                        </b>
+
+                    </button>
+
+
+                    <div class="rule-content">
+
+                        Treat every member with respect.
+                        Harassment, discrimination and
+                        targeted toxicity are not allowed.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <button onclick="toggleRule(this)">
+
+                        <span>
+                            02 — NO CHEATING
+                        </span>
+
+                        <b>
+                            +
+                        </b>
+
+                    </button>
+
+
+                    <div class="rule-content">
+
+                        Hacks, cheats and unfair
+                        modifications that provide
+                        an advantage over other players
+                        are prohibited.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <button onclick="toggleRule(this)">
+
+                        <span>
+                            03 — NO GRIEFING
+                        </span>
+
+                        <b>
+                            +
+                        </b>
+
+                    </button>
+
+
+                    <div class="rule-content">
+
+                        Do not destroy, modify or
+                        sabotage another player's
+                        builds without their permission.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <button onclick="toggleRule(this)">
+
+                        <span>
+                            04 — NO STEALING
+                        </span>
+
+                        <b>
+                            +
+                        </b>
+
+                    </button>
+
+
+                    <div class="rule-content">
+
+                        Do not take another player's
+                        items or resources without
+                        permission.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <button onclick="toggleRule(this)">
+
+                        <span>
+                            05 — EXPLOITS
+                        </span>
+
+                        <b>
+                            +
+                        </b>
+
+                    </button>
+
+
+                    <div class="rule-content">
+
+                        Report serious bugs and exploits
+                        to staff instead of abusing them
+                        for an unfair advantage.
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <button onclick="toggleRule(this)">
+
+                        <span>
+                            06 — STAFF DECISIONS
+                        </span>
+
+                        <b>
+                            +
+                        </b>
+
+                    </button>
+
+
+                    <div class="rule-content">
+
+                        Respect staff decisions.
+                        If you believe a decision is unfair,
+                        contact administration through Discord.
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PLAYERS ================= -->
+
+        <section
+            id="players"
+            class="section"
+        >
+
+            <div class="page-title">
+
+                <p>
+                    ELYSIUM SMP
+                </p>
+
+                <h2>
+                    PLAYERS
+                </h2>
+
+            </div>
+
+
+            <div class="search-wrapper">
+
+                <input
+                    id="playerSearch"
+                    class="search"
+                    type="text"
+                    placeholder="Search players..."
+                    oninput="searchPlayers()"
+                >
+
+            </div>
+
+
+            <!-- IMPORTANT:
+                 JavaScript creates all player cards here.
+                 DO NOT add individual players here.
+            -->
+
+            <div
+                class="players-grid"
+                id="playersGrid"
+            >
+            </div>
+
+
+            <p
+                id="noPlayers"
+                class="no-results"
+                style="display: none;"
+            >
+                No players found.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= EVENTS ================= -->
+
+        <section
+            id="events"
+            class="section"
+        >
+
+            <div class="page-title">
+
+                <p>
+                    ELYSIUM SMP
+                </p>
+
+                <h2>
+                    EVENTS
+                </h2>
+
+            </div>
+
+
+            <div class="event-grid">
+
+
+                <!-- PVP EVENT -->
+
+                <article class="event-card">
+
+                    <div class="event-top">
+
+                        <span class="event-tag">
+                            UPCOMING
+                        </span>
+
+                        <span class="event-symbol">
+                            ⚔
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        ELYSIUM PVP
+                    </h3>
+
+
+                    <p>
+
+                        Enter the arena and prove
+                        your worth. Only the strongest
+                        will survive.
+
+                    </p>
+
+
+                    <div class="countdown-label">
+                        STARTS IN
+                    </div>
+
+
+                    <div
+                        id="countdown"
+                        class="countdown"
+                    >
+                        Loading...
+                    </div>
+
+
+                    <button
+                        onclick="showEvent('pvp')"
+                    >
+                        EVENT DETAILS
+                    </button>
+
+                </article>
+
+
+
+                <!-- END WAR -->
+
+                <article class="event-card">
+
+                    <div class="event-top">
+
+                        <span class="event-tag">
+                            UPCOMING
+                        </span>
+
+                        <span class="event-symbol">
+                            ◆
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        END WAR
+                    </h3>
+
+
+                    <p>
+
+                        Prepare for an intense battle
+                        in the End. Gear up and fight
+                        for victory.
+
+                    </p>
+
+
+                    <button
+                        onclick="showEvent('endwar')"
+                    >
+                        EVENT DETAILS
+                    </button>
+
+                </article>
+
+
+
+                <!-- MEDIA EVENT -->
+
+                <article class="event-card completed">
+
+                    <div class="event-top">
+
+                        <span class="event-tag">
+                            COMPLETED
+                        </span>
+
+                        <span class="event-symbol">
+                            ✦
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        MEDIA EVENT
+                    </h3>
+
+
+                    <p>
+
+                        The Elysium Media event has
+                        concluded. Check the winner
+                        announcement.
+
+                    </p>
+
+
+                    <button
+                        onclick="showEvent('media')"
+                    >
+                        VIEW EVENT
+                    </button>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PVP ================= -->
+
+        <section
+            id="pvp"
+            class="section pvp-section"
+        >
+
+            <!-- MINECRAFT PVP VIDEO BACKGROUND -->
+
+            <video
+                class="pvp-video"
+                autoplay
+                muted
+                loop
+                playsinline
+            >
+
+                <source
+                    src="mc-sword.mp4.mp4"
+                    type="video/mp4"
+                >
+
+            </video>
+
+
+            <!-- DARK VIDEO OVERLAY -->
+
+            <div class="pvp-overlay"></div>
+
+
+            <!-- PVP CONTENT -->
+
+            <div class="pvp-content">
+
+                <div class="page-title">
+
+                    <p>
+                        ELYSIUM PVP
+                    </p>
+
+                    <h2>
+                        LEADERBOARD
+                    </h2>
+
                 </div>
 
 
                 <div class="leaderboard">
 
+
                     <div class="leader header-row">
-                        <span>RANK</span>
-                        <span>PLAYER</span>
-                        <span>KILLS</span>
-                        <span>WINS</span>
+
+                        <span>
+                            #
+                        </span>
+
+                        <span>
+                            PLAYER
+                        </span>
+
+                        <span>
+                            KILLS
+                        </span>
+
+                        <span>
+                            WINS
+                        </span>
+
                     </div>
 
 
                     <div class="leader">
-                        <span>#1</span>
-                        <span>Masumbaccha</span>
-                        <span>87</span>
-                        <span>24</span>
+
+                        <span class="position first">
+                            1
+                        </span>
+
+                        <strong>
+                            Masumbaccha
+                        </strong>
+
+                        <span>
+                            87
+                        </span>
+
+                        <span>
+                            24
+                        </span>
+
                     </div>
 
 
                     <div class="leader">
-                        <span>#2</span>
-                        <span>Shinchan0n</span>
-                        <span>73</span>
-                        <span>20</span>
+
+                        <span class="position second">
+                            2
+                        </span>
+
+                        <strong>
+                            Shinchan0n
+                        </strong>
+
+                        <span>
+                            73
+                        </span>
+
+                        <span>
+                            20
+                        </span>
+
                     </div>
 
 
                     <div class="leader">
-                        <span>#3</span>
-                        <span>Wixzen</span>
-                        <span>61</span>
-                        <span>18</span>
+
+                        <span class="position third">
+                            3
+                        </span>
+
+                        <strong>
+                            Wixzen
+                        </strong>
+
+                        <span>
+                            61
+                        </span>
+
+                        <span>
+                            18
+                        </span>
+
                     </div>
 
 
                     <div class="leader">
-                        <span>#4</span>
-                        <span>11k</span>
-                        <span>48</span>
-                        <span>14</span>
+
+                        <span class="position">
+                            4
+                        </span>
+
+                        <strong>
+                            11k
+                        </strong>
+
+                        <span>
+                            48
+                        </span>
+
+                        <span>
+                            14
+                        </span>
+
                     </div>
 
 
                     <div class="leader">
-                        <span>#5</span>
-                        <span>Blazebeacon</span>
-                        <span>39</span>
-                        <span>11</span>
+
+                        <span class="position">
+                            5
+                        </span>
+
+                        <strong>
+                            Blazebeacon
+                        </strong>
+
+                        <span>
+                            39
+                        </span>
+
+                        <span>
+                            11
+                        </span>
+
                     </div>
+
 
                 </div>
 
-            </div>
 
-        </div>
+                <p class="leader-note">
 
-    </section>
+                    PvP statistics are currently
+                    displayed as sample data.
 
-
-    <!-- DISCORD -->
-    <section id="discord" class="section">
-
-        <div class="section-container discord-section">
-
-            <div class="section-heading">
-                <p>JOIN THE COMMUNITY</p>
-                <h2>DISCORD</h2>
-            </div>
-
-            <div class="discord-card">
-
-                <h3>ELYSIUM COMMUNITY</h3>
-
-                <p>
-                    Join the official Elysium Discord server
-                    for announcements, events, updates and chat.
                 </p>
 
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DISCORD ================= -->
+
+        <section
+            id="discord"
+            class="section"
+        >
+
+            <div class="discord-box">
+
+                <div class="discord-symbol">
+                    ✦
+                </div>
+
+
+                <p class="eyebrow">
+                    JOIN THE COMMUNITY
+                </p>
+
+
+                <h2>
+                    ELYSIUM DISCORD
+                </h2>
+
+
+                <p>
+
+                    Stay updated with announcements,
+                    events, server news and the
+                    Elysium community.
+
+                </p>
+
+
                 <a
+                    id="discordLink"
                     href="https://discord.gg/EsDQqvrx7"
                     target="_blank"
-                    class="main-btn"
+                    rel="noopener noreferrer"
+                    class="discord-button"
                 >
                     JOIN DISCORD
                 </a>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- EVENT MODAL -->
-    <div id="eventModal" class="modal">
+    </main>
 
-        <div class="modal-content">
+
+
+    <!-- ================= EVENT MODAL ================= -->
+
+    <div
+        id="eventModal"
+        class="modal"
+    >
+
+        <div class="modal-box">
 
             <button
-                class="modal-close"
-                onclick="closeEventModal()">
+                class="close-modal"
+                onclick="closeModal()"
+            >
                 ×
             </button>
 
-            <h2>ELYSIUM END WAR</h2>
 
-            <p>
-                Prepare your best gear and get ready
-                for the ultimate Elysium battle.
+            <p class="eyebrow">
+                ELYSIUM EVENT
             </p>
 
-            <p>
-                <strong>Server:</strong>
-                events.playwithbao.com
+
+            <h2 id="modalTitle">
+                EVENT
+            </h2>
+
+
+            <p id="modalText">
             </p>
 
-            <p>
-                <strong>Time:</strong>
-                9:00 PM IST
-            </p>
 
             <button
-                class="main-btn"
-                onclick="closeEventModal()">
+                class="primary-btn"
+                onclick="closeModal()"
+            >
                 CLOSE
             </button>
 
@@ -435,50 +980,94 @@
     </div>
 
 
-    <!-- FOOTER -->
+
+    <!-- ================= FOOTER ================= -->
+
     <footer>
 
         <div class="footer-logo">
-            ✧ ELYSIUM ✧
+            ✧ ELYSIUM SMP ✧
         </div>
+
 
         <p>
             SURVIVE • BUILD • CONQUER
         </p>
 
-        <p class="copyright">
-            © 2026 Elysium SMP. All rights reserved.
-        </p>
+
+        <small>
+            © 2026 Elysium SMP
+        </small>
 
     </footer>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
 ```
 
-### IMPORTANT 🔥
+### ⚠️ One more thing
 
-Your GitHub files should now look like:
+Your **current `style.css` does NOT yet contain the CSS for the video**.
+
+So after replacing `index.html`, add this **at the very bottom of `style.css`**:
+
+```css
+/* ================= PVP VIDEO BACKGROUND ================= */
+
+.pvp-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.pvp-video {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+.pvp-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.60),
+            rgba(0, 0, 0, 0.85)
+        );
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.pvp-content {
+    position: relative;
+    z-index: 2;
+}
+```
+
+**Your `script.js` does NOT need any changes.**
+
+Your final files:
 
 ```text
-📁 Your Repository
-│
-├── index.html
-├── style.css
-├── script.js
-└── mc-sword.mp4.mp4
+index.html
+style.css
+script.js
+mc-sword.mp4.mp4
 ```
 
-And **do not change this line**:
-
-```html
-<source src="mc-sword.mp4.mp4" type="video/mp4">
-```
-
-because that's the exact filename you said is on GitHub.
-
-If the video still doesn't play after this, the next thing to check is whether GitHub actually uploaded the video correctly and whether the file is too large.
+And the video will appear **only when you're on the PvP page**, behind the leaderboard. 🔥
