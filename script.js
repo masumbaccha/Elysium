@@ -1,242 +1,409 @@
-/* ==========================================
-   ELYSIUM SMP WEBSITE
+/* =========================================================
+   ELYSIUM SMP
    MAIN JAVASCRIPT
-========================================== */
+========================================================= */
 
 
-/* ==========================================
-   EDIT THESE
-========================================== */
+/* ================= CONFIG ================= */
 
 const SERVER_IP = "elysiumsmp.playwithbao.com";
 
-const DISCORD_LINK = "https://discord.gg/EsDQqvrx7";
+const DISCORD_LINK =
+    "https://discord.gg/EsDQqvrx7";
 
 
-/* ==========================================
-   ELYSIUM PLAYERS
-   EDIT THIS LIST WHENEVER YOU WANT
-========================================== */
+/* ================= PLAYER DATA ================= */
 
 const players = [
-    { name: "Masumbaccha", role: "Founder" },
-    { name: "Shinchan0n", role: "President" },
-    { name: "Wixzen", role: "Vice-President" },
 
-    { name: "11k", role: "Governor" },
-    { name: "Blazebeacon", role: "Governor" },
+    {
+        name: "Masumbaccha",
+        role: "Founder"
+    },
 
-    { name: "Ahil", role: "Civilian" },
-    { name: "Arabicveled", role: "Civilian" },
-    { name: "Someone", role: "Civilian" },
-    { name: "Ishan", role: "Civilian" },
-    { name: "Mzxwan", role: "Civilian" },
-    { name: "Nivio", role: "Civilian" },
-    { name: "NotFlint", role: "Civilian" },
-    { name: "608ms", role: "Civilian" },
-    { name: "Amayy", role: "Civilian" },
-    { name: "Athubroplayz", role: "Civilian" },
-    { name: "EliteYshh", role: "Civilian" },
-    { name: "Greenery", role: "Civilian" },
-    { name: "KomAP", role: "Civilian" },
-    { name: "Ghost", role: "Civilian" },
-    { name: "Mepp00", role: "Civilian" },
-    { name: "Rain", role: "Civilian" },
-    { name: "seish", role: "Civilian" },
-    { name: "Rachitified", role: "Civilian" },
-    { name: "Kat", role: "Civilian" },
-    { name: "Ahha", role: "Civilian" },
-    { name: "Hunt Vantage", role: "Civilian" },
-    { name: "Ily", role: "Civilian" },
-    { name: "Itx Ammar", role: "Civilian" },
-    { name: "Purplix", role: "Civilian" }
+    {
+        name: "Shinchan0n",
+        role: "President"
+    },
+
+    {
+        name: "Wixzen",
+        role: "Vice-President"
+    },
+
+    {
+        name: "11k",
+        role: "Governor"
+    },
+
+    {
+        name: "Blazebeacon",
+        role: "Governor"
+    },
+
+    {
+        name: "Ahil",
+        role: "Civilian"
+    },
+
+    {
+        name: "Arabicveled",
+        role: "Civilian"
+    },
+
+    {
+        name: "Someone",
+        role: "Civilian"
+    },
+
+    {
+        name: "Ishan",
+        role: "Civilian"
+    },
+
+    {
+        name: "Mzxwan",
+        role: "Civilian"
+    },
+
+    {
+        name: "Nivio",
+        role: "Civilian"
+    },
+
+    {
+        name: "NotFlint",
+        role: "Civilian"
+    },
+
+    {
+        name: "608ms",
+        role: "Civilian"
+    },
+
+    {
+        name: "Amayy",
+        role: "Civilian"
+    },
+
+    {
+        name: "Athubroplayz",
+        role: "Civilian"
+    },
+
+    {
+        name: "EliteYshh",
+        role: "Civilian"
+    },
+
+    {
+        name: "Greenery",
+        role: "Civilian"
+    },
+
+    {
+        name: "KomAP",
+        role: "Civilian"
+    },
+
+    {
+        name: "Ghost",
+        role: "Civilian"
+    },
+
+    {
+        name: "Mepp00",
+        role: "Civilian"
+    },
+
+    {
+        name: "Rain",
+        role: "Civilian"
+    },
+
+    {
+        name: "seish",
+        role: "Civilian"
+    },
+
+    {
+        name: "Rachitified",
+        role: "Civilian"
+    },
+
+    {
+        name: "Kat",
+        role: "Civilian"
+    },
+
+    {
+        name: "Ahha",
+        role: "Civilian"
+    },
+
+    {
+        name: "Hunt Vantage",
+        role: "Civilian"
+    },
+
+    {
+        name: "Ily",
+        role: "Civilian"
+    },
+
+    {
+        name: "Itx Ammar",
+        role: "Civilian"
+    },
+
+    {
+        name: "Purplix",
+        role: "Civilian"
+    }
+
 ];
 
 
-/* ==========================================
-   NAVIGATION
-========================================== */
+
+/* =========================================================
+   SECTION NAVIGATION
+========================================================= */
 
 function showSection(sectionName) {
 
-    const sections = document.querySelectorAll(".section");
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
 
-    sections.forEach(section => {
-        section.classList.remove("active");
-    });
+            section.classList.remove("active");
 
-    const selected = document.getElementById(sectionName);
+        });
 
-    if (selected) {
-        selected.classList.add("active");
+
+    const selectedSection =
+        document.getElementById(sectionName);
+
+
+    if (selectedSection) {
+
+        selectedSection.classList.add("active");
+
     }
 
-    const navButtons = document.querySelectorAll("nav button");
 
-    navButtons.forEach(button => {
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(button => {
 
-        button.classList.remove("active");
+            button.classList.remove("active");
 
-        if (
-            button.innerText
-                .toLowerCase()
-                .trim() === sectionName.toLowerCase()
-        ) {
-            button.classList.add("active");
-        }
 
-    });
+            const buttonText =
+                button.innerText
+                    .toLowerCase()
+                    .trim();
 
-    const navMenu = document.getElementById("navMenu");
 
-    if (navMenu) {
-        navMenu.classList.remove("open");
-    }
+            if (buttonText === sectionName) {
+
+                button.classList.add("active");
+
+            }
+
+        });
+
+
+    document
+        .getElementById("navMenu")
+        .classList.remove("open");
+
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    MOBILE MENU
-========================================== */
+========================================================= */
 
 function toggleMenu() {
 
-    const navMenu = document.getElementById("navMenu");
+    const menu =
+        document.getElementById("navMenu");
 
-    if (navMenu) {
-        navMenu.classList.toggle("open");
-    }
+
+    menu.classList.toggle("open");
+
 }
 
 
-/* ==========================================
-   SERVER IP
-========================================== */
+
+/* =========================================================
+   COPY SERVER IP
+========================================================= */
 
 function copyIP() {
 
-    const message = document.getElementById("copyMessage");
+    const message =
+        document.getElementById("copyMessage");
 
-    if (SERVER_IP === "YOUR-SERVER-IP-HERE") {
 
-        if (message) {
-            message.innerText =
-                "Set your server IP in script.js first.";
-        }
+    if (
+        !SERVER_IP ||
+        SERVER_IP === "YOUR_SERVER_IP"
+    ) {
+
+        message.innerText =
+            "Set your server IP in script.js first.";
 
         return;
+
     }
+
 
     navigator.clipboard
         .writeText(SERVER_IP)
         .then(() => {
 
-            if (message) {
+            message.innerText =
+                "✓ Server IP copied: " + SERVER_IP;
 
-                message.innerText =
-                    "✓ Server IP copied: " + SERVER_IP;
 
-                setTimeout(() => {
+            setTimeout(() => {
 
-                    message.innerText = "";
+                message.innerText = "";
 
-                }, 3000);
-            }
+            }, 3000);
 
         })
         .catch(() => {
 
-            alert("Server IP: " + SERVER_IP);
+            alert(
+                "Server IP: " + SERVER_IP
+            );
 
         });
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    RULE ACCORDION
-========================================== */
+========================================================= */
 
 function toggleRule(button) {
 
-    const rule = button.parentElement;
+    const currentRule =
+        button.parentElement;
 
-    const currentlyOpen =
-        rule.classList.contains("open");
 
-    document.querySelectorAll(".rule").forEach(item => {
+    document
+        .querySelectorAll(".rule")
+        .forEach(rule => {
 
-        item.classList.remove("open");
+            if (rule !== currentRule) {
 
-        const symbol =
-            item.querySelector("b");
+                rule.classList.remove("open");
 
-        if (symbol) {
-            symbol.innerText = "+";
-        }
+                const symbol =
+                    rule.querySelector("b");
 
-    });
+                if (symbol) {
 
-    if (!currentlyOpen) {
+                    symbol.innerText = "+";
 
-        rule.classList.add("open");
+                }
 
-        const symbol =
-            rule.querySelector("b");
+            }
 
-        if (symbol) {
-            symbol.innerText = "−";
-        }
+        });
+
+
+    currentRule.classList.toggle("open");
+
+
+    const symbol =
+        button.querySelector("b");
+
+
+    if (
+        currentRule.classList.contains("open")
+    ) {
+
+        symbol.innerText = "−";
+
+    } else {
+
+        symbol.innerText = "+";
 
     }
+
 }
 
 
-/* ==========================================
-   CREATE PLAYER CARDS
-========================================== */
+
+/* =========================================================
+   LOAD PLAYERS
+========================================================= */
 
 function loadPlayers() {
 
     const grid =
         document.getElementById("playersGrid");
 
-    if (!grid) {
-        return;
-    }
+
+    if (!grid) return;
+
 
     grid.innerHTML = "";
+
 
     players.forEach(player => {
 
         const card =
             document.createElement("div");
 
-        card.className = "player-card";
+
+        card.className =
+            "player-card";
+
 
         card.dataset.name =
-            player.name;
+            player.name.toLowerCase();
+
 
         const avatar =
             document.createElement("div");
 
-        avatar.className = "avatar";
+
+        avatar.className =
+            "avatar";
+
 
         avatar.innerText =
             player.name.charAt(0).toUpperCase();
 
+
         const name =
             document.createElement("h3");
+
 
         name.innerText =
             player.name;
 
+
         const rank =
-            document.createElement("span");
+            document.createElement("p");
+
 
         rank.className =
             "rank " +
@@ -244,86 +411,115 @@ function loadPlayers() {
                 .toLowerCase()
                 .replace(/\s+/g, "-");
 
+
         rank.innerText =
             player.role.toUpperCase();
 
+
         card.appendChild(avatar);
+
         card.appendChild(name);
+
         card.appendChild(rank);
+
 
         grid.appendChild(card);
 
     });
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    PLAYER SEARCH
-========================================== */
+========================================================= */
 
 function searchPlayers() {
 
-    const searchBox =
+    const input =
         document.getElementById("playerSearch");
+
+
+    const query =
+        input.value
+            .toLowerCase()
+            .trim();
+
+
+    const cards =
+        document.querySelectorAll(".player-card");
+
 
     const noPlayers =
         document.getElementById("noPlayers");
 
-    if (!searchBox) {
-        return;
-    }
 
-    const input =
-        searchBox.value
-            .toLowerCase()
-            .trim();
+    let found = 0;
 
-    const playerCards =
-        document.querySelectorAll(".player-card");
 
-    let found = false;
-
-    playerCards.forEach(player => {
+    cards.forEach(card => {
 
         const name =
-            player.dataset.name
-                .toLowerCase();
+            card.dataset.name;
 
-        if (name.includes(input)) {
 
-            player.style.display = "";
+        if (
+            name.includes(query)
+        ) {
 
-            found = true;
+            card.style.display = "";
+
+            found++;
 
         } else {
 
-            player.style.display = "none";
+            card.style.display = "none";
 
         }
 
     });
 
-    if (noPlayers) {
 
-        noPlayers.style.display =
-            found ? "none" : "block";
+    noPlayers.style.display =
+        found === 0
+            ? "block"
+            : "none";
 
-    }
 }
 
 
-/* ==========================================
+
+/* =========================================================
+   PVP TIER LIST
+========================================================= */
+
+function changeTier(category, button) {
+
+    document
+        .querySelectorAll(".tier-tab")
+        .forEach(tab => {
+
+            tab.classList.remove("active");
+
+        });
+
+
+    button.classList.add("active");
+
+
+    console.log(
+        "Selected PvP category:",
+        category
+    );
+
+}
+
+
+
+/* =========================================================
    EVENT COUNTDOWN
-========================================== */
-
-/*
-   CHANGE THIS DATE WHEN YOUR EVENT DATE
-   CHANGES.
-
-   Current:
-   18 September 2026
-   9:00 PM
-*/
+========================================================= */
 
 const eventDate =
     new Date(
@@ -333,18 +529,20 @@ const eventDate =
 
 function updateCountdown() {
 
+    const countdown =
+        document.getElementById("countdown");
+
+
+    if (!countdown) return;
+
+
     const now =
         new Date().getTime();
+
 
     const difference =
         eventDate - now;
 
-    const countdown =
-        document.getElementById("countdown");
-
-    if (!countdown) {
-        return;
-    }
 
     if (difference <= 0) {
 
@@ -352,13 +550,16 @@ function updateCountdown() {
             "EVENT STARTED";
 
         return;
+
     }
+
 
     const days =
         Math.floor(
             difference /
             (1000 * 60 * 60 * 24)
         );
+
 
     const hours =
         Math.floor(
@@ -369,6 +570,7 @@ function updateCountdown() {
             (1000 * 60 * 60)
         );
 
+
     const minutes =
         Math.floor(
             (
@@ -377,6 +579,7 @@ function updateCountdown() {
             ) /
             (1000 * 60)
         );
+
 
     const seconds =
         Math.floor(
@@ -387,12 +590,15 @@ function updateCountdown() {
             1000
         );
 
+
     countdown.innerText =
         `${days}D ${hours}H ${minutes}M ${seconds}S`;
+
 }
 
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
@@ -400,105 +606,94 @@ setInterval(
 );
 
 
-/* ==========================================
+
+/* =========================================================
    EVENT MODALS
-========================================== */
+========================================================= */
 
 function showEvent(event) {
 
     const modal =
         document.getElementById("eventModal");
 
+
     const title =
         document.getElementById("modalTitle");
+
 
     const text =
         document.getElementById("modalText");
 
-    if (!modal || !title || !text) {
-        return;
-    }
-
-
-    /* PVP */
 
     if (event === "pvp") {
 
         title.innerText =
             "ELYSIUM PVP";
 
+
         text.innerText =
-            "Enter the Elysium PvP arena, " +
-            "fight your opponents and prove " +
-            "your worth. More event information " +
-            "will be announced on Discord.";
+            "Enter the arena, fight your opponents and prove that you deserve your place on the Elysium PvP Tier List. More information will be announced on Discord.";
+
     }
 
-
-    /* END WAR */
 
     else if (event === "endwar") {
 
         title.innerText =
             "END WAR";
 
+
         text.innerText =
-            "Prepare your gear and get ready " +
-            "for the ultimate battle in the End. " +
-            "Follow Discord announcements for " +
-            "the final event information.";
+            "Gear up for the ultimate battle in the End. Prepare your best equipment and get ready for war. Final information will be posted on Discord.";
+
     }
 
-
-    /* MEDIA EVENT */
 
     else if (event === "media") {
 
         title.innerText =
             "MEDIA EVENT";
 
+
         text.innerText =
-            "The Elysium Media event has been " +
-            "completed. Check the official Discord " +
-            "for the winner announcement.";
+            "The Elysium Media Event has been completed. Check the Discord server for the final results and winner.";
+
     }
 
 
     modal.classList.add("show");
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    CLOSE MODAL
-========================================== */
+========================================================= */
 
 function closeModal() {
 
-    const modal =
-        document.getElementById("eventModal");
+    document
+        .getElementById("eventModal")
+        .classList.remove("show");
 
-    if (modal) {
-
-        modal.classList.remove("show");
-
-    }
 }
 
 
-/* ==========================================
-   MODAL OUTSIDE CLICK
-========================================== */
 
-const eventModal =
-    document.getElementById("eventModal");
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================================= */
 
-if (eventModal) {
-
-    eventModal.addEventListener(
+document
+    .getElementById("eventModal")
+    .addEventListener(
         "click",
         function(event) {
 
-            if (event.target === this) {
+            if (
+                event.target === this
+            ) {
 
                 closeModal();
 
@@ -506,18 +701,20 @@ if (eventModal) {
 
         }
     );
-}
 
 
-/* ==========================================
-   ESC KEY CLOSES MODAL
-========================================== */
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
             closeModal();
 
@@ -527,12 +724,14 @@ document.addEventListener(
 );
 
 
-/* ==========================================
+
+/* =========================================================
    DISCORD LINK
-========================================== */
+========================================================= */
 
 const discordLink =
     document.getElementById("discordLink");
+
 
 if (discordLink) {
 
@@ -542,47 +741,46 @@ if (discordLink) {
 }
 
 
-/* ==========================================
-   DEMO PLAYER COUNT
-========================================== */
+
+/* =========================================================
+   DEMO ONLINE PLAYER COUNT
+========================================================= */
 
 /*
-   IMPORTANT:
-   This is NOT the 30-player roster.
-
-   This is only the fake ONLINE counter
-   shown on the homepage.
-
-   It does NOT connect to Minecraft.
+   This is currently a visual/demo counter.
+   It does NOT connect to the Minecraft server.
 */
 
 let demoPlayers = 12;
 
 
-setInterval(() => {
+function updateDemoPlayers() {
 
-    const randomChange =
+    const change =
         Math.floor(
             Math.random() * 3
         ) - 1;
 
-    demoPlayers += randomChange;
+
+    demoPlayers += change;
 
 
     if (demoPlayers < 0) {
+
         demoPlayers = 0;
+
     }
 
 
     if (demoPlayers > 50) {
+
         demoPlayers = 50;
+
     }
 
 
     const playerCount =
-        document.getElementById(
-            "playerCount"
-        );
+        document.getElementById("playerCount");
 
 
     if (playerCount) {
@@ -592,12 +790,19 @@ setInterval(() => {
 
     }
 
-}, 5000);
+}
 
 
-/* ==========================================
-   START WEBSITE
-========================================== */
+setInterval(
+    updateDemoPlayers,
+    5000
+);
+
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 loadPlayers();
 
