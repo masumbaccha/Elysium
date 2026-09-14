@@ -1,656 +1,525 @@
-/* ==========================================
-   ELYSIUM SMP WEBSITE
+/* =========================================================
+   ELYSIUM SMP
    MAIN JAVASCRIPT
-========================================== */
+========================================================= */
 
 
-/* ==========================================
-   SERVER SETTINGS
-========================================== */
+/* ================= CONFIG ================= */
 
 const SERVER_IP = "elysiumsmp.playwithbao.com";
 
-const DISCORD_LINK = "https://discord.gg/EsDQqvrx7";
+const DISCORD_LINK =
+    "https://discord.gg/EsDQqvrx7";
 
 
-/* ==========================================
-   PLAYER DATA
-========================================== */
+/* ================= PLAYER DATA ================= */
 
 const players = [
+
     {
         name: "Masumbaccha",
-        role: "Founder",
-        skin: "Judelow",
-        about: "I don't need to be the strongest. I just need to keep improving.",
-        gamemode: "Survival"
+        role: "Founder"
     },
+
     {
         name: "Shinchan0n",
-        role: "President",
-        skin: "Shinchan0n"
+        role: "President"
     },
+
     {
         name: "Wixzen",
-        role: "Vice-President",
-        skin: "Wixzen"
+        role: "Vice-President"
     },
+
     {
         name: "11k",
-        role: "Governor",
-        skin: "11k"
+        role: "Governor"
     },
+
     {
         name: "Blazebeacon",
-        role: "Governor",
-        skin: "Blazebeacon"
+        role: "Governor"
     },
-    {
-        name: "Dogyp0ty44",
-        role: "Civilian",
-        skin: "Dogyp0ty44",
-        about: "I can't do anything. 11k invited me, idk. I can't fight, I just boss people around.",
-        gamemode: "Not specified"
-    },
-    {
-        name: "Supperior_Hassan",
-        role: "Civilian",
-        skin: "Wemmbu",
-        about: "A combat specialist",
-        gamemode: "Nethpot & Diapot"
-    },
+
     {
         name: "Ahil",
-        role: "Civilian",
-        skin: "Ahil"
+        role: "Civilian"
     },
+
     {
         name: "Arabicveled",
-        role: "Civilian",
-        skin: "Arabicveled"
+        role: "Civilian"
     },
+
+    {
+        name: "Someone",
+        role: "Civilian"
+    },
+
     {
         name: "Ishan",
-        role: "Civilian",
-        skin: "Ishan"
+        role: "Civilian"
     },
+
+    {
+        name: "Mzxwan",
+        role: "Civilian"
+    },
+
     {
         name: "Nivio",
-        role: "Civilian",
-        skin: "Nivio"
+        role: "Civilian"
     },
+
     {
         name: "NotFlint",
-        role: "Civilian",
-        skin: "NotFlint"
+        role: "Civilian"
     },
+
     {
         name: "608ms",
-        role: "Civilian",
-        skin: "608ms"
+        role: "Civilian"
     },
+
     {
         name: "Amayy",
-        role: "Civilian",
-        skin: "Amayy"
+        role: "Civilian"
     },
+
     {
         name: "Athubroplayz",
-        role: "Civilian",
-        skin: "Athubroplayz"
+        role: "Civilian"
     },
+
     {
         name: "EliteYshh",
-        role: "Civilian",
-        skin: "EliteYshh"
+        role: "Civilian"
     },
+
     {
         name: "Greenery",
-        role: "Civilian",
-        skin: "Greenery"
+        role: "Civilian"
     },
+
     {
         name: "KomAP",
-        role: "Civilian",
-        skin: "KomAP"
+        role: "Civilian"
     },
+
     {
         name: "Ghost",
-        role: "Civilian",
-        skin: "Ghost"
+        role: "Civilian"
     },
+
     {
         name: "Mepp00",
-        role: "Civilian",
-        skin: "Mepp00"
+        role: "Civilian"
     },
+
     {
         name: "Rain",
-        role: "Civilian",
-        skin: "Rain"
+        role: "Civilian"
     },
+
     {
         name: "seish",
-        role: "Civilian",
-        skin: "seish"
+        role: "Civilian"
     },
+
     {
         name: "Rachitified",
-        role: "Civilian",
-        skin: "Rachitified"
+        role: "Civilian"
     },
+
     {
         name: "Kat",
-        role: "Civilian",
-        skin: "Kat"
+        role: "Civilian"
     },
+
     {
         name: "Ahha",
-        role: "Civilian",
-        skin: "Ahha"
+        role: "Civilian"
     },
+
     {
-        name: "Hunt_Vantage",
-        role: "Civilian",
-        skin: "Steve",
-        about: "Hotel",
-        gamemode: "Not specified"
+        name: "Hunt Vantage",
+        role: "Civilian"
     },
+
     {
         name: "Ily",
-        role: "Civilian",
-        skin: "Ily"
+        role: "Civilian"
     },
+
     {
         name: "Itx Ammar",
-        role: "Civilian",
-        skin: "ItxAmmar"
+        role: "Civilian"
     },
+
     {
         name: "Purplix",
-        role: "Civilian",
-        skin: "Purplix"
+        role: "Civilian"
     }
+
 ];
 
 
-/* ==========================================
+
+/* =========================================================
    SECTION NAVIGATION
-========================================== */
+========================================================= */
 
-function showSection(sectionId) {
+function showSection(sectionName) {
 
-    document.querySelectorAll(".section").forEach(section => {
-        section.classList.remove("active");
-    });
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
 
-    const section = document.getElementById(sectionId);
+            section.classList.remove("active");
 
-    if (section) {
-        section.classList.add("active");
+        });
+
+
+    const selectedSection =
+        document.getElementById(sectionName);
+
+
+    if (selectedSection) {
+
+        selectedSection.classList.add("active");
+
     }
 
-    document.querySelectorAll(".nav-btn").forEach(button => {
-        button.classList.remove("active");
 
-        const onclick = button.getAttribute("onclick");
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(button => {
 
-        if (
-            onclick &&
-            onclick.includes(`'${sectionId}'`)
-        ) {
-            button.classList.add("active");
-        }
-    });
+            button.classList.remove("active");
+
+
+            const buttonText =
+                button.innerText
+                    .toLowerCase()
+                    .trim();
+
+
+            if (buttonText === sectionName) {
+
+                button.classList.add("active");
+
+            }
+
+        });
+
+
+    document
+        .getElementById("navMenu")
+        .classList.remove("open");
+
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
-    const menu = document.getElementById("navMenu");
-
-    if (menu) {
-        menu.classList.remove("open");
-    }
 }
 
 
-/* ==========================================
+
+/* =========================================================
    MOBILE MENU
-========================================== */
+========================================================= */
 
 function toggleMenu() {
 
-    const menu = document.getElementById("navMenu");
+    const menu =
+        document.getElementById("navMenu");
 
-    if (menu) {
-        menu.classList.toggle("open");
-    }
+
+    menu.classList.toggle("open");
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    COPY SERVER IP
-========================================== */
+========================================================= */
 
 function copyIP() {
 
-    navigator.clipboard.writeText(SERVER_IP)
+    const message =
+        document.getElementById("copyMessage");
+
+
+    if (
+        !SERVER_IP ||
+        SERVER_IP === "YOUR_SERVER_IP"
+    ) {
+
+        message.innerText =
+            "Set your server IP in script.js first.";
+
+        return;
+
+    }
+
+
+    navigator.clipboard
+        .writeText(SERVER_IP)
         .then(() => {
 
-            const message =
-                document.getElementById("copyMessage");
+            message.innerText =
+                "✓ Server IP copied: " + SERVER_IP;
 
-            if (!message) return;
-
-            message.textContent =
-                "SERVER IP COPIED!";
 
             setTimeout(() => {
-                message.textContent = "";
-            }, 2000);
+
+                message.innerText = "";
+
+            }, 3000);
 
         })
         .catch(() => {
 
-            const message =
-                document.getElementById("copyMessage");
-
-            if (!message) return;
-
-            message.textContent =
-                SERVER_IP;
+            alert(
+                "Server IP: " + SERVER_IP
+            );
 
         });
+
 }
 
 
-/* ==========================================
-   RULE TOGGLE
-========================================== */
+
+/* =========================================================
+   RULE ACCORDION
+========================================================= */
 
 function toggleRule(button) {
 
-    const rule =
-        button.closest(".rule");
-
-    if (!rule) return;
-
-    const content =
-        rule.querySelector(".rule-content");
-
-    if (!content) return;
-
-    rule.classList.toggle("open");
-
-    if (rule.classList.contains("open")) {
-
-        content.style.maxHeight =
-            content.scrollHeight + "px";
-
-    } else {
-
-        content.style.maxHeight =
-            "0";
-    }
-}
+    const currentRule =
+        button.parentElement;
 
 
-/* ==========================================
-   PLAYER PROFILE MODAL
-========================================== */
+    document
+        .querySelectorAll(".rule")
+        .forEach(rule => {
 
-function createPlayerModal() {
+            if (rule !== currentRule) {
+
+                rule.classList.remove("open");
+
+                const symbol =
+                    rule.querySelector("b");
+
+                if (symbol) {
+
+                    symbol.innerText = "+";
+
+                }
+
+            }
+
+        });
+
+
+    currentRule.classList.toggle("open");
+
+
+    const symbol =
+        button.querySelector("b");
+
 
     if (
-        document.getElementById(
-            "playerProfileModal"
-        )
+        currentRule.classList.contains("open")
     ) {
-        return;
-    }
 
-    const modal =
-        document.createElement("div");
-
-    modal.id =
-        "playerProfileModal";
-
-    modal.className =
-        "player-profile-modal";
-
-    modal.innerHTML = `
-
-        <div
-            class="player-profile-overlay"
-            onclick="closePlayerProfile()"
-        ></div>
-
-        <div class="player-profile-box">
-
-            <button
-                class="player-profile-close"
-                onclick="closePlayerProfile()"
-            >
-                ×
-            </button>
-
-            <div
-                class="profile-avatar"
-                id="profileAvatar"
-            ></div>
-
-            <h2 id="profileName"></h2>
-
-            <div
-                class="profile-role"
-                id="profileRole"
-            ></div>
-
-            <div class="profile-section">
-
-                <span>ABOUT</span>
-
-                <p id="profileAbout"></p>
-
-            </div>
-
-            <div class="profile-section">
-
-                <span>MAIN GAMEMODE</span>
-
-                <p id="profileGamemode"></p>
-
-            </div>
-
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-}
-
-
-/* ==========================================
-   OPEN PLAYER PROFILE
-========================================== */
-
-function openPlayerProfile(player) {
-
-    createPlayerModal();
-
-    const modal =
-        document.getElementById(
-            "playerProfileModal"
-        );
-
-    const avatar =
-        document.getElementById(
-            "profileAvatar"
-        );
-
-    const name =
-        document.getElementById(
-            "profileName"
-        );
-
-    const role =
-        document.getElementById(
-            "profileRole"
-        );
-
-    const about =
-        document.getElementById(
-            "profileAbout"
-        );
-
-    const gamemode =
-        document.getElementById(
-            "profileGamemode"
-        );
-
-    avatar.innerHTML = "";
-
-    if (player.skin) {
-
-        const image =
-            document.createElement("img");
-
-        image.src =
-            `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/256`;
-
-        image.alt =
-            `${player.name} Minecraft skin`;
-
-        image.onerror = function () {
-
-            avatar.innerHTML =
-                `<span>${player.name.charAt(0).toUpperCase()}</span>`;
-        };
-
-        avatar.appendChild(image);
+        symbol.innerText = "−";
 
     } else {
 
-        avatar.innerHTML =
-            `<span>${player.name.charAt(0).toUpperCase()}</span>`;
+        symbol.innerText = "+";
+
     }
 
-    name.textContent =
-        player.name;
-
-    role.textContent =
-        player.role || "Civilian";
-
-    about.textContent =
-        player.about ||
-        "No information added yet.";
-
-    gamemode.textContent =
-        player.gamemode ||
-        "Not specified";
-
-    modal.classList.add("show");
-
-    document.body.classList.add(
-        "profile-open"
-    );
 }
 
 
-/* ==========================================
-   CLOSE PLAYER PROFILE
-========================================== */
 
-function closePlayerProfile() {
-
-    const modal =
-        document.getElementById(
-            "playerProfileModal"
-        );
-
-    if (!modal) return;
-
-    modal.classList.remove("show");
-
-    document.body.classList.remove(
-        "profile-open"
-    );
-}
-
-
-/* ==========================================
+/* =========================================================
    LOAD PLAYERS
-========================================== */
+========================================================= */
 
-function loadPlayers(list = players) {
+function loadPlayers() {
 
     const grid =
-        document.getElementById(
-            "playersGrid"
-        );
+        document.getElementById("playersGrid");
 
-    const noPlayers =
-        document.getElementById(
-            "noPlayers"
-        );
 
     if (!grid) return;
 
+
     grid.innerHTML = "";
 
-    if (list.length === 0) {
 
-        if (noPlayers) {
-            noPlayers.style.display =
-                "block";
-        }
-
-        return;
-    }
-
-    if (noPlayers) {
-        noPlayers.style.display =
-            "none";
-    }
-
-    list.forEach(player => {
+    players.forEach(player => {
 
         const card =
             document.createElement("div");
 
+
         card.className =
             "player-card";
 
-        card.onclick = function () {
-            openPlayerProfile(player);
-        };
 
+        card.dataset.name =
+            player.name.toLowerCase();
 
-        /* PLAYER SKIN */
 
         const avatar =
             document.createElement("div");
 
+
         avatar.className =
             "avatar";
 
-        const image =
-            document.createElement("img");
 
-        image.src =
-            `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/128`;
-
-        image.alt =
-            `${player.name} Minecraft skin`;
-
-        image.loading =
-            "lazy";
-
-        image.onerror = function () {
-
-            avatar.innerHTML =
-                `<span>${player.name.charAt(0).toUpperCase()}</span>`;
-        };
-
-        avatar.appendChild(image);
+        avatar.innerText =
+            player.name.charAt(0).toUpperCase();
 
 
-        /* PLAYER NAME */
-
-        const playerName =
+        const name =
             document.createElement("h3");
 
-        playerName.textContent =
+
+        name.innerText =
             player.name;
 
-
-        /* ROLE */
 
         const rank =
             document.createElement("p");
 
-        rank.className =
-            "rank role";
 
-        rank.textContent =
-            player.role;
+        rank.className =
+            "rank " +
+            player.role
+                .toLowerCase()
+                .replace(/\s+/g, "-");
+
+
+        rank.innerText =
+            player.role.toUpperCase();
 
 
         card.appendChild(avatar);
-        card.appendChild(playerName);
+
+        card.appendChild(name);
+
         card.appendChild(rank);
 
+
         grid.appendChild(card);
+
     });
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    PLAYER SEARCH
-========================================== */
+========================================================= */
 
 function searchPlayers() {
 
     const input =
-        document.getElementById(
-            "playerSearch"
-        );
+        document.getElementById("playerSearch");
 
-    if (!input) return;
 
-    const search =
+    const query =
         input.value
-            .trim()
-            .toLowerCase();
+            .toLowerCase()
+            .trim();
 
-    const filtered =
-        players.filter(player =>
-            player.name
-                .toLowerCase()
-                .includes(search)
-        );
 
-    loadPlayers(filtered);
+    const cards =
+        document.querySelectorAll(".player-card");
+
+
+    const noPlayers =
+        document.getElementById("noPlayers");
+
+
+    let found = 0;
+
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name;
+
+
+        if (
+            name.includes(query)
+        ) {
+
+            card.style.display = "";
+
+            found++;
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    noPlayers.style.display =
+        found === 0
+            ? "block"
+            : "none";
+
 }
 
 
-/* ==========================================
-   PVP TIER BUTTONS
-========================================== */
 
-function changeTier(tier, button) {
+/* =========================================================
+   PVP TIER LIST
+========================================================= */
 
-    document.querySelectorAll(
-        ".tier-tab"
-    ).forEach(tab => {
+function changeTier(category, button) {
 
-        tab.classList.remove("active");
+    document
+        .querySelectorAll(".tier-tab")
+        .forEach(tab => {
 
-    });
+            tab.classList.remove("active");
 
-    if (button) {
-        button.classList.add("active");
-    }
+        });
 
-    /*
-       Your current HTML contains one tier list.
-       Keep it visible while switching tabs.
-    */
 
-    document.querySelectorAll(
-        ".tier-list"
-    ).forEach(list => {
+    button.classList.add("active");
 
-        list.classList.add("active");
 
-    });
+    console.log(
+        "Selected PvP category:",
+        category
+    );
+
 }
 
 
-/* ==========================================
+
+/* =========================================================
    EVENT COUNTDOWN
-========================================== */
+========================================================= */
 
 const eventDate =
     new Date(
@@ -661,177 +530,193 @@ const eventDate =
 function updateCountdown() {
 
     const countdown =
-        document.getElementById(
-            "countdown"
-        );
+        document.getElementById("countdown");
+
 
     if (!countdown) return;
 
-    const now =
-        Date.now();
 
-    const distance =
+    const now =
+        new Date().getTime();
+
+
+    const difference =
         eventDate - now;
 
-    if (distance <= 0) {
 
-        countdown.textContent =
+    if (difference <= 0) {
+
+        countdown.innerText =
             "EVENT STARTED";
 
         return;
+
     }
+
 
     const days =
         Math.floor(
-            distance /
+            difference /
             (1000 * 60 * 60 * 24)
         );
 
+
     const hours =
         Math.floor(
-            (distance %
-                (1000 * 60 * 60 * 24)) /
+            (
+                difference %
+                (1000 * 60 * 60 * 24)
+            ) /
             (1000 * 60 * 60)
         );
 
+
     const minutes =
         Math.floor(
-            (distance %
-                (1000 * 60 * 60)) /
+            (
+                difference %
+                (1000 * 60 * 60)
+            ) /
             (1000 * 60)
         );
 
+
     const seconds =
         Math.floor(
-            (distance %
-                (1000 * 60)) /
+            (
+                difference %
+                (1000 * 60)
+            ) /
             1000
         );
 
-    countdown.textContent =
+
+    countdown.innerText =
         `${days}D ${hours}H ${minutes}M ${seconds}S`;
+
 }
 
 
-/* ==========================================
-   EVENT MODAL
-========================================== */
+updateCountdown();
 
-function showEvent(type) {
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+
+/* =========================================================
+   EVENT MODALS
+========================================================= */
+
+function showEvent(event) {
 
     const modal =
-        document.getElementById(
-            "eventModal"
-        );
+        document.getElementById("eventModal");
+
 
     const title =
-        document.getElementById(
-            "modalTitle"
-        );
+        document.getElementById("modalTitle");
+
 
     const text =
-        document.getElementById(
-            "modalText"
-        );
-
-    if (!modal) return;
+        document.getElementById("modalText");
 
 
-    if (type === "pvp") {
+    if (event === "pvp") {
 
-        title.textContent =
+        title.innerText =
             "ELYSIUM PVP";
 
-        text.textContent =
-            "Enter the arena and prove who deserves the top spot.";
+
+        text.innerText =
+            "Enter the arena, fight your opponents and prove that you deserve your place on the Elysium PvP Tier List. More information will be announced on Discord.";
 
     }
 
-    else if (type === "endwar") {
 
-        title.textContent =
+    else if (event === "endwar") {
+
+        title.innerText =
             "END WAR";
 
-        text.textContent =
-            "Gear up for the ultimate battle in the End.";
+
+        text.innerText =
+            "Gear up for the ultimate battle in the End. Prepare your best equipment and get ready for war. Final information will be posted on Discord.";
 
     }
 
-    else if (type === "media") {
 
-        title.textContent =
+    else if (event === "media") {
+
+        title.innerText =
             "MEDIA EVENT";
 
-        text.textContent =
-            "The Elysium community media event has been completed.";
+
+        text.innerText =
+            "The Elysium Media Event has been completed. Check the Discord server for the final results and winner.";
 
     }
 
 
     modal.classList.add("show");
+
 }
 
 
-/* ==========================================
-   CLOSE EVENT MODAL
-========================================== */
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 function closeModal() {
 
-    const modal =
-        document.getElementById(
-            "eventModal"
-        );
+    document
+        .getElementById("eventModal")
+        .classList.remove("show");
 
-    if (!modal) return;
-
-    modal.classList.remove("show");
 }
 
 
-/* ==========================================
-   DISCORD
-========================================== */
 
-function openDiscord() {
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================================= */
 
-    window.open(
-        DISCORD_LINK,
-        "_blank"
+document
+    .getElementById("eventModal")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeModal();
+
+            }
+
+        }
     );
-}
 
 
-/* ==========================================
-   PLAYER COUNT
-========================================== */
 
-function updatePlayerCount() {
-
-    const element =
-        document.getElementById(
-            "playerCount"
-        );
-
-    if (!element) return;
-
-    element.textContent =
-        "12 / 50";
-}
-
-
-/* ==========================================
-   ESC KEY
-========================================== */
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
             closeModal();
-            closePlayerProfile();
 
         }
 
@@ -839,24 +724,86 @@ document.addEventListener(
 );
 
 
-/* ==========================================
-   INITIALIZE
-========================================== */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
+/* =========================================================
+   DISCORD LINK
+========================================================= */
 
-        loadPlayers();
+const discordLink =
+    document.getElementById("discordLink");
 
-        updateCountdown();
 
-        updatePlayerCount();
+if (discordLink) {
 
-        setInterval(
-            updateCountdown,
-            1000
-        );
+    discordLink.href =
+        DISCORD_LINK;
+
+}
+
+
+
+/* =========================================================
+   DEMO ONLINE PLAYER COUNT
+========================================================= */
+
+/*
+   This is currently a visual/demo counter.
+   It does NOT connect to the Minecraft server.
+*/
+
+let demoPlayers = 12;
+
+
+function updateDemoPlayers() {
+
+    const change =
+        Math.floor(
+            Math.random() * 3
+        ) - 1;
+
+
+    demoPlayers += change;
+
+
+    if (demoPlayers < 0) {
+
+        demoPlayers = 0;
 
     }
+
+
+    if (demoPlayers > 50) {
+
+        demoPlayers = 50;
+
+    }
+
+
+    const playerCount =
+        document.getElementById("playerCount");
+
+
+    if (playerCount) {
+
+        playerCount.innerText =
+            `${demoPlayers} / 50`;
+
+    }
+
+}
+
+
+setInterval(
+    updateDemoPlayers,
+    5000
 );
+
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+loadPlayers();
+
+showSection("home");
