@@ -25,31 +25,26 @@ const players = [
         about: "I don't need to be the strongest. I just need to keep improving.",
         gamemode: "Survival"
     },
-
     {
         name: "Shinchan0n",
         role: "President",
         skin: "Shinchan0n"
     },
-
     {
         name: "Wixzen",
         role: "Vice-President",
         skin: "Wixzen"
     },
-
     {
         name: "11k",
         role: "Governor",
         skin: "11k"
     },
-
     {
         name: "Blazebeacon",
         role: "Governor",
         skin: "Blazebeacon"
     },
-
     {
         name: "Dogyp0ty44",
         role: "Civilian",
@@ -57,7 +52,6 @@ const players = [
         about: "I can't do anything. 11k invited me, idk. I can't fight, I just boss people around.",
         gamemode: "Not specified"
     },
-
     {
         name: "Supperior_Hassan",
         role: "Civilian",
@@ -65,115 +59,96 @@ const players = [
         about: "A combat specialist",
         gamemode: "Nethpot & Diapot"
     },
-
     {
         name: "Ahil",
         role: "Civilian",
         skin: "Ahil"
     },
-
     {
         name: "Arabicveled",
         role: "Civilian",
         skin: "Arabicveled"
     },
-
     {
         name: "Ishan",
         role: "Civilian",
         skin: "Ishan"
     },
-
     {
         name: "Nivio",
         role: "Civilian",
         skin: "Nivio"
     },
-
     {
         name: "NotFlint",
         role: "Civilian",
         skin: "NotFlint"
     },
-
     {
         name: "608ms",
         role: "Civilian",
         skin: "608ms"
     },
-
     {
         name: "Amayy",
         role: "Civilian",
         skin: "Amayy"
     },
-
     {
         name: "Athubroplayz",
         role: "Civilian",
         skin: "Athubroplayz"
     },
-
     {
         name: "EliteYshh",
         role: "Civilian",
         skin: "EliteYshh"
     },
-
     {
         name: "Greenery",
         role: "Civilian",
         skin: "Greenery"
     },
-
     {
         name: "KomAP",
         role: "Civilian",
         skin: "KomAP"
     },
-
     {
         name: "Ghost",
         role: "Civilian",
         skin: "Ghost"
     },
-
     {
         name: "Mepp00",
         role: "Civilian",
         skin: "Mepp00"
     },
-
     {
         name: "Rain",
         role: "Civilian",
         skin: "Rain"
     },
-
     {
         name: "seish",
         role: "Civilian",
         skin: "seish"
     },
-
     {
         name: "Rachitified",
         role: "Civilian",
         skin: "Rachitified"
     },
-
     {
         name: "Kat",
         role: "Civilian",
         skin: "Kat"
     },
-
     {
         name: "Ahha",
         role: "Civilian",
         skin: "Ahha"
     },
-
     {
         name: "Hunt_Vantage",
         role: "Civilian",
@@ -181,19 +156,16 @@ const players = [
         about: "Hotel",
         gamemode: "Not specified"
     },
-
     {
         name: "Ily",
         role: "Civilian",
         skin: "Ily"
     },
-
     {
         name: "Itx Ammar",
         role: "Civilian",
         skin: "ItxAmmar"
     },
-
     {
         name: "Purplix",
         role: "Civilian",
@@ -208,32 +180,20 @@ const players = [
 
 function showSection(sectionId) {
 
-    const sections =
-        document.querySelectorAll(".section");
-
-    sections.forEach(section => {
+    document.querySelectorAll(".section").forEach(section => {
         section.classList.remove("active");
     });
 
-    const selectedSection =
-        document.getElementById(sectionId);
+    const section = document.getElementById(sectionId);
 
-    if (selectedSection) {
-        selectedSection.classList.add("active");
+    if (section) {
+        section.classList.add("active");
     }
 
-    /* Correct HTML class: nav-btn */
-    const navButtons =
-        document.querySelectorAll(".nav-btn");
-
-    navButtons.forEach(button => {
+    document.querySelectorAll(".nav-btn").forEach(button => {
         button.classList.remove("active");
-    });
 
-    navButtons.forEach(button => {
-
-        const onclick =
-            button.getAttribute("onclick");
+        const onclick = button.getAttribute("onclick");
 
         if (
             onclick &&
@@ -248,8 +208,7 @@ function showSection(sectionId) {
         behavior: "smooth"
     });
 
-    const menu =
-        document.getElementById("navMenu");
+    const menu = document.getElementById("navMenu");
 
     if (menu) {
         menu.classList.remove("open");
@@ -263,8 +222,7 @@ function showSection(sectionId) {
 
 function toggleMenu() {
 
-    const menu =
-        document.getElementById("navMenu");
+    const menu = document.getElementById("navMenu");
 
     if (menu) {
         menu.classList.toggle("open");
@@ -278,50 +236,33 @@ function toggleMenu() {
 
 function copyIP() {
 
-    if (
-        navigator.clipboard &&
-        navigator.clipboard.writeText
-    ) {
+    navigator.clipboard.writeText(SERVER_IP)
+        .then(() => {
 
-        navigator.clipboard.writeText(SERVER_IP)
-            .then(() => {
+            const message =
+                document.getElementById("copyMessage");
 
-                const message =
-                    document.getElementById("copyMessage");
+            if (!message) return;
 
-                if (!message) return;
+            message.textContent =
+                "SERVER IP COPIED!";
 
-                message.textContent =
-                    "SERVER IP COPIED!";
+            setTimeout(() => {
+                message.textContent = "";
+            }, 2000);
 
-                setTimeout(() => {
-                    message.textContent = "";
-                }, 2000);
+        })
+        .catch(() => {
 
-            })
-            .catch(() => {
-                showCopyFallback();
-            });
+            const message =
+                document.getElementById("copyMessage");
 
-    } else {
-        showCopyFallback();
-    }
-}
+            if (!message) return;
 
+            message.textContent =
+                SERVER_IP;
 
-function showCopyFallback() {
-
-    const message =
-        document.getElementById("copyMessage");
-
-    if (!message) return;
-
-    message.textContent =
-        `IP: ${SERVER_IP}`;
-
-    setTimeout(() => {
-        message.textContent = "";
-    }, 3000);
+        });
 }
 
 
@@ -350,13 +291,14 @@ function toggleRule(button) {
 
     } else {
 
-        content.style.maxHeight = "0";
+        content.style.maxHeight =
+            "0";
     }
 }
 
 
 /* ==========================================
-   CREATE PLAYER PROFILE MODAL
+   PLAYER PROFILE MODAL
 ========================================== */
 
 function createPlayerModal() {
@@ -390,7 +332,6 @@ function createPlayerModal() {
             <button
                 class="player-profile-close"
                 onclick="closePlayerProfile()"
-                aria-label="Close profile"
             >
                 ×
             </button>
@@ -409,9 +350,7 @@ function createPlayerModal() {
 
             <div class="profile-section">
 
-                <span>
-                    ABOUT
-                </span>
+                <span>ABOUT</span>
 
                 <p id="profileAbout"></p>
 
@@ -419,9 +358,7 @@ function createPlayerModal() {
 
             <div class="profile-section">
 
-                <span>
-                    MAIN GAMEMODE
-                </span>
+                <span>MAIN GAMEMODE</span>
 
                 <p id="profileGamemode"></p>
 
@@ -585,16 +522,12 @@ function loadPlayers(list = players) {
         card.className =
             "player-card";
 
-        card.dataset.name =
-            player.name.toLowerCase();
-
-        /* Entire card clickable */
         card.onclick = function () {
             openPlayerProfile(player);
         };
 
 
-        /* SKIN */
+        /* PLAYER SKIN */
 
         const avatar =
             document.createElement("div");
@@ -602,36 +535,28 @@ function loadPlayers(list = players) {
         avatar.className =
             "avatar";
 
-        if (player.skin) {
+        const image =
+            document.createElement("img");
 
-            const image =
-                document.createElement("img");
+        image.src =
+            `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/128`;
 
-            image.src =
-                `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/128`;
+        image.alt =
+            `${player.name} Minecraft skin`;
 
-            image.alt =
-                `${player.name} Minecraft skin`;
+        image.loading =
+            "lazy";
 
-            image.loading =
-                "lazy";
-
-            image.onerror = function () {
-
-                avatar.innerHTML =
-                    `<span>${player.name.charAt(0).toUpperCase()}</span>`;
-            };
-
-            avatar.appendChild(image);
-
-        } else {
+        image.onerror = function () {
 
             avatar.innerHTML =
                 `<span>${player.name.charAt(0).toUpperCase()}</span>`;
-        }
+        };
+
+        avatar.appendChild(image);
 
 
-        /* NAME */
+        /* PLAYER NAME */
 
         const playerName =
             document.createElement("h3");
@@ -674,68 +599,57 @@ function searchPlayers() {
 
     if (!input) return;
 
-    const searchTerm =
+    const search =
         input.value
             .trim()
             .toLowerCase();
 
-    const filteredPlayers =
+    const filtered =
         players.filter(player =>
             player.name
                 .toLowerCase()
-                .includes(searchTerm)
+                .includes(search)
         );
 
-    loadPlayers(filteredPlayers);
+    loadPlayers(filtered);
 }
 
 
 /* ==========================================
-   PVP TIER SYSTEM
+   PVP TIER BUTTONS
 ========================================== */
 
-function changeTier(tier, element) {
+function changeTier(tier, button) {
 
-    /* Remove active from all buttons */
+    document.querySelectorAll(
+        ".tier-tab"
+    ).forEach(tab => {
 
-    const tierButtons =
-        document.querySelectorAll(
-            ".tier-tab"
-        );
+        tab.classList.remove("active");
 
-    tierButtons.forEach(button => {
-        button.classList.remove("active");
     });
 
-
-    /* Activate clicked button */
-
-    if (element) {
-        element.classList.add("active");
+    if (button) {
+        button.classList.add("active");
     }
 
-
     /*
-       Your current HTML has one .tier-list.
-       Keep it visible for now.
-
-       This also prevents the old JS
-       from breaking the tier buttons.
+       Your current HTML contains one tier list.
+       Keep it visible while switching tabs.
     */
 
-    const tierLists =
-        document.querySelectorAll(
-            ".tier-list"
-        );
+    document.querySelectorAll(
+        ".tier-list"
+    ).forEach(list => {
 
-    tierLists.forEach(list => {
         list.classList.add("active");
+
     });
 }
 
 
 /* ==========================================
-   COUNTDOWN
+   EVENT COUNTDOWN
 ========================================== */
 
 const eventDate =
@@ -754,11 +668,10 @@ function updateCountdown() {
     if (!countdown) return;
 
     const now =
-        new Date().getTime();
+        Date.now();
 
     const distance =
         eventDate - now;
-
 
     if (distance <= 0) {
 
@@ -767,7 +680,6 @@ function updateCountdown() {
 
         return;
     }
-
 
     const days =
         Math.floor(
@@ -795,7 +707,6 @@ function updateCountdown() {
                 (1000 * 60)) /
             1000
         );
-
 
     countdown.textContent =
         `${days}D ${hours}H ${minutes}M ${seconds}S`;
@@ -832,7 +743,7 @@ function showEvent(type) {
             "ELYSIUM PVP";
 
         text.textContent =
-            "Enter the arena and prove who deserves the top spot. Elysium PvP is coming soon.";
+            "Enter the arena and prove who deserves the top spot.";
 
     }
 
@@ -842,7 +753,7 @@ function showEvent(type) {
             "END WAR";
 
         text.textContent =
-            "Gear up for the ultimate battle in the End. Prepare your team and fight for victory.";
+            "Gear up for the ultimate battle in the End.";
 
     }
 
@@ -853,16 +764,6 @@ function showEvent(type) {
 
         text.textContent =
             "The Elysium community media event has been completed.";
-
-    }
-
-    else {
-
-        title.textContent =
-            "ELYSIUM EVENT";
-
-        text.textContent =
-            "Event information.";
 
     }
 
@@ -902,19 +803,19 @@ function openDiscord() {
 
 
 /* ==========================================
-   SERVER PLAYER COUNT
+   PLAYER COUNT
 ========================================== */
 
 function updatePlayerCount() {
 
-    const playerCount =
+    const element =
         document.getElementById(
             "playerCount"
         );
 
-    if (!playerCount) return;
+    if (!element) return;
 
-    playerCount.textContent =
+    element.textContent =
         "12 / 50";
 }
 
@@ -927,12 +828,13 @@ document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key !== "Escape") {
-            return;
+        if (event.key === "Escape") {
+
+            closeModal();
+            closePlayerProfile();
+
         }
 
-        closeModal();
-        closePlayerProfile();
     }
 );
 
