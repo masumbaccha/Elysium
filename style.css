@@ -1,11 +1,12 @@
+```css
 /* =========================================================
    ELYSIUM SMP
    MAIN STYLESHEET
-   ========================================================= */
+   STATIC MINECRAFT BACKGROUNDS
+========================================================= */
 
-/* =========================
-   RESET
-   ========================= */
+
+/* ================= RESET ================= */
 
 * {
     margin: 0;
@@ -18,96 +19,92 @@ html {
 }
 
 body {
+    background: #050505;
+    color: #eeeeee;
     font-family: Arial, Helvetica, sans-serif;
-    background: #080808;
-    color: #f2f2f2;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
-button,
-input {
-    font-family: inherit;
+
+/* =========================================================
+   GLOBAL BACKGROUND
+========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background: #050505;
 }
 
-button {
-    cursor: pointer;
-}
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-
-/* =========================
+/* =========================================================
    NAVBAR
-   ========================= */
+========================================================= */
 
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 72px;
+    z-index: 1000;
+
+    min-height: 70px;
+    padding: 15px 6%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 0 7%;
-    z-index: 1000;
+    gap: 20px;
 
     background: rgba(5, 5, 5, 0.88);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid #1b1b1b;
 
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: white;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.logo:hover {
+    text-shadow: 0 0 18px rgba(255,255,255,0.45);
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .nav-btn {
+    padding: 10px 14px;
+
     background: transparent;
-    border: 1px solid transparent;
+    border: none;
+    border-radius: 4px;
 
-    color: #aaa;
-    padding: 10px 15px;
+    color: #777777;
 
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
 
-    border-radius: 6px;
-
-    transition:
-        color 0.2s ease,
-        background 0.2s ease,
-        border 0.2s ease,
-        transform 0.2s ease;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 .nav-btn:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    background: #151515;
 }
 
 .nav-btn.active {
-    color: white;
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    background: #181818;
 }
 
 .menu-toggle {
@@ -118,46 +115,51 @@ a {
 
     color: white;
     font-size: 25px;
+
+    cursor: pointer;
 }
 
 
-/* =========================
+/* =========================================================
    SECTIONS
-   ========================= */
+========================================================= */
 
 .section {
-    min-height: 100vh;
-    padding: 120px 7% 80px;
+    position: relative;
+    isolation: isolate;
 
     display: none;
 
-    position: relative;
+    min-height: 85vh;
+    padding: 90px 7%;
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    animation: sectionIn 0.45s ease;
 }
 
-.section.active {
-    display: block;
-}
 
 /* Dark overlay */
 
 .section::before {
     content: "";
+
     position: absolute;
     inset: 0;
 
+    z-index: -1;
+
     background:
         linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.70),
-            rgba(0, 0, 0, 0.82)
+            rgba(0,0,0,0.70),
+            rgba(0,0,0,0.84)
         );
-
-    pointer-events: none;
 }
+
+
+/* Keep content above background */
 
 .section > * {
     position: relative;
@@ -165,9 +167,9 @@ a {
 }
 
 
-/* =========================
-   MINECRAFT BACKGROUNDS
-   ========================= */
+/* =========================================================
+   INDIVIDUAL SECTION BACKGROUNDS
+========================================================= */
 
 #home {
     background-image: url("home-bg.png");
@@ -194,370 +196,442 @@ a {
 }
 
 
-/* =========================
-   PAGE TITLE
-   ========================= */
+/* =========================================================
+   SECTION OVERLAYS
+========================================================= */
 
-.page-title {
-    text-align: center;
+#home::before {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.82)
+        );
+}
 
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 900;
+#rules::before {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.68),
+            rgba(0,0,0,0.87)
+        );
+}
 
-    letter-spacing: 3px;
+#players::before {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.62),
+            rgba(0,0,0,0.84)
+        );
+}
 
-    margin-bottom: 45px;
+#events::before {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.58),
+            rgba(0,0,0,0.84)
+        );
+}
 
-    text-transform: uppercase;
+#pvp::before {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.60),
+            rgba(0,0,0,0.86)
+        );
+}
 
-    text-shadow:
-        0 3px 0 rgba(0, 0, 0, 0.8),
-        0 0 25px rgba(255, 255, 255, 0.08);
+#discord::before {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.65),
+            rgba(0,0,0,0.84)
+        );
 }
 
 
-/* =========================
-   HOME
-   ========================= */
+.section.active {
+    display: block;
+}
+
+
+@keyframes sectionIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
-    min-height: 65vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    max-width: 1000px;
+    margin: 70px auto 80px;
 
     text-align: center;
 }
 
 .eyebrow {
-    font-size: 12px;
-    font-weight: 800;
+    margin-bottom: 15px;
 
-    letter-spacing: 4px;
-    text-transform: uppercase;
+    color: #aaaaaa;
 
-    color: #aaa;
-
-    margin-bottom: 18px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 5px;
 }
 
 .hero h1 {
-    font-size: clamp(48px, 9vw, 100px);
+    font-size: clamp(60px, 12vw, 130px);
 
-    line-height: 0.95;
+    font-weight: 900;
 
-    font-weight: 1000;
-    letter-spacing: 5px;
+    letter-spacing: 12px;
+    line-height: 0.9;
 
-    color: white;
+    text-indent: 12px;
 
     text-shadow:
-        0 5px 0 rgba(0, 0, 0, 0.7),
-        0 0 35px rgba(255, 255, 255, 0.12);
+        0 4px 20px rgba(0,0,0,0.9);
 }
 
 .hero-subtitle {
-    max-width: 650px;
-
-    margin-top: 25px;
-
-    color: #bdbdbd;
-
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-
-/* =========================
-   SERVER STATUS
-   ========================= */
-
-.server-status {
     margin-top: 28px;
 
-    display: flex;
+    color: #cccccc;
+
+    font-size: 13px;
+    letter-spacing: 7px;
+}
+
+.server-status {
+    margin-top: 30px;
+
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
 
-    padding: 9px 15px;
+    gap: 9px;
 
-    border-radius: 999px;
+    color: #aaaaaa;
 
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-
-    font-size: 12px;
-    font-weight: 700;
-
-    color: #ccc;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .status-dot {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
 
     border-radius: 50%;
 
-    background: #64d66a;
+    background: #72ff72;
 
     box-shadow:
-        0 0 8px rgba(100, 214, 106, 0.8);
+        0 0 12px rgba(114,255,114,0.7);
 }
 
 
-/* =========================
+/* =========================================================
    STATS
-   ========================= */
+========================================================= */
 
 .stats {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    max-width: 750px;
+    gap: 12px;
 
-    margin: 35px auto 0;
+    max-width: 650px;
 
-    gap: 15px;
+    margin: 35px auto;
 }
 
 .stat-card {
-    padding: 22px 15px;
+    padding: 20px;
 
-    background: rgba(8, 8, 8, 0.65);
+    background: rgba(10,10,10,0.82);
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-    border-radius: 10px;
+    border-radius: 5px;
 
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
 
-    transition:
-        transform 0.25s ease,
-        border 0.25s ease;
+    transition: 0.2s;
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-3px);
+
+    border-color: #444444;
 }
 
 .stat-number {
-    font-size: 25px;
-    font-weight: 900;
+    display: block;
 
-    color: white;
+    margin-bottom: 8px;
+
+    color: #eeeeee;
+
+    font-size: 20px;
+    font-weight: 800;
 }
 
 .stat-label {
-    margin-top: 6px;
+    color: #777777;
 
-    font-size: 11px;
-    color: #888;
+    font-size: 9px;
+    font-weight: bold;
 
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 
-/* =========================
-   HERO BUTTONS
-   ========================= */
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .hero-buttons {
     display: flex;
-    gap: 12px;
+
+    justify-content: center;
+
+    gap: 10px;
 
     margin-top: 30px;
-
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .primary-button,
-.secondary-button {
-    border-radius: 6px;
+.secondary-button,
+.discord-button {
 
-    padding: 13px 22px;
+    display: inline-flex;
 
-    font-size: 13px;
-    font-weight: 800;
+    align-items: center;
+    justify-content: center;
 
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border 0.2s ease;
+    min-height: 44px;
+
+    padding: 0 22px;
+
+    border-radius: 3px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    transition: 0.2s;
 }
 
 .primary-button {
-    background: white;
-    color: black;
+    background: #eeeeee;
 
-    border: 1px solid white;
+    border: 1px solid #eeeeee;
+
+    color: #080808;
 }
 
 .primary-button:hover {
-    transform: translateY(-3px);
-    background: #ddd;
+    background: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(255,255,255,0.08);
 }
 
 .secondary-button {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: rgba(17,17,17,0.9);
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #292929;
+
+    color: #bbbbbb;
 }
 
 .secondary-button:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.10);
-    border-color: rgba(255, 255, 255, 0.35);
+    color: white;
+
+    border-color: #444444;
+
+    transform: translateY(-2px);
 }
 
 .copy-message {
-    min-height: 20px;
+    min-height: 18px;
 
-    margin-top: 12px;
+    margin-top: 14px;
 
-    color: #aaa;
+    color: #aaaaaa;
 
     font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
 }
 
 
-/* =========================
+/* =========================================================
    HOME CARDS
-   ========================= */
+========================================================= */
 
 .home-cards {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-
     max-width: 1100px;
 
-    margin: 30px auto 0;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
 }
 
 .info-card {
-    position: relative;
+    padding: 28px 22px;
 
-    padding: 28px;
+    background: rgba(10,10,10,0.82);
 
-    background: rgba(7, 7, 7, 0.70);
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    cursor: pointer;
 
-    border-radius: 10px;
+    transition: 0.25s;
 
-    overflow: hidden;
-
-    backdrop-filter: blur(8px);
-
-    transition:
-        transform 0.25s ease,
-        border 0.25s ease;
+    backdrop-filter: blur(5px);
 }
 
 .info-card:hover {
     transform: translateY(-5px);
 
-    border-color: rgba(255, 255, 255, 0.22);
+    border-color: #383838;
+
+    background: rgba(16,16,16,0.9);
 }
 
 .card-number {
+    color: #666666;
+
     font-size: 11px;
-
-    color: #666;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 14px;
+    font-weight: bold;
 }
 
 .info-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    margin: 20px 0 8px;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
 }
 
 .info-card p {
-    color: #999;
+    color: #888888;
 
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 12px;
+
+    line-height: 1.6;
 }
 
 
-/* =========================
+/* =========================================================
+   PAGE TITLES
+========================================================= */
+
+.page-title {
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.page-title p {
+    margin-bottom: 8px;
+
+    color: #888888;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+.page-title h2 {
+    font-size: clamp(30px, 5vw, 55px);
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 4px 20px rgba(0,0,0,0.8);
+}
+
+
+/* =========================================================
    RULES
-   ========================= */
+========================================================= */
 
 .rules-container {
     max-width: 850px;
 
     margin: auto;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 10px;
 }
 
 .rule {
-    overflow: hidden;
+    margin-bottom: 8px;
 
-    border-radius: 8px;
+    background: rgba(10,10,10,0.84);
 
-    background: rgba(8, 8, 8, 0.70);
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
-
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
 }
 
 .rule-button {
     width: 100%;
 
-    padding: 19px 20px;
+    padding: 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
 
     background: transparent;
+
     border: none;
 
-    color: white;
+    color: #dddddd;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
 
     text-align: left;
 
-    font-size: 14px;
-    font-weight: 800;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    cursor: pointer;
 }
 
-.rule-button::after {
-    content: "+";
+.rule-button b {
+    color: #999999;
 
     font-size: 20px;
 
-    color: #777;
-
-    transition: transform 0.2s ease;
-}
-
-.rule.open .rule-button::after {
-    transform: rotate(45deg);
-}
-
-.rule-button:hover {
-    background: rgba(255, 255, 255, 0.04);
+    font-weight: normal;
 }
 
 .rule-content {
@@ -565,27 +639,35 @@ a {
 
     overflow: hidden;
 
-    transition: max-height 0.3s ease;
-
-    color: #999;
-
-    font-size: 13px;
-    line-height: 1.7;
+    transition:
+        max-height 0.3s ease;
 }
 
 .rule-content p {
-    padding: 0 20px 20px;
+    padding:
+        0 22px 22px;
+
+    color: #888888;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+.rule.open .rule-content {
+    max-height: 200px;
 }
 
 
-/* =========================
+/* =========================================================
    PLAYERS
-   ========================= */
+========================================================= */
 
 .player-search {
-    max-width: 600px;
+    max-width: 500px;
 
-    margin: 0 auto 35px;
+    margin:
+        0 auto 30px;
 }
 
 .player-search input {
@@ -593,34 +675,23 @@ a {
 
     padding: 15px 18px;
 
-    background: rgba(5, 5, 5, 0.75);
+    background:
+        rgba(10,10,10,0.85);
 
-    border: 1px solid rgba(255, 255, 255, 0.13);
-
-    border-radius: 7px;
+    border:
+        1px solid #222222;
 
     outline: none;
 
     color: white;
 
-    font-size: 14px;
+    font-size: 11px;
 
-    backdrop-filter: blur(8px);
-
-    transition:
-        border 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.player-search input::placeholder {
-    color: #666;
+    letter-spacing: 1px;
 }
 
 .player-search input:focus {
-    border-color: rgba(255, 255, 255, 0.30);
-
-    box-shadow:
-        0 0 20px rgba(255, 255, 255, 0.04);
+    border-color: #444444;
 }
 
 .players-grid {
@@ -631,429 +702,828 @@ a {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fill, minmax(180px, 1fr));
+        repeat(4, 1fr);
 
-    gap: 14px;
+    gap: 10px;
 }
 
 .player-card {
-    padding: 20px 15px;
+    padding: 20px;
 
-    text-align: center;
+    background:
+        rgba(10,10,10,0.84);
 
-    background: rgba(7, 7, 7, 0.72);
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    transition: 0.2s;
 
-    border-radius: 9px;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(8px);
-
-    transition:
-        transform 0.22s ease,
-        border 0.22s ease,
-        background 0.22s ease;
+    backdrop-filter: blur(5px);
 }
 
 .player-card:hover {
-    transform: translateY(-6px);
+    transform:
+        translateY(-3px);
 
-    background: rgba(15, 15, 15, 0.85);
-
-    border-color: rgba(255, 255, 255, 0.24);
+    border-color:
+        #383838;
 }
 
 .avatar {
-    width: 58px;
-    height: 58px;
+    width: 52px;
+    height: 52px;
 
-    margin: 0 auto 13px;
-
-    border-radius: 5px;
-
-    overflow: hidden;
-
-    background: #222;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.avatar img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    image-rendering: pixelated;
-}
-
-.player-card h3 {
-    font-size: 14px;
-
-    margin-bottom: 7px;
-
-    word-break: break-word;
-}
-
-.rank {
-    display: inline-block;
-
-    padding: 4px 8px;
-
-    border-radius: 4px;
-
-    background: rgba(255, 255, 255, 0.07);
-
-    color: #999;
-
-    font-size: 9px;
-    font-weight: 800;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.8px;
-}
-
-.no-players {
-    grid-column: 1 / -1;
-
-    text-align: center;
-
-    color: #777;
-
-    padding: 50px 20px;
-}
-
-
-/* =========================
-   PLAYER PROFILE MODAL
-   ========================= */
-
-.player-profile-modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 3000;
+    margin-bottom: 15px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
-
-    background: rgba(0, 0, 0, 0.80);
-
-    backdrop-filter: blur(8px);
-}
-
-.player-profile-modal .profile-box {
-    width: min(430px, 100%);
-
-    padding: 32px;
-
-    position: relative;
-
-    text-align: center;
-
     background:
-        linear-gradient(
-            145deg,
-            rgba(25, 25, 25, 0.97),
-            rgba(8, 8, 8, 0.98)
-        );
+        #1a1a1a;
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border:
+        1px solid #303030;
 
-    border-radius: 12px;
+    font-size: 20px;
 
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
 }
 
-.player-profile-modal .profile-avatar {
-    width: 100px;
-    height: 100px;
-
-    margin: 0 auto 20px;
-
-    overflow: hidden;
-
-    border-radius: 8px;
-
-    border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.player-profile-modal .profile-avatar img {
-    width: 100%;
-    height: 100%;
-
-    image-rendering: pixelated;
-}
-
-.player-profile-modal h2 {
-    font-size: 25px;
-
+.player-card h3 {
     margin-bottom: 8px;
+
+    font-size: 14px;
 }
 
-.player-profile-modal .profile-role {
-    color: #888;
+.rank {
+    display: inline-block;
 
-    font-size: 11px;
-    font-weight: 800;
+    padding: 5px 9px;
 
-    text-transform: uppercase;
+    background: #151515;
 
-    letter-spacing: 1.5px;
+    border:
+        1px solid #333333;
 
-    margin-bottom: 25px;
-}
+    border-radius: 2px;
 
-.player-profile-modal .profile-info {
-    padding: 17px;
+    font-size: 8px;
 
-    margin-top: 10px;
-
-    text-align: left;
-
-    background: rgba(255, 255, 255, 0.035);
-
-    border: 1px solid rgba(255, 255, 255, 0.07);
-
-    border-radius: 7px;
-}
-
-.player-profile-modal .profile-info strong {
-    display: block;
-
-    margin-bottom: 6px;
-
-    color: #ddd;
-
-    font-size: 10px;
-
-    text-transform: uppercase;
+    font-weight: bold;
 
     letter-spacing: 1px;
 }
 
-.player-profile-modal .profile-info p {
-    color: #999;
-
-    font-size: 13px;
-
-    line-height: 1.6;
+.rank.founder {
+    color: #ffffff;
 }
 
-.profile-close {
-    position: absolute;
-
-    top: 13px;
-    right: 15px;
-
-    width: 30px;
-    height: 30px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #888;
-
-    font-size: 22px;
-
-    cursor: pointer;
+.rank.president {
+    color: #dddddd;
 }
 
-.profile-close:hover {
-    color: white;
+.rank.vice-president {
+    color: #bbbbbb;
+}
+
+.rank.governor {
+    color: #aaaaaa;
+}
+
+.rank.civilian {
+    color: #777777;
+}
+
+.no-players {
+    display: none;
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: #777777;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
 }
 
 
-/* =========================
+/* =========================================================
    EVENTS
-   ========================= */
+========================================================= */
 
 .events-grid {
-    max-width: 1000px;
+    max-width: 1100px;
 
     margin: auto;
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
+        repeat(3, 1fr);
 
-    gap: 20px;
+    gap: 14px;
 }
 
 .event-card {
-    position: relative;
+    padding: 28px;
 
-    padding: 25px;
+    background:
+        rgba(10,10,10,0.84);
 
-    background: rgba(7, 7, 7, 0.72);
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    transition: 0.25s;
 
-    border-radius: 10px;
-
-    backdrop-filter: blur(8px);
-
-    transition:
-        transform 0.25s ease,
-        border 0.25s ease;
+    backdrop-filter: blur(5px);
 }
 
 .event-card:hover {
-    transform: translateY(-6px);
+    transform:
+        translateY(-4px);
 
-    border-color: rgba(255, 255, 255, 0.22);
+    border-color:
+        #383838;
 }
 
 .event-top {
     display: flex;
 
     align-items: center;
-    justify-content: space-between;
 
-    gap: 10px;
-
-    margin-bottom: 22px;
+    justify-content:
+        space-between;
 }
 
 .event-tag {
-    display: inline-block;
+    padding:
+        5px 8px;
 
-    padding: 5px 8px;
+    font-size: 8px;
 
-    border-radius: 4px;
-
-    font-size: 9px;
-
-    font-weight: 900;
+    font-weight: bold;
 
     letter-spacing: 1px;
 
-    text-transform: uppercase;
+    border:
+        1px solid #333333;
 }
 
 .event-tag.upcoming {
-    background: rgba(255, 255, 255, 0.10);
-
-    color: white;
+    color: #dddddd;
 }
 
 .event-tag.completed {
-    background: rgba(255, 255, 255, 0.05);
-
-    color: #777;
+    color: #777777;
 }
 
 .event-symbol {
-    font-size: 28px;
+    color: #999999;
 
-    color: #ddd;
+    font-size: 24px;
 }
 
 .event-card h3 {
-    font-size: 21px;
+    margin:
+        35px 0 10px;
 
-    margin-bottom: 10px;
+    font-size: 17px;
+
+    letter-spacing: 2px;
 }
 
 .event-card p {
-    color: #999;
+    min-height: 50px;
 
-    font-size: 13px;
+    color: #888888;
+
+    font-size: 12px;
 
     line-height: 1.7;
-
-    margin-bottom: 18px;
 }
 
 .countdown {
-    min-height: 42px;
+    margin:
+        20px 0;
 
-    display: flex;
+    color: #cccccc;
 
-    align-items: center;
+    font-size: 11px;
 
-    justify-content: center;
+    font-weight: bold;
 
-    margin: 15px 0;
-
-    padding: 10px;
-
-    border-radius: 6px;
-
-    background: rgba(255, 255, 255, 0.05);
-
-    border: 1px solid rgba(255, 255, 255, 0.07);
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .event-button {
     width: 100%;
 
-    padding: 11px;
+    padding: 12px;
 
-    border-radius: 6px;
+    background: #111111;
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border:
+        1px solid #292929;
 
-    background: rgba(255, 255, 255, 0.06);
+    color: #aaaaaa;
 
-    color: white;
+    cursor: pointer;
 
-    font-size: 11px;
+    font-size: 9px;
 
-    font-weight: 800;
+    font-weight: bold;
 
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+    letter-spacing: 2px;
+
+    transition: 0.2s;
 }
 
 .event-button:hover {
-    background: rgba(255, 255, 255, 0.12);
+    color: white;
 
-    transform: translateY(-2px);
+    border-color: #444444;
 }
 
 
-/* =========================
-   EVENT MODAL
-   ========================= */
+/* =========================================================
+   PVP TIER TABS
+========================================================= */
+
+.tier-tabs {
+    max-width: 1120px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    overflow-x: auto;
+
+    background:
+        rgba(13,19,27,0.94);
+
+    border:
+        1px solid #1d2936;
+
+    border-bottom: none;
+
+    border-radius:
+        16px 16px 0 0;
+
+    scrollbar-width: none;
+}
+
+.tier-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tier-tab {
+    min-width: 105px;
+
+    height: 72px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    background: transparent;
+
+    border: none;
+
+    border-bottom:
+        2px solid transparent;
+
+    color: #566273;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    font-family: inherit;
+}
+
+.tier-tab span {
+    font-size: 22px;
+
+    line-height: 1;
+}
+
+.tier-tab small {
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.tier-tab:hover {
+    background:
+        #111a24;
+
+    color:
+        #b9c3cf;
+}
+
+.tier-tab.active {
+    color: #ffffff;
+
+    border-bottom-color:
+        #ffffff;
+
+    background:
+        #111821;
+}
+
+
+/* =========================================================
+   TIER LIST
+========================================================= */
+
+.tier-list {
+    max-width: 1120px;
+
+    margin: auto;
+
+    padding:
+        0 10px 10px;
+
+    background:
+        rgba(16,23,33,0.96);
+
+    border:
+        1px solid #1d2936;
+
+    border-radius:
+        0 0 16px 16px;
+
+    overflow: hidden;
+}
+
+.tier-header {
+    display: grid;
+
+    grid-template-columns:
+        155px
+        minmax(380px, 1fr)
+        80px
+        minmax(360px, 1fr);
+
+    align-items: center;
+
+    padding:
+        16px 15px;
+
+    color: #3f4b5c;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    background:
+        #101721;
+}
+
+
+/* =========================================================
+   TIER PLAYER
+========================================================= */
+
+.tier-player {
+    min-height: 78px;
+
+    display: grid;
+
+    grid-template-columns:
+        155px
+        minmax(380px, 1fr)
+        80px
+        minmax(360px, 1fr);
+
+    align-items: center;
+
+    margin-bottom: 8px;
+
+    background:
+        #131c27;
+
+    border:
+        1px solid #202d3c;
+
+    border-radius:
+        11px;
+
+    overflow: hidden;
+
+    transition: 0.2s;
+}
+
+.tier-player:hover {
+    background:
+        #17212d;
+
+    border-color:
+        #34465a;
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   TIER RANK
+========================================================= */
+
+.tier-rank {
+    height: 100%;
+
+    min-height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 20px;
+
+    color: #f2f4f7;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    font-style: italic;
+}
+
+.rank-1 {
+    background:
+        linear-gradient(
+            120deg,
+            #f3b82f,
+            #e7a923
+        );
+
+    color: white;
+
+    font-size: 34px;
+}
+
+.rank-2 {
+    background:
+        linear-gradient(
+            120deg,
+            #9daab2,
+            #7d8b95
+        );
+}
+
+.rank-3 {
+    background:
+        linear-gradient(
+            120deg,
+            #bd6726,
+            #98501c
+        );
+}
+
+
+/* =========================================================
+   TIER PLAYER INFO
+========================================================= */
+
+.tier-player-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding:
+        8px 15px;
+}
+
+.minecraft-head {
+    width: 62px;
+
+    height: 62px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+}
+
+.minecraft-head img {
+    width: 100%;
+
+    height: 100%;
+
+    image-rendering: pixelated;
+}
+
+.tier-player-info h3 {
+    margin:
+        0 0 5px;
+
+    color:
+        #dce5ef;
+
+    font-size: 21px;
+}
+
+.tier-player-info p {
+    margin: 0;
+
+    color:
+        #8da1b7;
+
+    font-size: 13px;
+}
+
+.tier-player-info p span {
+    color:
+        #71869d;
+}
+
+
+/* =========================================================
+   REGION
+========================================================= */
+
+.region {
+    width: 42px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        8px;
+
+    font-size: 16px;
+
+    font-weight: 900;
+}
+
+.region.na {
+    background:
+        #45242b;
+
+    color:
+        #e75d70;
+}
+
+.region.eu {
+    background:
+        #173d23;
+
+    color:
+        #64e47a;
+}
+
+
+/* =========================================================
+   TIER BADGES
+========================================================= */
+
+.tier-badges {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        10px 12px;
+
+    flex-wrap: wrap;
+}
+
+.tier-badge {
+    min-width: 34px;
+
+    padding: 5px;
+
+    text-align: center;
+
+    border-radius:
+        8px;
+
+    background:
+        #182230;
+
+    border:
+        1px solid #29394b;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+
+/* HIGH TIERS */
+
+.tier-badge.ht1 {
+    color:
+        #ffd447;
+
+    border-color:
+        #554718;
+
+    background:
+        #292719;
+}
+
+.tier-badge.ht2 {
+    color:
+        #f4c84b;
+
+    border-color:
+        #493d20;
+
+    background:
+        #27251b;
+}
+
+.tier-badge.ht3 {
+    color:
+        #d99345;
+
+    border-color:
+        #523721;
+
+    background:
+        #29221b;
+}
+
+.tier-badge.ht4 {
+    color:
+        #9b9bd0;
+
+    border-color:
+        #36365c;
+
+    background:
+        #222337;
+}
+
+
+/* LOW TIERS */
+
+.tier-badge.lt1 {
+    color:
+        #ffd447;
+
+    border-color:
+        #554718;
+
+    background:
+        #292719;
+}
+
+.tier-badge.lt2 {
+    color:
+        #a8b4c4;
+
+    border-color:
+        #354353;
+
+    background:
+        #202936;
+}
+
+.tier-badge.lt3 {
+    color:
+        #c47d3d;
+
+    border-color:
+        #56381f;
+
+    background:
+        #2a241f;
+}
+
+
+/* =========================================================
+   TIER NOTE
+========================================================= */
+
+.tier-note {
+    text-align: center;
+
+    margin-top: 20px;
+
+    color:
+        #8a96a5;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   DISCORD
+========================================================= */
+
+.discord-box {
+    max-width: 700px;
+
+    margin:
+        70px auto;
+
+    padding:
+        70px 30px;
+
+    text-align: center;
+
+    background:
+        rgba(10,10,10,0.86);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:
+        blur(6px);
+}
+
+.discord-box h2 {
+    margin-bottom: 20px;
+
+    font-size: 35px;
+
+    letter-spacing: 4px;
+}
+
+.discord-box p:not(.eyebrow) {
+    max-width: 500px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        #888888;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+.discord-button {
+    background:
+        #eeeeee;
+
+    color:
+        #080808;
+
+    border:
+        1px solid #eeeeee;
+}
+
+.discord-button:hover {
+    background:
+        white;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
 
 .modal {
     position: fixed;
 
     inset: 0;
 
-    z-index: 2500;
+    z-index: 2000;
 
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
 
-    background: rgba(0, 0, 0, 0.82);
+    background:
+        rgba(0,0,0,0.75);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter:
+        blur(8px);
 }
 
 .modal.show {
@@ -1061,39 +1531,44 @@ a {
 }
 
 .modal-box {
-    width: min(450px, 100%);
-
     position: relative;
 
-    padding: 32px;
+    width: 100%;
+
+    max-width: 500px;
+
+    padding:
+        45px 35px;
+
+    text-align: center;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(25, 25, 25, 0.98),
-            rgba(7, 7, 7, 0.98)
-        );
+        #0d0d0d;
 
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border:
+        1px solid #292929;
 
-    border-radius: 10px;
-
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.75);
+    animation:
+        modalIn 0.25s ease;
 }
 
-.modal-box h2 {
-    margin-bottom: 12px;
+@keyframes modalIn {
 
-    font-size: 24px;
-}
+    from {
+        opacity: 0;
 
-.modal-box p {
-    color: #999;
+        transform:
+            scale(0.96)
+            translateY(10px);
+    }
 
-    font-size: 13px;
+    to {
+        opacity: 1;
 
-    line-height: 1.7;
+        transform:
+            scale(1)
+            translateY(0);
+    }
 }
 
 .modal-close {
@@ -1102,616 +1577,429 @@ a {
     top: 12px;
     right: 15px;
 
-    width: 30px;
-    height: 30px;
+    background:
+        transparent;
 
-    border: none;
+    border:
+        none;
 
-    background: transparent;
+    color:
+        #666666;
 
-    color: #888;
+    font-size:
+        28px;
 
-    font-size: 22px;
+    cursor:
+        pointer;
 }
 
 .modal-close:hover {
-    color: white;
+    color:
+        white;
 }
 
+.modal-box h2 {
+    margin-bottom:
+        20px;
 
-/* =========================
-   PVP
-   ========================= */
+    font-size:
+        30px;
 
-.tier-tabs {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    margin-bottom: 25px;
-
-    flex-wrap: wrap;
+    letter-spacing:
+        3px;
 }
 
-.tier-tab {
-    padding: 10px 18px;
+.modal-box p:not(.eyebrow) {
+    margin-bottom:
+        25px;
 
-    background: rgba(5, 5, 5, 0.65);
+    color:
+        #777777;
 
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    font-size:
+        13px;
 
-    border-radius: 6px;
-
-    color: #888;
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        border 0.2s ease;
-}
-
-.tier-tab:hover {
-    color: white;
-
-    border-color: rgba(255, 255, 255, 0.20);
-}
-
-.tier-tab.active {
-    color: black;
-
-    background: white;
-
-    border-color: white;
-}
-
-.tier-list {
-    max-width: 900px;
-
-    margin: auto;
-
-    display: none;
-
-    background: rgba(5, 5, 5, 0.72);
-
-    border: 1px solid rgba(255, 255, 255, 0.10);
-
-    border-radius: 9px;
-
-    overflow: hidden;
-
-    backdrop-filter: blur(8px);
-}
-
-.tier-list.active {
-    display: block;
-}
-
-.tier-header {
-    display: grid;
-
-    grid-template-columns: 70px 1fr 160px;
-
-    padding: 15px 18px;
-
-    background: rgba(255, 255, 255, 0.05);
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    color: #777;
-
-    font-size: 10px;
-
-    font-weight: 900;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-}
-
-.tier-player {
-    display: grid;
-
-    grid-template-columns: 70px 1fr 160px;
-
-    align-items: center;
-
-    min-height: 75px;
-
-    padding: 10px 18px;
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-
-    transition: background 0.2s ease;
-}
-
-.tier-player:last-child {
-    border-bottom: none;
-}
-
-.tier-player:hover {
-    background: rgba(255, 255, 255, 0.035);
-}
-
-.tier-rank {
-    font-size: 19px;
-
-    font-weight: 900;
-
-    color: #888;
-}
-
-.rank-1 {
-    color: #fff;
-}
-
-.rank-2 {
-    color: #ccc;
-}
-
-.rank-3 {
-    color: #aaa;
-}
-
-.tier-player-info {
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-}
-
-.minecraft-head {
-    width: 40px;
-    height: 40px;
-
-    flex-shrink: 0;
-
-    border-radius: 4px;
-
-    overflow: hidden;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
-    background: #222;
-}
-
-.minecraft-head img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    image-rendering: pixelated;
-}
-
-.tier-player-name {
-    font-size: 14px;
-
-    font-weight: 800;
-}
-
-.region {
-    margin-top: 4px;
-
-    font-size: 9px;
-
-    color: #777;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1px;
-}
-
-.na {
-    color: #aaa;
-}
-
-.eu {
-    color: #aaa;
-}
-
-.tier-badges {
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    flex-wrap: wrap;
-}
-
-.tier-badge {
-    min-width: 38px;
-
-    padding: 6px 7px;
-
-    text-align: center;
-
-    border-radius: 4px;
-
-    background: rgba(255, 255, 255, 0.06);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    color: #aaa;
-
-    font-size: 9px;
-
-    font-weight: 900;
-}
-
-.tier-badge.ht1,
-.tier-badge.lt1 {
-    color: white;
-
-    border-color: rgba(255, 255, 255, 0.28);
-
-    background: rgba(255, 255, 255, 0.10);
-}
-
-.tier-badge.ht2,
-.tier-badge.lt2 {
-    color: #ddd;
-}
-
-.tier-badge.ht3,
-.tier-badge.lt3 {
-    color: #bbb;
-}
-
-.tier-note {
-    max-width: 900px;
-
-    margin: 18px auto 0;
-
-    color: #666;
-
-    text-align: center;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================
-   DISCORD
-   ========================= */
-
-.discord-box {
-    max-width: 700px;
-
-    margin: 80px auto 0;
-
-    padding: 50px 35px;
-
-    text-align: center;
-
-    background: rgba(5, 5, 5, 0.72);
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
-    border-radius: 12px;
-
-    backdrop-filter: blur(10px);
-}
-
-.discord-box h2 {
-    font-size: 34px;
-
-    margin-bottom: 15px;
-}
-
-.discord-box p {
-    max-width: 500px;
-
-    margin: 0 auto 28px;
-
-    color: #999;
-
-    font-size: 14px;
-
-    line-height: 1.7;
-}
-
-.discord-button {
-    display: inline-block;
-
-    padding: 14px 25px;
-
-    background: white;
-
-    color: black;
-
-    border: 1px solid white;
-
-    border-radius: 6px;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-}
-
-.discord-button:hover {
-    transform: translateY(-3px);
-
-    background: #ddd;
-}
-
-
-/* =========================
-   FOOTER
-   ========================= */
-
-footer {
-    padding: 25px 20px;
-
-    text-align: center;
-
-    background: #050505;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-
-    color: #555;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-}
-
-
-/* =========================
-   SCROLLBAR
-   ========================= */
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #050505;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #333;
-
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-
-/* =========================
-   SELECTION
-   ========================= */
-
-::selection {
-    background: white;
-    color: black;
+    line-height:
+        1.8;
 }
 
 
 /* =========================================================
-   RESPONSIVE
-   ========================================================= */
+   FOOTER
+========================================================= */
 
-@media (max-width: 900px) {
+footer {
+    padding:
+        40px 20px;
 
-    .navbar {
-        padding: 0 5%;
-    }
+    display:
+        flex;
 
-    .section {
-        padding-left: 5%;
-        padding-right: 5%;
-    }
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    border-top:
+        1px solid #161616;
+
+    background:
+        #060606;
+}
+
+footer strong {
+    font-size:
+        13px;
+
+    letter-spacing:
+        3px;
+}
+
+footer span {
+    color:
+        #555555;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        2px;
+}
+
+footer small {
+    margin-top:
+        8px;
+
+    color:
+        #3f3f3f;
+
+    font-size:
+        9px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
 
     .home-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .stats {
-        max-width: 600px;
-    }
-
-    .tier-header,
-    .tier-player {
-        grid-template-columns: 55px 1fr 120px;
-    }
-}
-
-
-@media (max-width: 700px) {
-
-    .navbar {
-        height: 65px;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        position: absolute;
-
-        top: 65px;
-        left: 0;
-        right: 0;
-
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 10px;
-
-        background: rgba(5, 5, 5, 0.97);
-
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-        backdrop-filter: blur(12px);
-    }
-
-    .nav-menu.open {
-        display: flex;
-    }
-
-    .nav-btn {
-        width: 100%;
-
-        text-align: left;
-
-        padding: 14px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-
-        max-width: 350px;
-    }
-
-    .hero h1 {
-        font-size: 55px;
-    }
-
-    .hero-subtitle {
-        font-size: 14px;
-    }
-
-    .tier-header {
-        display: none;
-    }
-
-    .tier-player {
-        grid-template-columns: 45px 1fr;
-
-        gap: 8px;
-
-        padding: 14px;
-    }
-
-    .tier-badges {
-        grid-column: 2;
-    }
-
-    .tier-rank {
-        grid-row: 1 / span 2;
-    }
-
-    .discord-box {
-        margin-top: 40px;
-    }
-}
-
-
-@media (max-width: 500px) {
-
-    .section {
-        padding: 100px 18px 60px;
-    }
-
-    .logo {
-        font-size: 17px;
-    }
-
-    .hero h1 {
-        font-size: 43px;
-
-        letter-spacing: 3px;
-    }
-
-    .eyebrow {
-        font-size: 9px;
-
-        letter-spacing: 3px;
-    }
-
-    .hero-subtitle {
-        font-size: 13px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-
-        width: 100%;
-
-        max-width: 300px;
-    }
-
-    .primary-button,
-    .secondary-button {
-        width: 100%;
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .players-grid {
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 10px;
-    }
-
-    .player-card {
-        padding: 16px 8px;
-    }
-
-    .avatar {
-        width: 50px;
-        height: 50px;
-    }
-
-    .player-card h3 {
-        font-size: 12px;
+        grid-template-columns:
+            repeat(3, 1fr);
     }
 
     .events-grid {
-        grid-template-columns: 1fr;
-    }
+        grid-template-columns:
+            1fr;
 
-    .page-title {
-        font-size: 32px;
-
-        margin-bottom: 30px;
-    }
-
-    .discord-box {
-        padding: 35px 20px;
-    }
-
-    .discord-box h2 {
-        font-size: 27px;
-    }
-
-    .player-profile-modal .profile-box {
-        padding: 25px 18px;
+        max-width:
+            600px;
     }
 }
 
 
-@media (max-width: 360px) {
+/* =========================================================
+   PVP TABLET
+========================================================= */
 
-    .players-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 1100px) {
+
+    .tier-header {
+        display:
+            none;
+    }
+
+    .tier-player {
+        grid-template-columns:
+            75px
+            1fr
+            80px;
+    }
+
+    .tier-badges {
+        grid-column:
+            2 / 4;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-wrap:
+            wrap;
+    }
+
+    .menu-toggle {
+        display:
+            block;
+    }
+
+    .nav-menu {
+        display:
+            none;
+
+        width:
+            100%;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        padding-top:
+            10px;
+    }
+
+    .nav-menu.open {
+        display:
+            flex;
+    }
+
+    .nav-btn {
+        width:
+            100%;
+
+        text-align:
+            left;
+    }
+
+    .section {
+        padding:
+            70px 5%;
+
+        background-position:
+            center;
+    }
+
+    .hero {
+        margin-top:
+            35px;
     }
 
     .hero h1 {
-        font-size: 37px;
+        font-size:
+            clamp(50px, 17vw, 90px);
+
+        letter-spacing:
+            7px;
+
+        text-indent:
+            7px;
+    }
+
+    .hero-subtitle {
+        font-size:
+            9px;
+
+        letter-spacing:
+            4px;
+    }
+
+    .stats {
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            300px;
+    }
+
+    .hero-buttons {
+        flex-direction:
+            column;
+
+        max-width:
+            300px;
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+    .home-cards {
+        grid-template-columns:
+            1fr;
+    }
+
+    .players-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .discord-box {
+        padding:
+            50px 20px;
+    }
+
+    .discord-box h2 {
+        font-size:
+            25px;
+    }
+
+
+    /* PVP */
+
+    .tier-tabs {
+        border-radius:
+            10px 10px 0 0;
+    }
+
+    .tier-tab {
+        min-width:
+            82px;
+
+        height:
+            65px;
+    }
+
+    .tier-tab span {
+        font-size:
+            18px;
+    }
+
+    .tier-tab small {
+        font-size:
+            8px;
+    }
+
+    .tier-list {
+        padding:
+            0 6px 6px;
+    }
+
+    .tier-player {
+        display:
+            grid;
+
+        grid-template-columns:
+            65px 1fr;
+
+        padding:
+            0;
+    }
+
+    .tier-rank {
+        min-height:
+            100%;
+
+        padding-left:
+            15px;
+
+        font-size:
+            25px;
+    }
+
+    .tier-player-info {
+        padding:
+            12px;
+    }
+
+    .tier-player > .region {
+        grid-column:
+            1;
+
+        margin:
+            0 auto 12px;
+    }
+
+    .tier-badges {
+        grid-column:
+            2;
+
+        padding:
+            0 12px 14px;
+    }
+
+    .tier-player-info h3 {
+        font-size:
+            16px;
+    }
+
+    .tier-player-info p {
+        font-size:
+            10px;
+    }
+
+    .minecraft-head {
+        width:
+            50px;
+
+        height:
+            50px;
+    }
+
+    .tier-badges {
+        gap:
+            5px;
     }
 
     .tier-badge {
-        min-width: 32px;
+        min-width:
+            31px;
 
-        padding: 5px;
+        padding:
+            4px;
+
+        font-size:
+            9px;
     }
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .players-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .tier-player {
+        grid-template-columns:
+            55px 1fr;
+    }
+
+    .tier-player-info {
+        gap:
+            9px;
+    }
+
+    .tier-player-info h3 {
+        font-size:
+            14px;
+    }
+
+    .tier-player-info p {
+        font-size:
+            9px;
+    }
+
+    .tier-badge {
+        min-width:
+            28px;
+
+        font-size:
+            8px;
+    }
+}
+```
