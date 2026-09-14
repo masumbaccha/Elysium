@@ -1,2005 +1,1454 @@
-```css
-/* =========================================================
-   ELYSIUM SMP
-   MAIN STYLESHEET
-   STATIC MINECRAFT BACKGROUNDS
-========================================================= */
-
-
-/* ================= RESET ================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #050505;
-    color: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-
-/* =========================================================
-   GLOBAL BACKGROUND
-========================================================= */
-
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    background: #050505;
-}
-
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    min-height: 70px;
-    padding: 15px 6%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-
-    background: rgba(5, 5, 5, 0.88);
-    border-bottom: 1px solid #1b1b1b;
-
-    backdrop-filter: blur(12px);
-}
-
-.logo {
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-.logo:hover {
-    text-shadow: 0 0 18px rgba(255,255,255,0.45);
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.nav-btn {
-    padding: 10px 14px;
-
-    background: transparent;
-    border: none;
-    border-radius: 4px;
-
-    color: #777777;
-
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.nav-btn:hover {
-    color: #ffffff;
-    background: #151515;
-}
-
-.nav-btn.active {
-    color: #ffffff;
-    background: #181818;
-}
-
-.menu-toggle {
-    display: none;
-
-    background: transparent;
-    border: none;
-
-    color: white;
-    font-size: 25px;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section {
-    position: relative;
-    isolation: isolate;
-
-    display: none;
-
-    min-height: 85vh;
-    padding: 90px 7%;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    animation: sectionIn 0.45s ease;
-}
-
-
-/* Dark overlay */
-
-.section::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    z-index: -1;
-
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.70),
-            rgba(0,0,0,0.84)
-        );
-}
-
-
-/* Keep content above background */
-
-.section > * {
-    position: relative;
-    z-index: 1;
-}
-
-
-/* =========================================================
-   INDIVIDUAL SECTION BACKGROUNDS
-========================================================= */
-
-#home {
-    background-image: url("home-bg.png");
-}
-
-#rules {
-    background-image: url("rules-bg.png");
-}
-
-#players {
-    background-image: url("players-bg.png");
-}
-
-#events {
-    background-image: url("events-bg.png");
-}
-
-#pvp {
-    background-image: url("pvp-bg.png");
-}
-
-#discord {
-    background-image: url("discord-bg.png");
-}
-
-
-/* =========================================================
-   SECTION OVERLAYS
-========================================================= */
-
-#home::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.55),
-            rgba(0,0,0,0.82)
-        );
-}
-
-#rules::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.68),
-            rgba(0,0,0,0.87)
-        );
-}
-
-#players::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.62),
-            rgba(0,0,0,0.84)
-        );
-}
-
-#events::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.58),
-            rgba(0,0,0,0.84)
-        );
-}
-
-#pvp::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.60),
-            rgba(0,0,0,0.86)
-        );
-}
-
-#discord::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.65),
-            rgba(0,0,0,0.84)
-        );
-}
-
-
-.section.active {
-    display: block;
-}
-
-
-@keyframes sectionIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+} 
+ 
+html { 
+    scroll-behavior: smooth; 
+} 
+ 
+body { 
+    background: #060606; 
+    color: #eeeeee; 
+    font-family: Arial, Helvetica, sans-serif; 
+    min-height: 100vh; 
+    overflow-x: hidden; 
+} 
+ 
+ 
+/* ================= BACKGROUND ================= */ 
+ 
+.background { 
+    position: fixed; 
+    inset: 0; 
+    z-index: -10; 
+ 
+    background: 
+        linear-gradient( 
+            rgba(4, 4, 4, 0.94), 
+            rgba(4, 4, 4, 0.98) 
+        ), 
+        repeating-linear-gradient( 
+            45deg, 
+            #111 0, 
+            #111 2px, 
+            #090909 2px, 
+            #090909 7px 
+        ); 
+} 
+ 
+.background::before { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+ 
+    background-image: 
+        radial-gradient( 
+            rgba(255,255,255,0.12) 1px, 
+            transparent 1px 
+        ); 
+ 
+    background-size: 38px 38px; 
+ 
+    animation: moveParticles 25s linear infinite; 
+} 
+ 
+@keyframes moveParticles { 
+    from { 
+        background-position: 0 0; 
+    } 
+ 
+    to { 
+        background-position: 500px 500px; 
+    } 
+} 
+ 
+ 
+/* ================= NAVBAR ================= */ 
+ 
+.navbar { 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+ 
+    min-height: 70px; 
+ 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+ 
+    padding: 15px 6%; 
+ 
+    background: rgba(8, 8, 8, 0.94); 
+ 
+    border-bottom: 1px solid #292929; 
+ 
+    backdrop-filter: blur(15px); 
+} 
+ 
+.logo { 
+    cursor: pointer; 
+ 
+    font-size: 21px; 
+    font-weight: bold; 
+ 
+    letter-spacing: 4px; 
+ 
+    transition: 0.25s; 
+} 
+ 
+.logo:hover { 
+    text-shadow: 0 0 18px rgba(255,255,255,0.4); 
+} 
+ 
+nav { 
+    display: flex; 
+    align-items: center; 
+    gap: 4px; 
+} 
+ 
+nav button { 
+    padding: 10px 13px; 
+ 
+    background: transparent; 
+ 
+    color: #888; 
+ 
+    border: none; 
+ 
+    font-size: 11px; 
+    font-weight: bold; 
+ 
+    letter-spacing: 1.5px; 
+ 
+    cursor: pointer; 
+ 
+    transition: 0.2s; 
+} 
+ 
+nav button:hover, 
+nav button.active { 
+    color: white; 
+    background: #181818; 
+} 
+ 
+.menu-toggle { 
+    display: none; 
+ 
+    background: transparent; 
+ 
+    border: 1px solid #333; 
+ 
+    color: white; 
+ 
+    padding: 8px 12px; 
+ 
+    cursor: pointer; 
+} 
+ 
+ 
+/* ================= SECTIONS ================= */ 
+ 
+.section { 
+    display: none; 
+ 
+    min-height: 85vh; 
+ 
+    padding: 90px 7%; 
+ 
+    animation: sectionIn 0.45s ease; 
+} 
+ 
+.section.active { 
+    display: block; 
+} 
+ 
+@keyframes sectionIn { 
+    from { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    } 
+ 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+ 
+ 
+/* ================= HOME ================= */ 
+ 
+.hero { 
+    max-width: 1000px; 
+ 
+    margin: auto; 
+ 
+    text-align: center; 
+ 
+    padding-top: 60px; 
+} 
+ 
+.hero-line { 
+    width: 80px; 
+    height: 1px; 
+ 
+    background: #777; 
+ 
+    margin: auto auto 25px; 
+} 
+ 
+.eyebrow { 
+    color: #777; 
+ 
+    font-size: 11px; 
+ 
+    letter-spacing: 5px; 
+ 
+    margin-bottom: 18px; 
+} 
+ 
+.hero h1 { 
+    font-size: clamp(60px, 12vw, 130px); 
+ 
+    letter-spacing: 12px; 
+ 
+    line-height: 1; 
+ 
+    text-shadow: 
+        0 0 10px rgba(255,255,255,0.12), 
+        0 0 40px rgba(255,255,255,0.05); 
+ 
+    animation: glow 3s ease-in-out infinite alternate; 
+} 
+ 
+@keyframes glow { 
+    from { 
+        text-shadow: 
+            0 0 5px rgba(255,255,255,0.08); 
+    } 
+ 
+    to { 
+        text-shadow: 
+            0 0 35px rgba(255,255,255,0.18); 
+    } 
+} 
+ 
+.subtitle { 
+    margin-top: 20px; 
+ 
+    color: #999; 
+ 
+    letter-spacing: 8px; 
+ 
+    font-size: 13px; 
+} 
+ 
+.status { 
+    display: inline-flex; 
+    align-items: center; 
+ 
+    margin-top: 40px; 
+ 
+    padding: 10px 18px; 
+ 
+    background: #101010; 
+ 
+    border: 1px solid #303030; 
+ 
+    color: #aaa; 
+ 
+    font-size: 11px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.status-dot { 
+    width: 8px; 
+    height: 8px; 
+ 
+    margin-right: 9px; 
+ 
+    border-radius: 50%; 
+ 
+    background: #72ff72; 
+ 
+    box-shadow: 0 0 12px #72ff72; 
+} 
+ 
+.server-stats { 
+    display: flex; 
+ 
+    justify-content: center; 
+ 
+    flex-wrap: wrap; 
+ 
+    gap: 12px; 
+ 
+    margin-top: 25px; 
+} 
+ 
+.stat { 
+    min-width: 160px; 
+ 
+    padding: 17px 20px; 
+ 
+    background: rgba(15,15,15,0.9); 
+ 
+    border: 1px solid #292929; 
+ 
+    transition: 0.25s; 
+} 
+ 
+.stat:hover { 
+    transform: translateY(-5px); 
+ 
+    border-color: #555; 
+} 
+ 
+.stat span { 
+    display: block; 
+ 
+    margin-bottom: 8px; 
+ 
+    color: #666; 
+ 
+    font-size: 9px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.stat strong { 
+    font-size: 13px; 
+ 
+    letter-spacing: 1px; 
+} 
+ 
+.hero-buttons { 
+    display: flex; 
+ 
+    justify-content: center; 
+ 
+    gap: 12px; 
+ 
+    margin-top: 35px; 
+ 
+    flex-wrap: wrap; 
+} 
+ 
+.primary-btn, 
+.secondary-btn, 
+.event-card button, 
+.discord-button { 
+    padding: 13px 25px; 
+ 
+    font-family: inherit; 
+ 
+    font-weight: bold; 
+ 
+    font-size: 11px; 
+ 
+    letter-spacing: 1.5px; 
+ 
+    cursor: pointer; 
+ 
+    transition: 0.25s; 
+} 
+ 
+.primary-btn { 
+    background: white; 
+ 
+    color: #080808; 
+ 
+    border: 1px solid white; 
+} 
+ 
+.primary-btn:hover { 
+    background: #ccc; 
+ 
+    transform: translateY(-3px); 
+} 
+ 
+.secondary-btn { 
+    background: #111; 
+ 
+    color: white; 
+ 
+    border: 1px solid #444; 
+} 
+ 
+.secondary-btn:hover { 
+    background: #1c1c1c; 
+ 
+    border-color: #777; 
+ 
+    transform: translateY(-3px); 
+} 
+ 
+#copyMessage { 
+    height: 20px; 
+ 
+    margin-top: 13px; 
+ 
+    color: #aaa; 
+ 
+    font-size: 11px; 
+} 
+ 
+ 
+/* HOME CARDS */ 
+ 
+.home-cards { 
+    max-width: 1050px; 
+ 
+    margin: 80px auto 0; 
+ 
+    display: grid; 
+ 
+    grid-template-columns: 
+        repeat(auto-fit, minmax(200px, 1fr)); 
+ 
+    gap: 13px; 
+} 
+ 
+.info-card { 
+    padding: 25px; 
+ 
+    background: rgba(12,12,12,0.9); 
+ 
+    border: 1px solid #252525; 
+ 
+    cursor: pointer; 
+ 
+    transition: 0.3s; 
+} 
+ 
+.info-card:hover { 
+    transform: translateY(-7px); 
+ 
+    background: #151515; 
+ 
+    border-color: #555; 
+} 
+ 
+.info-card span { 
+    color: #555; 
+ 
+    font-size: 10px; 
+} 
+ 
+.info-card h3 { 
+    margin: 15px 0 8px; 
+ 
+    font-size: 18px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.info-card p { 
+    color: #777; 
+ 
+    font-size: 12px; 
+} 
+ 
+ 
+/* ================= PAGE TITLES ================= */ 
+ 
+.page-title { 
+    text-align: center; 
+ 
+    margin-bottom: 45px; 
+} 
+ 
+.page-title p { 
+    color: #666; 
+ 
+    font-size: 10px; 
+ 
+    letter-spacing: 4px; 
+} 
+ 
+.page-title h2 { 
+    margin-top: 10px; 
+ 
+    font-size: clamp(30px, 5vw, 48px); 
+ 
+    letter-spacing: 5px; 
+} 
+ 
+ 
+/* ================= RULES ================= */ 
+ 
+.rules-container { 
+    max-width: 850px; 
+ 
+    margin: auto; 
+} 
+ 
+.rule { 
+    margin-bottom: 10px; 
+ 
+    background: #0d0d0d; 
+ 
+    border: 1px solid #272727; 
+} 
+ 
+.rule button { 
+    width: 100%; 
+ 
+    display: flex; 
+ 
+    align-items: center; 
+    justify-content: space-between; 
+ 
+    padding: 20px; 
+ 
+    background: transparent; 
+ 
+    border: none; 
+ 
+    color: white; 
+ 
+    text-align: left; 
+ 
+    cursor: pointer; 
+} 
+ 
+.rule button:hover { 
+    background: #151515; 
+} 
+ 
+.rule button b { 
+    color: #777; 
+ 
+    font-size: 18px; 
+} 
+ 
+.rule-content { 
+    max-height: 0; 
+ 
+    overflow: hidden; 
+ 
+    padding: 0 20px; 
+ 
+    color: #888; 
+ 
+    line-height: 1.7; 
+ 
+    font-size: 13px; 
+ 
+    transition: 
+        max-height 0.3s ease, 
+        padding 0.3s ease; 
+} 
+ 
+.rule.open .rule-content { 
+    max-height: 150px; 
+ 
+    padding: 0 20px 20px; 
+} 
+ 
+ 
+/* ================= PLAYERS ================= */ 
+ 
+.search-wrapper { 
+    display: flex; 
+ 
+    justify-content: center; 
+ 
+    margin-bottom: 30px; 
+} 
+ 
+.search { 
+    width: min(500px, 100%); 
+ 
+    padding: 15px 18px; 
+ 
+    background: #101010; 
+ 
+    border: 1px solid #303030; 
+ 
+    color: white; 
+ 
+    outline: none; 
+ 
+    font-family: inherit; 
+} 
+ 
+.search:focus { 
+    border-color: #666; 
+} 
+ 
+.players-grid { 
+    max-width: 1000px; 
+ 
+    margin: auto; 
+ 
+    display: grid; 
+ 
+    grid-template-columns: 
+        repeat(auto-fit, minmax(190px, 1fr)); 
+ 
+    gap: 13px; 
+} 
+ 
+.player-card { 
+    padding: 28px 20px; 
+ 
+    text-align: center; 
+ 
+    background: #101010; 
+ 
+    border: 1px solid #292929; 
+ 
+    transition: 0.3s; 
+} 
+ 
+.player-card:hover { 
+    transform: translateY(-7px); 
+ 
+    border-color: #666; 
+ 
+    background: #151515; 
+} 
+ 
+.avatar { 
+    width: 62px; 
+    height: 62px; 
+ 
+    display: flex; 
+ 
+    align-items: center; 
+    justify-content: center; 
+ 
+    margin: 0 auto 15px; 
+ 
+    background: #222; 
+ 
+    border: 1px solid #444; 
+ 
+    font-size: 24px; 
+ 
+    font-weight: bold; 
+} 
+ 
+.player-card h3 { 
+    margin-bottom: 10px; 
+} 
+ 
+.rank { 
+    color: #777; 
+ 
+    font-size: 9px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.no-results { 
+    display: none; 
+ 
+    text-align: center; 
+ 
+    margin-top: 30px; 
+ 
+    color: #666; 
+} 
+ 
+ 
+/* ================= EVENTS ================= */ 
+ 
+.event-grid { 
+    max-width: 1050px; 
+ 
+    margin: auto; 
+ 
+    display: grid; 
+ 
+    grid-template-columns: 
+        repeat(auto-fit, minmax(270px, 1fr)); 
+ 
+    gap: 16px; 
+} 
+ 
+.event-card { 
+    padding: 30px; 
+ 
+    background: #101010; 
+ 
+    border: 1px solid #292929; 
+ 
+    transition: 0.3s; 
+} 
+ 
+.event-card:hover { 
+    transform: translateY(-8px); 
+ 
+    border-color: #666; 
+} 
+ 
+.event-card.completed { 
+    opacity: 0.75; 
+} 
+ 
+.event-top { 
+    display: flex; 
+ 
+    align-items: center; 
+    justify-content: space-between; 
+} 
+ 
+.event-tag { 
+    color: #777; 
+ 
+    font-size: 9px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.event-symbol { 
+    color: #aaa; 
+ 
+    font-size: 20px; 
+} 
+ 
+.event-card h3 { 
+    margin: 20px 0 12px; 
+ 
+    font-size: 25px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.event-card p { 
+    min-height: 65px; 
+ 
+    margin-bottom: 20px; 
+ 
+    color: #777; 
+ 
+    font-size: 13px; 
+ 
+    line-height: 1.7; 
+} 
+ 
+.countdown-label { 
+    color: #555; 
+ 
+    font-size: 9px; 
+ 
+    letter-spacing: 2px; 
+ 
+    margin-bottom: 7px; 
+} 
+ 
+.countdown { 
+    margin-bottom: 22px; 
+ 
+    font-weight: bold; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.event-card button { 
+    background: #eee; 
+ 
+    color: #080808; 
+ 
+    border: 1px solid #eee; 
+} 
+ 
+.event-card button:hover { 
+    background: #bbb; 
+ 
+    transform: translateY(-2px); 
+} 
+ 
+ 
+/* ================= PVP ================= */ 
+ 
+.leaderboard { 
+    max-width: 900px; 
+ 
+    margin: auto; 
+ 
+    border: 1px solid #292929; 
+ 
+    overflow: hidden; 
+} 
+ 
+.leader { 
+    display: grid; 
+ 
+    grid-template-columns: 
+        60px 1fr 100px 100px; 
+ 
+    align-items: center; 
+ 
+    padding: 18px 20px; 
+ 
+    border-bottom: 1px solid #222; 
+ 
+    background: #101010; 
+ 
+    transition: 0.2s; 
+} 
+ 
+.leader:last-child { 
+    border-bottom: none; 
+} 
+ 
+.leader:not(.header-row):hover { 
+    background: #181818; 
+ 
+    transform: translateX(5px); 
+} 
+ 
+.header-row { 
+    background: #191919; 
+ 
+    color: #666; 
+ 
+    font-size: 9px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.position { 
+    color: #777; 
+} 
+ 
+.first { 
+    color: #fff; 
+} 
+ 
+.second { 
+    color: #bbb; 
+} 
+ 
+.third { 
+    color: #999; 
+} 
+ 
+.leader-note { 
+    text-align: center; 
+ 
+    margin-top: 20px; 
+ 
+    color: #555; 
+ 
+    font-size: 10px; 
+} 
+ 
+ 
+/* ================= DISCORD ================= */ 
+ 
+.discord-box { 
+    max-width: 700px; 
+ 
+    margin: 40px auto; 
+ 
+    padding: 75px 35px; 
+ 
+    text-align: center; 
+ 
+    background: #101010; 
+ 
+    border: 1px solid #292929; 
+} 
+ 
+.discord-symbol { 
+    margin-bottom: 20px; 
+ 
+    color: #aaa; 
+ 
+    font-size: 30px; 
+} 
+ 
+.discord-box h2 { 
+    margin-bottom: 20px; 
+ 
+    font-size: clamp(30px, 6vw, 48px); 
+ 
+    letter-spacing: 4px; 
+} 
+ 
+.discord-box > p:not(.eyebrow) { 
+    max-width: 500px; 
+ 
+    margin: 0 auto 30px; 
+ 
+    color: #777; 
+ 
+    font-size: 13px; 
+ 
+    line-height: 1.8; 
+} 
+ 
+.discord-button { 
+    display: inline-block; 
+ 
+    text-decoration: none; 
+ 
+    background: white; 
+ 
+    color: black; 
+ 
+    border: 1px solid white; 
+} 
+ 
+.discord-button:hover { 
+    background: #ccc; 
+ 
+    transform: translateY(-3px); 
+} 
+ 
+ 
+/* ================= MODAL ================= */ 
+ 
+.modal { 
+    position: fixed; 
+ 
+    inset: 0; 
+ 
+    z-index: 2000; 
+ 
+    display: none; 
+ 
+    align-items: center; 
+    justify-content: center; 
+ 
+    padding: 20px; 
+ 
+    background: rgba(0,0,0,0.8); 
+ 
+    backdrop-filter: blur(8px); 
+} 
+ 
+.modal.show { 
+    display: flex; 
+} 
+ 
+.modal-box { 
+    position: relative; 
+ 
+    width: min(550px, 100%); 
+ 
+    padding: 45px; 
+ 
+    background: #101010; 
+ 
+    border: 1px solid #444; 
+ 
+    box-shadow: 0 20px 80px rgba(0,0,0,0.8); 
+ 
+    animation: modalIn 0.25s ease; 
+} 
+ 
+@keyframes modalIn { 
+    from { 
+        opacity: 0; 
+        transform: scale(0.95); 
+    } 
+ 
+    to { 
+        opacity: 1; 
+        transform: scale(1); 
+    } 
+} 
+ 
+.modal-box h2 { 
+    margin-bottom: 18px; 
+ 
+    letter-spacing: 3px; 
+} 
+ 
+.modal-box p:not(.eyebrow) { 
+    margin-bottom: 25px; 
+ 
+    color: #888; 
+ 
+    line-height: 1.7; 
+} 
+ 
+.close-modal { 
+    position: absolute; 
+ 
+    top: 15px; 
+    right: 18px; 
+ 
+    background: transparent; 
+ 
+    border: none; 
+ 
+    color: #777; 
+ 
+    font-size: 28px; 
+ 
+    cursor: pointer; 
+} 
+ 
+.close-modal:hover { 
+    color: white; 
+} 
+ 
+ 
+/* ================= FOOTER ================= */ 
+ 
+footer { 
+    padding: 40px 20px; 
+ 
+    text-align: center; 
+ 
+    border-top: 1px solid #222; 
+ 
+    color: #666; 
+} 
+ 
+.footer-logo { 
+    color: #ddd; 
+ 
+    font-weight: bold; 
+ 
+    letter-spacing: 3px; 
+} 
+ 
+footer p { 
+    margin: 12px 0; 
+ 
+    font-size: 10px; 
+ 
+    letter-spacing: 4px; 
+} 
+ 
+ 
+/* ================= MOBILE ================= */ 
+ 
+@media (max-width: 750px) { 
+ 
+    .navbar { 
+        flex-wrap: wrap; 
+    } 
+ 
+    .menu-toggle { 
+        display: block; 
+    } 
+ 
+    nav { 
+        display: none; 
+ 
+        width: 100%; 
+ 
+        flex-direction: column; 
+ 
+        padding-top: 10px; 
+    } 
+ 
+    nav.open { 
+        display: flex; 
+    } 
+ 
+    nav button { 
+        width: 100%; 
+ 
+        padding: 12px; 
+    } 
+ 
+    .section { 
+        padding: 70px 5%; 
+    } 
+ 
+    .hero { 
+        padding-top: 30px; 
+    } 
+ 
+    .hero h1 { 
+        letter-spacing: 5px; 
+    } 
+ 
+    .subtitle { 
+        letter-spacing: 4px; 
+ 
+        font-size: 10px; 
+    } 
+ 
+    .leader { 
+        grid-template-columns: 
+            40px 1fr 65px 65px; 
+ 
+        padding: 16px 12px; 
+ 
+        font-size: 12px; 
+    } 
+ 
+    .modal-box { 
+        padding: 35px 25px; 
+    } 
+} 
+/* ================= PLAYER ROLES ================= */ 
+ 
+.rank { 
+    display: inline-block; 
+    padding: 5px 9px; 
+    border: 1px solid #333; 
+    background: #151515; 
+    border-radius: 2px; 
+} 
+ 
+.rank.founder { 
+    color: #fff; 
+    border-color: #777; 
+} 
+ 
+.rank.president { 
+    color: #ddd; 
+    border-color: #666; 
+} 
+ 
+.rank.vice-president { 
+    color: #bbb; 
+    border-color: #555; 
+} 
+ 
+.rank.governor { 
+    color: #aaa; 
+    border-color: #555; 
+} 
+ 
+.rank.civilian { 
+    color: #777; 
+    border-color: #333; 
+} 
+
+
+/* ==========================================
+   MCTIERS-STYLE PVP TIER LIST
+   ========================================== */
+
+.mc-tiers {
     max-width: 1000px;
-    margin: 70px auto 80px;
-
-    text-align: center;
+    margin: 45px auto 0;
 }
 
-.eyebrow {
-    margin-bottom: 15px;
-
-    color: #aaaaaa;
-
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 5px;
-}
-
-.hero h1 {
-    font-size: clamp(60px, 12vw, 130px);
-
-    font-weight: 900;
-
-    letter-spacing: 12px;
-    line-height: 0.9;
-
-    text-indent: 12px;
-
-    text-shadow:
-        0 4px 20px rgba(0,0,0,0.9);
-}
-
-.hero-subtitle {
-    margin-top: 28px;
-
-    color: #cccccc;
-
-    font-size: 13px;
-    letter-spacing: 7px;
-}
-
-.server-status {
-    margin-top: 30px;
-
-    display: inline-flex;
-    align-items: center;
-
-    gap: 9px;
-
-    color: #aaaaaa;
-
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #72ff72;
-
-    box-shadow:
-        0 0 12px rgba(114,255,114,0.7);
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-
-    max-width: 650px;
-
-    margin: 35px auto;
-}
-
-.stat-card {
-    padding: 20px;
-
-    background: rgba(10,10,10,0.82);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    border-radius: 5px;
-
-    backdrop-filter: blur(5px);
-
-    transition: 0.2s;
-}
-
-.stat-card:hover {
-    transform: translateY(-3px);
-
-    border-color: #444444;
-}
-
-.stat-number {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: #eeeeee;
-
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.stat-label {
-    color: #777777;
-
-    font-size: 9px;
-    font-weight: bold;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.hero-buttons {
+.mc-tier-tabs {
     display: flex;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    margin-top: 30px;
-}
-
-.primary-button,
-.secondary-button,
-.discord-button {
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 44px;
-
-    padding: 0 22px;
-
-    border-radius: 3px;
-
-    font-size: 10px;
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    text-decoration: none;
-
-    transition: 0.2s;
-}
-
-.primary-button {
-    background: #eeeeee;
-
-    border: 1px solid #eeeeee;
-
-    color: #080808;
-}
-
-.primary-button:hover {
-    background: #ffffff;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 25px rgba(255,255,255,0.08);
-}
-
-.secondary-button {
-    background: rgba(17,17,17,0.9);
-
-    border: 1px solid #292929;
-
-    color: #bbbbbb;
-}
-
-.secondary-button:hover {
-    color: white;
-
-    border-color: #444444;
-
-    transform: translateY(-2px);
-}
-
-.copy-message {
-    min-height: 18px;
-
-    margin-top: 14px;
-
-    color: #aaaaaa;
-
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   HOME CARDS
-========================================================= */
-
-.home-cards {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 12px;
-}
-
-.info-card {
-    padding: 28px 22px;
-
-    background: rgba(10,10,10,0.82);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    cursor: pointer;
-
-    transition: 0.25s;
-
-    backdrop-filter: blur(5px);
-}
-
-.info-card:hover {
-    transform: translateY(-5px);
-
-    border-color: #383838;
-
-    background: rgba(16,16,16,0.9);
-}
-
-.card-number {
-    color: #666666;
-
-    font-size: 11px;
-    font-weight: bold;
-}
-
-.info-card h3 {
-    margin: 20px 0 8px;
-
-    font-size: 15px;
-
-    letter-spacing: 2px;
-}
-
-.info-card p {
-    color: #888888;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   PAGE TITLES
-========================================================= */
-
-.page-title {
-    text-align: center;
-
-    margin-bottom: 55px;
-}
-
-.page-title p {
-    margin-bottom: 8px;
-
-    color: #888888;
-
-    font-size: 10px;
-    font-weight: bold;
-
-    letter-spacing: 4px;
-}
-
-.page-title h2 {
-    font-size: clamp(30px, 5vw, 55px);
-
-    letter-spacing: 5px;
-
-    text-shadow:
-        0 4px 20px rgba(0,0,0,0.8);
-}
-
-
-/* =========================================================
-   RULES
-========================================================= */
-
-.rules-container {
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.rule {
-    margin-bottom: 8px;
-
-    background: rgba(10,10,10,0.84);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    backdrop-filter: blur(5px);
-}
-
-.rule-button {
-    width: 100%;
-
-    padding: 22px;
-
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    background: transparent;
-
-    border: none;
-
-    color: #dddddd;
-
-    font-size: 12px;
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    text-align: left;
-
-    cursor: pointer;
-}
-
-.rule-button b {
-    color: #999999;
-
-    font-size: 20px;
-
-    font-weight: normal;
-}
-
-.rule-content {
-    max-height: 0;
-
-    overflow: hidden;
-
-    transition:
-        max-height 0.3s ease;
-}
-
-.rule-content p {
-    padding:
-        0 22px 22px;
-
-    color: #888888;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-}
-
-.rule.open .rule-content {
-    max-height: 200px;
-}
-
-
-/* =========================================================
-   PLAYERS
-========================================================= */
-
-.player-search {
-    max-width: 500px;
-
-    margin:
-        0 auto 30px;
-}
-
-.player-search input {
-    width: 100%;
-
-    padding: 15px 18px;
-
-    background:
-        rgba(10,10,10,0.85);
-
-    border:
-        1px solid #222222;
-
-    outline: none;
-
-    color: white;
-
-    font-size: 11px;
-
-    letter-spacing: 1px;
-}
-
-.player-search input:focus {
-    border-color: #444444;
-}
-
-.players-grid {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 10px;
-}
-
-.player-card {
-    padding: 20px;
-
-    background:
-        rgba(10,10,10,0.84);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    transition: 0.2s;
-
-    backdrop-filter: blur(5px);
-}
-
-.player-card:hover {
-    transform:
-        translateY(-3px);
-
-    border-color:
-        #383838;
-}
-
-.avatar {
-    width: 52px;
-    height: 52px;
-
-    margin-bottom: 15px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        #1a1a1a;
-
-    border:
-        1px solid #303030;
-
-    font-size: 20px;
-
-    font-weight: bold;
-}
-
-.player-card h3 {
-    margin-bottom: 8px;
-
-    font-size: 14px;
-}
-
-.rank {
-    display: inline-block;
-
-    padding: 5px 9px;
-
-    background: #151515;
-
-    border:
-        1px solid #333333;
-
-    border-radius: 2px;
-
-    font-size: 8px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.rank.founder {
-    color: #ffffff;
-}
-
-.rank.president {
-    color: #dddddd;
-}
-
-.rank.vice-president {
-    color: #bbbbbb;
-}
-
-.rank.governor {
-    color: #aaaaaa;
-}
-
-.rank.civilian {
-    color: #777777;
-}
-
-.no-players {
-    display: none;
-
-    margin-top: 30px;
-
-    text-align: center;
-
-    color: #777777;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
-.events-grid {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 14px;
-}
-
-.event-card {
-    padding: 28px;
-
-    background:
-        rgba(10,10,10,0.84);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    transition: 0.25s;
-
-    backdrop-filter: blur(5px);
-}
-
-.event-card:hover {
-    transform:
-        translateY(-4px);
-
-    border-color:
-        #383838;
-}
-
-.event-top {
-    display: flex;
-
-    align-items: center;
-
-    justify-content:
-        space-between;
-}
-
-.event-tag {
-    padding:
-        5px 8px;
-
-    font-size: 8px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    border:
-        1px solid #333333;
-}
-
-.event-tag.upcoming {
-    color: #dddddd;
-}
-
-.event-tag.completed {
-    color: #777777;
-}
-
-.event-symbol {
-    color: #999999;
-
-    font-size: 24px;
-}
-
-.event-card h3 {
-    margin:
-        35px 0 10px;
-
-    font-size: 17px;
-
-    letter-spacing: 2px;
-}
-
-.event-card p {
-    min-height: 50px;
-
-    color: #888888;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-}
-
-.countdown {
-    margin:
-        20px 0;
-
-    color: #cccccc;
-
-    font-size: 11px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-}
-
-.event-button {
-    width: 100%;
-
-    padding: 12px;
-
-    background: #111111;
-
-    border:
-        1px solid #292929;
-
-    color: #aaaaaa;
-
-    cursor: pointer;
-
-    font-size: 9px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    transition: 0.2s;
-}
-
-.event-button:hover {
-    color: white;
-
-    border-color: #444444;
-}
-
-
-/* =========================================================
-   PVP TIER TABS
-========================================================= */
-
-.tier-tabs {
-    max-width: 1120px;
-
-    margin: 0 auto;
-
-    display: flex;
-
     overflow-x: auto;
-
-    background:
-        rgba(13,19,27,0.94);
-
-    border:
-        1px solid #1d2936;
-
+    border: 1px solid #1d2936;
     border-bottom: none;
-
-    border-radius:
-        16px 16px 0 0;
-
-    scrollbar-width: none;
+    background: #0d141c;
+    scrollbar-width: thin;
 }
 
-.tier-tabs::-webkit-scrollbar {
-    display: none;
-}
-
-.tier-tab {
-    min-width: 105px;
-
-    height: 72px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 5px;
-
-    background: transparent;
-
+.mc-tier-tab {
+    min-width: 98px;
+    padding: 13px 12px 11px;
+    background: #0d141c;
     border: none;
-
-    border-bottom:
-        2px solid transparent;
-
-    color: #566273;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-
+    border-right: 1px solid #1a2633;
+    color: #657385;
     font-family: inherit;
-}
-
-.tier-tab span {
-    font-size: 22px;
-
-    line-height: 1;
-}
-
-.tier-tab small {
-    font-size: 10px;
-
     font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.tier-tab:hover {
-    background:
-        #111a24;
-
-    color:
-        #b9c3cf;
-}
-
-.tier-tab.active {
-    color: #ffffff;
-
-    border-bottom-color:
-        #ffffff;
-
-    background:
-        #111821;
-}
-
-
-/* =========================================================
-   TIER LIST
-========================================================= */
-
-.tier-list {
-    max-width: 1120px;
-
-    margin: auto;
-
-    padding:
-        0 10px 10px;
-
-    background:
-        rgba(16,23,33,0.96);
-
-    border:
-        1px solid #1d2936;
-
-    border-radius:
-        0 0 16px 16px;
-
-    overflow: hidden;
-}
-
-.tier-header {
-    display: grid;
-
-    grid-template-columns:
-        155px
-        minmax(380px, 1fr)
-        80px
-        minmax(360px, 1fr);
-
-    align-items: center;
-
-    padding:
-        16px 15px;
-
-    color: #3f4b5c;
-
-    font-size: 11px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    background:
-        #101721;
-}
-
-
-/* =========================================================
-   TIER PLAYER
-========================================================= */
-
-.tier-player {
-    min-height: 78px;
-
-    display: grid;
-
-    grid-template-columns:
-        155px
-        minmax(380px, 1fr)
-        80px
-        minmax(360px, 1fr);
-
-    align-items: center;
-
-    margin-bottom: 8px;
-
-    background:
-        #131c27;
-
-    border:
-        1px solid #202d3c;
-
-    border-radius:
-        11px;
-
-    overflow: hidden;
-
+    font-size: 12px;
+    cursor: pointer;
     transition: 0.2s;
 }
 
-.tier-player:hover {
-    background:
-        #17212d;
-
-    border-color:
-        #34465a;
-
-    transform:
-        translateX(3px);
+.mc-tier-tab span {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 17px;
 }
 
+.mc-tier-tab:hover,
+.mc-tier-tab.active {
+    color: #f0f3f7;
+    background: #111a24;
+    box-shadow: inset 0 -2px 0 #eeeeee;
+}
 
-/* =========================================================
-   TIER RANK
-========================================================= */
+.mc-tier-panel {
+    padding: 15px 12px 8px;
+    background: #111923;
+    border: 1px solid #1d2936;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.28);
+}
 
-.tier-rank {
-    height: 100%;
-
-    min-height: 78px;
-
+.mc-tier-topbar {
     display: flex;
-
     align-items: center;
-
-    padding-left: 20px;
-
-    color: #f2f4f7;
-
-    font-size: 32px;
-
-    font-weight: 900;
-
-    font-style: italic;
+    justify-content: flex-end;
+    gap: 12px;
+    min-height: 42px;
 }
 
-.rank-1 {
-    background:
-        linear-gradient(
-            120deg,
-            #f3b82f,
-            #e7a923
-        );
-
-    color: white;
-
-    font-size: 34px;
+.mc-tier-info {
+    padding: 9px 13px;
+    background: #202b39;
+    border-radius: 7px;
+    color: #eef2f6;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.rank-2 {
-    background:
-        linear-gradient(
-            120deg,
-            #9daab2,
-            #7d8b95
-        );
-}
-
-.rank-3 {
-    background:
-        linear-gradient(
-            120deg,
-            #bd6726,
-            #98501c
-        );
-}
-
-
-/* =========================================================
-   TIER PLAYER INFO
-========================================================= */
-
-.tier-player-info {
+.mc-tier-server {
     display: flex;
-
     align-items: center;
-
-    gap: 14px;
-
-    padding:
-        8px 15px;
-}
-
-.minecraft-head {
-    width: 62px;
-
-    height: 62px;
-
-    flex-shrink: 0;
-
-    overflow: hidden;
-}
-
-.minecraft-head img {
-    width: 100%;
-
-    height: 100%;
-
-    image-rendering: pixelated;
-}
-
-.tier-player-info h3 {
-    margin:
-        0 0 5px;
-
-    color:
-        #dce5ef;
-
-    font-size: 21px;
-}
-
-.tier-player-info p {
-    margin: 0;
-
-    color:
-        #8da1b7;
-
-    font-size: 13px;
-}
-
-.tier-player-info p span {
-    color:
-        #71869d;
-}
-
-
-/* =========================================================
-   REGION
-========================================================= */
-
-.region {
-    width: 42px;
-
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius:
-        8px;
-
-    font-size: 16px;
-
-    font-weight: 900;
-}
-
-.region.na {
-    background:
-        #45242b;
-
-    color:
-        #e75d70;
-}
-
-.region.eu {
-    background:
-        #173d23;
-
-    color:
-        #64e47a;
-}
-
-
-/* =========================================================
-   TIER BADGES
-========================================================= */
-
-.tier-badges {
-    display: flex;
-
-    align-items: center;
-
     gap: 7px;
-
-    padding:
-        10px 12px;
-
-    flex-wrap: wrap;
+    color: #d5dce4;
+    font-size: 10px;
+    font-weight: bold;
 }
 
-.tier-badge {
-    min-width: 34px;
+.mc-tier-server b {
+    padding: 6px 8px;
+    background: #202b39;
+    border-radius: 5px;
+    color: #8fa4bb;
+}
 
-    padding: 5px;
+.mc-tier-server > span {
+    color: #6da7ff;
+    font-size: 16px;
+}
 
-    text-align: center;
-
-    border-radius:
-        8px;
-
-    background:
-        #182230;
-
-    border:
-        1px solid #29394b;
-
+.mc-tier-headings {
+    display: grid;
+    grid-template-columns: 145px minmax(240px, 1fr) 75px 360px;
+    gap: 0;
+    padding: 13px 12px 9px;
+    color: #465569;
     font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
+.mc-tier-headings span:first-child {
+    text-align: left;
+}
+
+.mc-tier-headings span:nth-child(2) {
+    text-align: left;
+}
+
+.mc-tier-headings span:nth-child(3),
+.mc-tier-headings span:nth-child(4) {
+    text-align: center;
+}
+
+.mc-tier-row {
+    display: grid;
+    grid-template-columns: 145px minmax(240px, 1fr) 75px 360px;
+    align-items: center;
+    min-height: 80px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    background: #141d27;
+    border: 1px solid #202d3a;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.mc-tier-row:hover {
+    background: #17222e;
+    border-color: #2d3d4e;
+}
+
+.mc-tier-number {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    background: linear-gradient(90deg, #273543, #1a2530);
+    color: #f3f5f7;
+    font-size: 29px;
+    font-style: italic;
     font-weight: 900;
 }
 
-
-/* HIGH TIERS */
-
-.tier-badge.ht1 {
-    color:
-        #ffd447;
-
-    border-color:
-        #554718;
-
-    background:
-        #292719;
+.mc-tier-row:nth-child(1) .mc-tier-number {
+    background: linear-gradient(90deg, #f2b632, #d99d2d);
+    color: white;
 }
 
-.tier-badge.ht2 {
-    color:
-        #f4c84b;
-
-    border-color:
-        #493d20;
-
-    background:
-        #27251b;
+.mc-tier-row:nth-child(2) .mc-tier-number {
+    background: linear-gradient(90deg, #a7b5bc, #899aa3);
 }
 
-.tier-badge.ht3 {
-    color:
-        #d99345;
-
-    border-color:
-        #523721;
-
-    background:
-        #29221b;
+.mc-tier-row:nth-child(3) .mc-tier-number {
+    background: linear-gradient(90deg, #b96929, #99521e);
 }
 
-.tier-badge.ht4 {
-    color:
-        #9b9bd0;
-
-    border-color:
-        #36365c;
-
-    background:
-        #222337;
-}
-
-
-/* LOW TIERS */
-
-.tier-badge.lt1 {
-    color:
-        #ffd447;
-
-    border-color:
-        #554718;
-
-    background:
-        #292719;
-}
-
-.tier-badge.lt2 {
-    color:
-        #a8b4c4;
-
-    border-color:
-        #354353;
-
-    background:
-        #202936;
-}
-
-.tier-badge.lt3 {
-    color:
-        #c47d3d;
-
-    border-color:
-        #56381f;
-
-    background:
-        #2a241f;
-}
-
-
-/* =========================================================
-   TIER NOTE
-========================================================= */
-
-.tier-note {
-    text-align: center;
-
-    margin-top: 20px;
-
-    color:
-        #8a96a5;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   DISCORD
-========================================================= */
-
-.discord-box {
-    max-width: 700px;
-
-    margin:
-        70px auto;
-
-    padding:
-        70px 30px;
-
-    text-align: center;
-
-    background:
-        rgba(10,10,10,0.86);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    backdrop-filter:
-        blur(6px);
-}
-
-.discord-box h2 {
-    margin-bottom: 20px;
-
-    font-size: 35px;
-
-    letter-spacing: 4px;
-}
-
-.discord-box p:not(.eyebrow) {
-    max-width: 500px;
-
-    margin:
-        0 auto 30px;
-
-    color:
-        #888888;
-
-    font-size: 13px;
-
-    line-height: 1.8;
-}
-
-.discord-button {
-    background:
-        #eeeeee;
-
-    color:
-        #080808;
-
-    border:
-        1px solid #eeeeee;
-}
-
-.discord-button:hover {
-    background:
-        white;
-
-    transform:
-        translateY(-2px);
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 2000;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    background:
-        rgba(0,0,0,0.75);
-
-    backdrop-filter:
-        blur(8px);
-}
-
-.modal.show {
+.mc-tier-player {
     display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 8px;
 }
 
-.modal-box {
-    position: relative;
+.mc-tier-head {
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+    image-rendering: pixelated;
+    object-fit: cover;
+    background: #202b37;
+    border: 1px solid #344352;
+}
 
-    width: 100%;
+.mc-tier-player strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #dce8f7;
+    font-size: 19px;
+}
 
-    max-width: 500px;
+.mc-tier-player span {
+    display: block;
+    color: #7890a9;
+    font-size: 12px;
+}
 
-    padding:
-        45px 35px;
+.mc-tier-region {
+    justify-self: center;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 900;
+}
 
+.mc-tier-region.na {
+    background: #48242c;
+    color: #e56b78;
+}
+
+.mc-tier-region.eu {
+    background: #193d24;
+    color: #65e877;
+}
+
+.mc-tier-badges {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 8px 10px;
+    background: #121a23;
+    min-height: 78px;
+}
+
+.mc-tier-badge-box {
+    width: 39px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.mc-tier-badge-box.single {
+    width: 48px;
+}
+
+.mc-tier-mode-icon {
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #273342;
+    border-radius: 50%;
+    background: #0d141c;
+    color: #d9e1ea;
+    font-size: 13px;
+}
+
+.mc-tier-badge {
+    min-width: 35px;
+    padding: 3px 5px;
+    border-radius: 8px;
+    color: #f1f3f5;
+    font-size: 11px;
+    font-weight: 900;
     text-align: center;
-
-    background:
-        #0d0d0d;
-
-    border:
-        1px solid #292929;
-
-    animation:
-        modalIn 0.25s ease;
 }
 
-@keyframes modalIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            scale(0.96)
-            translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            scale(1)
-            translateY(0);
-    }
+.mc-tier-badge.ht1 {
+    background: #b28a24;
+    color: #fff0ad;
 }
 
-.modal-close {
-    position: absolute;
-
-    top: 12px;
-    right: 15px;
-
-    background:
-        transparent;
-
-    border:
-        none;
-
-    color:
-        #666666;
-
-    font-size:
-        28px;
-
-    cursor:
-        pointer;
+.mc-tier-badge.ht2 {
+    background: #49586a;
+    color: #d7e0ea;
 }
 
-.modal-close:hover {
-    color:
-        white;
+.mc-tier-badge.ht3 {
+    background: #4c5261;
+    color: #d6d9df;
 }
 
-.modal-box h2 {
-    margin-bottom:
-        20px;
-
-    font-size:
-        30px;
-
-    letter-spacing:
-        3px;
+.mc-tier-badge.ht4 {
+    background: #5b5873;
+    color: #e1dcff;
 }
 
-.modal-box p:not(.eyebrow) {
-    margin-bottom:
-        25px;
-
-    color:
-        #777777;
-
-    font-size:
-        13px;
-
-    line-height:
-        1.8;
+.mc-tier-badge.lt1 {
+    background: #5c5420;
+    color: #f2e47c;
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding:
-        40px 20px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    border-top:
-        1px solid #161616;
-
-    background:
-        #060606;
+.mc-tier-badge.lt2 {
+    background: #333d4b;
+    color: #b9c6d5;
 }
 
-footer strong {
-    font-size:
-        13px;
-
-    letter-spacing:
-        3px;
+.mc-tier-badge.lt3 {
+    background: #6c4729;
+    color: #f0ad70;
 }
 
-footer span {
-    color:
-        #555555;
-
-    font-size:
-        9px;
-
-    letter-spacing:
-        2px;
+.mc-tier-note {
+    margin-top: 12px;
+    color: #505f70;
+    font-size: 10px;
+    text-align: center;
 }
 
-footer small {
-    margin-top:
-        8px;
-
-    color:
-        #3f3f3f;
-
-    font-size:
-        9px;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .home-cards {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .players-grid {
-        grid-template-columns:
-            repeat(3, 1fr);
-    }
-
-    .events-grid {
-        grid-template-columns:
-            1fr;
-
-        max-width:
-            600px;
+@media (max-width: 1050px) {
+    .mc-tier-headings,
+    .mc-tier-row {
+        grid-template-columns: 90px minmax(210px, 1fr) 60px 300px;
     }
 }
-
-
-/* =========================================================
-   PVP TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .tier-header {
-        display:
-            none;
-    }
-
-    .tier-player {
-        grid-template-columns:
-            75px
-            1fr
-            80px;
-    }
-
-    .tier-badges {
-        grid-column:
-            2 / 4;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media (max-width: 750px) {
-
-    .navbar {
-        flex-wrap:
-            wrap;
+    .mc-tiers {
+        overflow: hidden;
     }
 
-    .menu-toggle {
-        display:
-            block;
+    .mc-tier-tabs {
+        border-bottom: 1px solid #1d2936;
     }
 
-    .nav-menu {
-        display:
-            none;
-
-        width:
-            100%;
-
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-        padding-top:
-            10px;
+    .mc-tier-tab {
+        min-width: 88px;
     }
 
-    .nav-menu.open {
-        display:
-            flex;
+    .mc-tier-panel {
+        overflow-x: auto;
     }
 
-    .nav-btn {
-        width:
-            100%;
-
-        text-align:
-            left;
+    .mc-tier-topbar {
+        justify-content: flex-start;
+        min-width: 720px;
     }
 
-    .section {
-        padding:
-            70px 5%;
-
-        background-position:
-            center;
+    .mc-tier-headings,
+    .mc-tier-row {
+        min-width: 720px;
+        grid-template-columns: 85px 230px 60px 300px;
     }
 
-    .hero {
-        margin-top:
-            35px;
-    }
-
-    .hero h1 {
-        font-size:
-            clamp(50px, 17vw, 90px);
-
-        letter-spacing:
-            7px;
-
-        text-indent:
-            7px;
-    }
-
-    .hero-subtitle {
-        font-size:
-            9px;
-
-        letter-spacing:
-            4px;
-    }
-
-    .stats {
-        grid-template-columns:
-            1fr;
-
-        max-width:
-            300px;
-    }
-
-    .hero-buttons {
-        flex-direction:
-            column;
-
-        max-width:
-            300px;
-
-        margin-left:
-            auto;
-
-        margin-right:
-            auto;
-    }
-
-    .home-cards {
-        grid-template-columns:
-            1fr;
-    }
-
-    .players-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .discord-box {
-        padding:
-            50px 20px;
-    }
-
-    .discord-box h2 {
-        font-size:
-            25px;
-    }
-
-
-    /* PVP */
-
-    .tier-tabs {
-        border-radius:
-            10px 10px 0 0;
-    }
-
-    .tier-tab {
-        min-width:
-            82px;
-
-        height:
-            65px;
-    }
-
-    .tier-tab span {
-        font-size:
-            18px;
-    }
-
-    .tier-tab small {
-        font-size:
-            8px;
-    }
-
-    .tier-list {
-        padding:
-            0 6px 6px;
-    }
-
-    .tier-player {
-        display:
-            grid;
-
-        grid-template-columns:
-            65px 1fr;
-
-        padding:
-            0;
-    }
-
-    .tier-rank {
-        min-height:
-            100%;
-
-        padding-left:
-            15px;
-
-        font-size:
-            25px;
-    }
-
-    .tier-player-info {
-        padding:
-            12px;
-    }
-
-    .tier-player > .region {
-        grid-column:
-            1;
-
-        margin:
-            0 auto 12px;
-    }
-
-    .tier-badges {
-        grid-column:
-            2;
-
-        padding:
-            0 12px 14px;
-    }
-
-    .tier-player-info h3 {
-        font-size:
-            16px;
-    }
-
-    .tier-player-info p {
-        font-size:
-            10px;
-    }
-
-    .minecraft-head {
-        width:
-            50px;
-
-        height:
-            50px;
-    }
-
-    .tier-badges {
-        gap:
-            5px;
-    }
-
-    .tier-badge {
-        min-width:
-            31px;
-
-        padding:
-            4px;
-
-        font-size:
-            9px;
+    .mc-tier-player strong {
+        font-size: 16px;
     }
 }
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 450px) {
-
-    .players-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-    .tier-player {
-        grid-template-columns:
-            55px 1fr;
-    }
-
-    .tier-player-info {
-        gap:
-            9px;
-    }
-
-    .tier-player-info h3 {
-        font-size:
-            14px;
-    }
-
-    .tier-player-info p {
-        font-size:
-            9px;
-    }
-
-    .tier-badge {
-        min-width:
-            28px;
-
-        font-size:
-            8px;
-    }
-}
-```
