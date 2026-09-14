@@ -1,2005 +1,1473 @@
-```css
-/* =========================================================
-   ELYSIUM SMP
-   MAIN STYLESHEET
-   STATIC MINECRAFT BACKGROUNDS
-========================================================= */
-
-
-/* ================= RESET ================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #050505;
-    color: #eeeeee;
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
 
-/* =========================================================
-   GLOBAL BACKGROUND
-========================================================= */
+    <meta charset="UTF-8">
 
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    background: #050505;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
+    <meta
+        name="description"
+        content="Elysium SMP — Survive. Build. Conquer."
+    >
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+    <title>✧ ELYSIUM SMP ✧</title>
 
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-    min-height: 70px;
-    padding: 15px 6%;
+</head>
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
 
-    background: rgba(5, 5, 5, 0.88);
-    border-bottom: 1px solid #1b1b1b;
+<body>
 
-    backdrop-filter: blur(12px);
-}
+    <div class="background"></div>
 
-.logo {
-    font-size: 21px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    cursor: pointer;
-    transition: 0.25s;
-}
 
-.logo:hover {
-    text-shadow: 0 0 18px rgba(255,255,255,0.45);
-}
+    <!-- ================= NAVBAR ================= -->
 
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
+    <nav class="navbar">
 
-.nav-btn {
-    padding: 10px 14px;
+        <div
+            class="logo"
+            onclick="showSection('home')"
+        >
+            ✧ ELYSIUM ✧
+        </div>
 
-    background: transparent;
-    border: none;
-    border-radius: 4px;
 
-    color: #777777;
+        <button
+            class="menu-toggle"
+            onclick="toggleMenu()"
+        >
+            ☰
+        </button>
 
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
 
-    cursor: pointer;
-    transition: 0.2s;
-}
+        <div
+            class="nav-menu"
+            id="navMenu"
+        >
 
-.nav-btn:hover {
-    color: #ffffff;
-    background: #151515;
-}
+            <button
+                class="nav-btn active"
+                onclick="showSection('home')"
+            >
+                HOME
+            </button>
 
-.nav-btn.active {
-    color: #ffffff;
-    background: #181818;
-}
+            <button
+                class="nav-btn"
+                onclick="showSection('rules')"
+            >
+                RULES
+            </button>
 
-.menu-toggle {
-    display: none;
+            <button
+                class="nav-btn"
+                onclick="showSection('players')"
+            >
+                PLAYERS
+            </button>
 
-    background: transparent;
-    border: none;
+            <button
+                class="nav-btn"
+                onclick="showSection('events')"
+            >
+                EVENTS
+            </button>
 
-    color: white;
-    font-size: 25px;
+            <button
+                class="nav-btn"
+                onclick="showSection('pvp')"
+            >
+                PVP
+            </button>
 
-    cursor: pointer;
-}
+            <button
+                class="nav-btn"
+                onclick="showSection('discord')"
+            >
+                DISCORD
+            </button>
 
+        </div>
 
-/* =========================================================
-   SECTIONS
-========================================================= */
+    </nav>
 
-.section {
-    position: relative;
-    isolation: isolate;
 
-    display: none;
 
-    min-height: 85vh;
-    padding: 90px 7%;
+    <main>
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    animation: sectionIn 0.45s ease;
-}
+        <!-- ================= HOME ================= -->
 
+        <section
+            id="home"
+            class="section active"
+        >
 
-/* Dark overlay */
+            <div class="hero">
 
-.section::before {
-    content: "";
+                <p class="eyebrow">
+                    WELCOME TO
+                </p>
 
-    position: absolute;
-    inset: 0;
+                <h1>
+                    ELYSIUM
+                </h1>
 
-    z-index: -1;
+                <p class="hero-subtitle">
+                    SURVIVE. BUILD. CONQUER.
+                </p>
 
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.70),
-            rgba(0,0,0,0.84)
-        );
-}
 
+                <div class="server-status">
 
-/* Keep content above background */
+                    <span class="status-dot"></span>
 
-.section > * {
-    position: relative;
-    z-index: 1;
-}
+                    SERVER ONLINE
 
+                </div>
 
-/* =========================================================
-   INDIVIDUAL SECTION BACKGROUNDS
-========================================================= */
 
-#home {
-    background-image: url("home-bg.png");
-}
+                <div class="stats">
 
-#rules {
-    background-image: url("rules-bg.png");
-}
+                    <div class="stat-card">
 
-#players {
-    background-image: url("players-bg.png");
-}
+                        <span class="stat-number" id="playerCount">
+                            12 / 50
+                        </span>
 
-#events {
-    background-image: url("events-bg.png");
-}
+                        <span class="stat-label">
+                            PLAYERS
+                        </span>
 
-#pvp {
-    background-image: url("pvp-bg.png");
-}
+                    </div>
 
-#discord {
-    background-image: url("discord-bg.png");
-}
 
+                    <div class="stat-card">
 
-/* =========================================================
-   SECTION OVERLAYS
-========================================================= */
+                        <span class="stat-number">
+                            1.21+
+                        </span>
 
-#home::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.55),
-            rgba(0,0,0,0.82)
-        );
-}
+                        <span class="stat-label">
+                            VERSION
+                        </span>
 
-#rules::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.68),
-            rgba(0,0,0,0.87)
-        );
-}
+                    </div>
 
-#players::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.62),
-            rgba(0,0,0,0.84)
-        );
-}
 
-#events::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.58),
-            rgba(0,0,0,0.84)
-        );
-}
+                    <div class="stat-card">
 
-#pvp::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.60),
-            rgba(0,0,0,0.86)
-        );
-}
+                        <span class="stat-number">
+                            JAVA + BEDROCK
+                        </span>
 
-#discord::before {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.65),
-            rgba(0,0,0,0.84)
-        );
-}
+                        <span class="stat-label">
+                            PLATFORM
+                        </span>
 
+                    </div>
 
-.section.active {
-    display: block;
-}
+                </div>
 
 
-@keyframes sectionIn {
+                <div class="hero-buttons">
 
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
+                    <button
+                        class="primary-button"
+                        onclick="copyIP()"
+                    >
+                        JOIN SERVER
+                    </button>
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
+                    <button
+                        class="secondary-button"
+                        onclick="showSection('events')"
+                    >
+                        VIEW EVENTS
+                    </button>
 
-/* =========================================================
-   HERO
-========================================================= */
+                </div>
 
-.hero {
-    max-width: 1000px;
-    margin: 70px auto 80px;
 
-    text-align: center;
-}
+                <p
+                    id="copyMessage"
+                    class="copy-message"
+                ></p>
 
-.eyebrow {
-    margin-bottom: 15px;
+            </div>
 
-    color: #aaaaaa;
 
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 5px;
-}
 
-.hero h1 {
-    font-size: clamp(60px, 12vw, 130px);
+            <div class="home-cards">
 
-    font-weight: 900;
+                <div
+                    class="info-card"
+                    onclick="showSection('rules')"
+                >
 
-    letter-spacing: 12px;
-    line-height: 0.9;
+                    <span class="card-number">
+                        01
+                    </span>
 
-    text-indent: 12px;
+                    <h3>
+                        RULES
+                    </h3>
 
-    text-shadow:
-        0 4px 20px rgba(0,0,0,0.9);
-}
+                    <p>
+                        Play fair. Respect everyone.
+                    </p>
 
-.hero-subtitle {
-    margin-top: 28px;
+                </div>
 
-    color: #cccccc;
 
-    font-size: 13px;
-    letter-spacing: 7px;
-}
+                <div
+                    class="info-card"
+                    onclick="showSection('players')"
+                >
 
-.server-status {
-    margin-top: 30px;
+                    <span class="card-number">
+                        02
+                    </span>
 
-    display: inline-flex;
-    align-items: center;
+                    <h3>
+                        PLAYERS
+                    </h3>
 
-    gap: 9px;
+                    <p>
+                        Meet the people of Elysium.
+                    </p>
 
-    color: #aaaaaa;
+                </div>
 
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
 
-.status-dot {
-    width: 8px;
-    height: 8px;
+                <div
+                    class="info-card"
+                    onclick="showSection('pvp')"
+                >
 
-    border-radius: 50%;
+                    <span class="card-number">
+                        03
+                    </span>
 
-    background: #72ff72;
+                    <h3>
+                        PVP
+                    </h3>
 
-    box-shadow:
-        0 0 12px rgba(114,255,114,0.7);
-}
+                    <p>
+                        Rise through the Elysium tier list.
+                    </p>
 
+                </div>
 
-/* =========================================================
-   STATS
-========================================================= */
 
-.stats {
-    display: grid;
+                <div
+                    class="info-card"
+                    onclick="showSection('events')"
+                >
 
-    grid-template-columns:
-        repeat(3, 1fr);
+                    <span class="card-number">
+                        04
+                    </span>
 
-    gap: 12px;
+                    <h3>
+                        EVENTS
+                    </h3>
 
-    max-width: 650px;
+                    <p>
+                        Battles, wars and community events.
+                    </p>
 
-    margin: 35px auto;
-}
+                </div>
 
-.stat-card {
-    padding: 20px;
+            </div>
 
-    background: rgba(10,10,10,0.82);
+        </section>
 
-    border:
-        1px solid rgba(255,255,255,0.08);
 
-    border-radius: 5px;
 
-    backdrop-filter: blur(5px);
+        <!-- ================= RULES ================= -->
 
-    transition: 0.2s;
-}
+        <section
+            id="rules"
+            class="section"
+        >
 
-.stat-card:hover {
-    transform: translateY(-3px);
+            <div class="page-title">
 
-    border-color: #444444;
-}
+                <p>
+                    ELYSIUM SMP
+                </p>
 
-.stat-number {
-    display: block;
+                <h2>
+                    SERVER RULES
+                </h2>
 
-    margin-bottom: 8px;
+            </div>
 
-    color: #eeeeee;
 
-    font-size: 20px;
-    font-weight: 800;
-}
+            <div class="rules-container">
 
-.stat-label {
-    color: #777777;
 
-    font-size: 9px;
-    font-weight: bold;
+                <div class="rule">
 
-    letter-spacing: 2px;
-}
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
+                        <span>
+                            01 — RESPECT EVERYONE
+                        </span>
 
-/* =========================================================
-   BUTTONS
-========================================================= */
+                        <b>
+                            +
+                        </b>
 
-.hero-buttons {
-    display: flex;
+                    </button>
 
-    justify-content: center;
 
-    gap: 10px;
+                    <div class="rule-content">
 
-    margin-top: 30px;
-}
+                        <p>
+                            Treat every player with respect.
+                            Harassment, discrimination and targeted
+                            toxicity are not allowed.
+                        </p>
 
-.primary-button,
-.secondary-button,
-.discord-button {
+                    </div>
 
-    display: inline-flex;
+                </div>
 
-    align-items: center;
-    justify-content: center;
 
-    min-height: 44px;
 
-    padding: 0 22px;
+                <div class="rule">
 
-    border-radius: 3px;
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
-    font-size: 10px;
-    font-weight: bold;
+                        <span>
+                            02 — NO CHEATING
+                        </span>
 
-    letter-spacing: 2px;
+                        <b>
+                            +
+                        </b>
 
-    cursor: pointer;
+                    </button>
 
-    text-decoration: none;
 
-    transition: 0.2s;
-}
+                    <div class="rule-content">
 
-.primary-button {
-    background: #eeeeee;
+                        <p>
+                            Hacks, cheats and unfair modifications
+                            that give players an advantage are prohibited.
+                        </p>
 
-    border: 1px solid #eeeeee;
+                    </div>
 
-    color: #080808;
-}
+                </div>
 
-.primary-button:hover {
-    background: #ffffff;
 
-    transform: translateY(-2px);
 
-    box-shadow:
-        0 8px 25px rgba(255,255,255,0.08);
-}
+                <div class="rule">
 
-.secondary-button {
-    background: rgba(17,17,17,0.9);
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
-    border: 1px solid #292929;
+                        <span>
+                            03 — NO GRIEFING
+                        </span>
 
-    color: #bbbbbb;
-}
+                        <b>
+                            +
+                        </b>
 
-.secondary-button:hover {
-    color: white;
+                    </button>
 
-    border-color: #444444;
 
-    transform: translateY(-2px);
-}
+                    <div class="rule-content">
 
-.copy-message {
-    min-height: 18px;
+                        <p>
+                            Do not destroy, damage or intentionally
+                            sabotage another player's builds.
+                        </p>
 
-    margin-top: 14px;
+                    </div>
 
-    color: #aaaaaa;
+                </div>
 
-    font-size: 11px;
-}
 
 
-/* =========================================================
-   HOME CARDS
-========================================================= */
+                <div class="rule">
 
-.home-cards {
-    max-width: 1100px;
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
-    margin: auto;
+                        <span>
+                            04 — NO STEALING
+                        </span>
 
-    display: grid;
+                        <b>
+                            +
+                        </b>
 
-    grid-template-columns:
-        repeat(4, 1fr);
+                    </button>
 
-    gap: 12px;
-}
 
-.info-card {
-    padding: 28px 22px;
+                    <div class="rule-content">
 
-    background: rgba(10,10,10,0.82);
+                        <p>
+                            Do not take items, resources or valuables
+                            belonging to another player.
+                        </p>
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+                    </div>
 
-    cursor: pointer;
+                </div>
 
-    transition: 0.25s;
 
-    backdrop-filter: blur(5px);
-}
 
-.info-card:hover {
-    transform: translateY(-5px);
+                <div class="rule">
 
-    border-color: #383838;
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
-    background: rgba(16,16,16,0.9);
-}
+                        <span>
+                            05 — EXPLOITS
+                        </span>
 
-.card-number {
-    color: #666666;
+                        <b>
+                            +
+                        </b>
 
-    font-size: 11px;
-    font-weight: bold;
-}
+                    </button>
 
-.info-card h3 {
-    margin: 20px 0 8px;
 
-    font-size: 15px;
+                    <div class="rule-content">
 
-    letter-spacing: 2px;
-}
+                        <p>
+                            If you discover a bug or exploit,
+                            report it to the staff instead of abusing it.
+                        </p>
 
-.info-card p {
-    color: #888888;
+                    </div>
 
-    font-size: 12px;
+                </div>
 
-    line-height: 1.6;
-}
 
 
-/* =========================================================
-   PAGE TITLES
-========================================================= */
+                <div class="rule">
 
-.page-title {
-    text-align: center;
+                    <button
+                        class="rule-button"
+                        onclick="toggleRule(this)"
+                    >
 
-    margin-bottom: 55px;
-}
+                        <span>
+                            06 — STAFF DECISIONS
+                        </span>
 
-.page-title p {
-    margin-bottom: 8px;
+                        <b>
+                            +
+                        </b>
 
-    color: #888888;
+                    </button>
 
-    font-size: 10px;
-    font-weight: bold;
 
-    letter-spacing: 4px;
-}
+                    <div class="rule-content">
 
-.page-title h2 {
-    font-size: clamp(30px, 5vw, 55px);
+                        <p>
+                            Staff decisions are made to keep Elysium
+                            fair and enjoyable for everyone.
+                        </p>
 
-    letter-spacing: 5px;
+                    </div>
 
-    text-shadow:
-        0 4px 20px rgba(0,0,0,0.8);
-}
+                </div>
 
+            </div>
 
-/* =========================================================
-   RULES
-========================================================= */
+        </section>
 
-.rules-container {
-    max-width: 850px;
 
-    margin: auto;
-}
 
-.rule {
-    margin-bottom: 8px;
+        <!-- ================= PLAYERS ================= -->
 
-    background: rgba(10,10,10,0.84);
+        <section
+            id="players"
+            class="section"
+        >
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+            <div class="page-title">
 
-    backdrop-filter: blur(5px);
-}
+                <p>
+                    ELYSIUM SMP
+                </p>
 
-.rule-button {
-    width: 100%;
+                <h2>
+                    PLAYERS
+                </h2>
 
-    padding: 22px;
+            </div>
 
-    display: flex;
 
-    justify-content: space-between;
-    align-items: center;
+            <div class="player-search">
 
-    background: transparent;
+                <input
+                    type="text"
+                    id="playerSearch"
+                    placeholder="SEARCH PLAYERS..."
+                    oninput="searchPlayers()"
+                >
 
-    border: none;
+            </div>
 
-    color: #dddddd;
 
-    font-size: 12px;
-    font-weight: bold;
+            <div
+                class="players-grid"
+                id="playersGrid"
+            ></div>
 
-    letter-spacing: 1px;
 
-    text-align: left;
+            <p
+                id="noPlayers"
+                class="no-players"
+            >
+                NO PLAYERS FOUND.
+            </p>
 
-    cursor: pointer;
-}
+        </section>
 
-.rule-button b {
-    color: #999999;
 
-    font-size: 20px;
 
-    font-weight: normal;
-}
+        <!-- ================= EVENTS ================= -->
 
-.rule-content {
-    max-height: 0;
+        <section
+            id="events"
+            class="section"
+        >
 
-    overflow: hidden;
+            <div class="page-title">
 
-    transition:
-        max-height 0.3s ease;
-}
+                <p>
+                    ELYSIUM SMP
+                </p>
 
-.rule-content p {
-    padding:
-        0 22px 22px;
+                <h2>
+                    EVENTS
+                </h2>
 
-    color: #888888;
+            </div>
 
-    font-size: 12px;
 
-    line-height: 1.7;
-}
+            <div class="events-grid">
 
-.rule.open .rule-content {
-    max-height: 200px;
-}
 
+                <div class="event-card">
 
-/* =========================================================
-   PLAYERS
-========================================================= */
+                    <div class="event-top">
 
-.player-search {
-    max-width: 500px;
+                        <span class="event-tag upcoming">
+                            UPCOMING
+                        </span>
 
-    margin:
-        0 auto 30px;
-}
+                        <span class="event-symbol">
+                            ⚔
+                        </span>
 
-.player-search input {
-    width: 100%;
+                    </div>
 
-    padding: 15px 18px;
 
-    background:
-        rgba(10,10,10,0.85);
+                    <h3>
+                        ELYSIUM PVP
+                    </h3>
 
-    border:
-        1px solid #222222;
 
-    outline: none;
+                    <p>
+                        Enter the arena and prove
+                        who deserves the top spot.
+                    </p>
 
-    color: white;
 
-    font-size: 11px;
+                    <div
+                        id="countdown"
+                        class="countdown"
+                    >
+                        LOADING...
+                    </div>
 
-    letter-spacing: 1px;
-}
 
-.player-search input:focus {
-    border-color: #444444;
-}
+                    <button
+                        class="event-button"
+                        onclick="showEvent('pvp')"
+                    >
+                        DETAILS
+                    </button>
 
-.players-grid {
-    max-width: 1100px;
+                </div>
 
-    margin: auto;
 
-    display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+                <div class="event-card">
 
-    gap: 10px;
-}
+                    <div class="event-top">
 
-.player-card {
-    padding: 20px;
+                        <span class="event-tag upcoming">
+                            UPCOMING
+                        </span>
 
-    background:
-        rgba(10,10,10,0.84);
+                        <span class="event-symbol">
+                            ◆
+                        </span>
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+                    </div>
 
-    transition: 0.2s;
 
-    backdrop-filter: blur(5px);
-}
+                    <h3>
+                        END WAR
+                    </h3>
 
-.player-card:hover {
-    transform:
-        translateY(-3px);
 
-    border-color:
-        #383838;
-}
+                    <p>
+                        Gear up for the ultimate battle
+                        in the End.
+                    </p>
 
-.avatar {
-    width: 52px;
-    height: 52px;
 
-    margin-bottom: 15px;
+                    <button
+                        class="event-button"
+                        onclick="showEvent('endwar')"
+                    >
+                        DETAILS
+                    </button>
 
-    display: flex;
+                </div>
 
-    align-items: center;
-    justify-content: center;
 
-    background:
-        #1a1a1a;
 
-    border:
-        1px solid #303030;
+                <div class="event-card">
 
-    font-size: 20px;
+                    <div class="event-top">
 
-    font-weight: bold;
-}
+                        <span class="event-tag completed">
+                            COMPLETED
+                        </span>
 
-.player-card h3 {
-    margin-bottom: 8px;
+                        <span class="event-symbol">
+                            ✦
+                        </span>
 
-    font-size: 14px;
-}
+                    </div>
 
-.rank {
-    display: inline-block;
 
-    padding: 5px 9px;
+                    <h3>
+                        MEDIA EVENT
+                    </h3>
 
-    background: #151515;
 
-    border:
-        1px solid #333333;
+                    <p>
+                        The community media event
+                        has been completed.
+                    </p>
 
-    border-radius: 2px;
 
-    font-size: 8px;
+                    <button
+                        class="event-button"
+                        onclick="showEvent('media')"
+                    >
+                        DETAILS
+                    </button>
 
-    font-weight: bold;
+                </div>
 
-    letter-spacing: 1px;
-}
+            </div>
 
-.rank.founder {
-    color: #ffffff;
-}
+        </section>
 
-.rank.president {
-    color: #dddddd;
-}
 
-.rank.vice-president {
-    color: #bbbbbb;
-}
 
-.rank.governor {
-    color: #aaaaaa;
-}
+        <!-- ================= PVP TIER LIST ================= -->
 
-.rank.civilian {
-    color: #777777;
-}
+        <section
+            id="pvp"
+            class="section"
+        >
 
-.no-players {
-    display: none;
+            <div class="page-title">
 
-    margin-top: 30px;
+                <p>
+                    ELYSIUM PVP
+                </p>
 
-    text-align: center;
+                <h2>
+                    TIER LIST
+                </h2>
 
-    color: #777777;
+            </div>
 
-    font-size: 11px;
 
-    letter-spacing: 2px;
-}
 
+            <!-- TIER CATEGORY TABS -->
 
-/* =========================================================
-   EVENTS
-========================================================= */
+            <div class="tier-tabs">
 
-.events-grid {
-    max-width: 1100px;
 
-    margin: auto;
+                <button
+                    class="tier-tab active"
+                    onclick="changeTier('overall', this)"
+                >
 
-    display: grid;
+                    <span>
+                        🏆
+                    </span>
 
-    grid-template-columns:
-        repeat(3, 1fr);
+                    <small>
+                        OVERALL
+                    </small>
 
-    gap: 14px;
-}
+                </button>
 
-.event-card {
-    padding: 28px;
 
-    background:
-        rgba(10,10,10,0.84);
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('ltms', this)"
+                >
 
-    transition: 0.25s;
+                    <span>
+                        ⚔
+                    </span>
 
-    backdrop-filter: blur(5px);
-}
+                    <small>
+                        LTMs
+                    </small>
 
-.event-card:hover {
-    transform:
-        translateY(-4px);
+                </button>
 
-    border-color:
-        #383838;
-}
 
-.event-top {
-    display: flex;
 
-    align-items: center;
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('vanilla', this)"
+                >
 
-    justify-content:
-        space-between;
-}
+                    <span>
+                        ⬡
+                    </span>
 
-.event-tag {
-    padding:
-        5px 8px;
+                    <small>
+                        VANILLA
+                    </small>
 
-    font-size: 8px;
+                </button>
 
-    font-weight: bold;
 
-    letter-spacing: 1px;
 
-    border:
-        1px solid #333333;
-}
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('uhc', this)"
+                >
 
-.event-tag.upcoming {
-    color: #dddddd;
-}
+                    <span>
+                        ♥
+                    </span>
 
-.event-tag.completed {
-    color: #777777;
-}
+                    <small>
+                        UHC
+                    </small>
 
-.event-symbol {
-    color: #999999;
+                </button>
 
-    font-size: 24px;
-}
 
-.event-card h3 {
-    margin:
-        35px 0 10px;
 
-    font-size: 17px;
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('pot', this)"
+                >
 
-    letter-spacing: 2px;
-}
+                    <span>
+                        ⚗
+                    </span>
 
-.event-card p {
-    min-height: 50px;
+                    <small>
+                        POT
+                    </small>
 
-    color: #888888;
+                </button>
 
-    font-size: 12px;
 
-    line-height: 1.7;
-}
 
-.countdown {
-    margin:
-        20px 0;
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('netherop', this)"
+                >
 
-    color: #cccccc;
+                    <span>
+                        ◉
+                    </span>
 
-    font-size: 11px;
+                    <small>
+                        NETHEROP
+                    </small>
 
-    font-weight: bold;
+                </button>
 
-    letter-spacing: 2px;
-}
 
-.event-button {
-    width: 100%;
 
-    padding: 12px;
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('smp', this)"
+                >
 
-    background: #111111;
+                    <span>
+                        ◈
+                    </span>
 
-    border:
-        1px solid #292929;
+                    <small>
+                        SMP
+                    </small>
 
-    color: #aaaaaa;
+                </button>
 
-    cursor: pointer;
 
-    font-size: 9px;
 
-    font-weight: bold;
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('sword', this)"
+                >
 
-    letter-spacing: 2px;
+                    <span>
+                        🗡
+                    </span>
 
-    transition: 0.2s;
-}
+                    <small>
+                        SWORD
+                    </small>
 
-.event-button:hover {
-    color: white;
+                </button>
 
-    border-color: #444444;
-}
 
 
-/* =========================================================
-   PVP TIER TABS
-========================================================= */
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('axe', this)"
+                >
 
-.tier-tabs {
-    max-width: 1120px;
+                    <span>
+                        🔨
+                    </span>
 
-    margin: 0 auto;
+                    <small>
+                        AXE
+                    </small>
 
-    display: flex;
+                </button>
 
-    overflow-x: auto;
 
-    background:
-        rgba(13,19,27,0.94);
 
-    border:
-        1px solid #1d2936;
+                <button
+                    class="tier-tab"
+                    onclick="changeTier('mace', this)"
+                >
 
-    border-bottom: none;
+                    <span>
+                        ⚒
+                    </span>
 
-    border-radius:
-        16px 16px 0 0;
+                    <small>
+                        MACE
+                    </small>
 
-    scrollbar-width: none;
-}
+                </button>
 
-.tier-tabs::-webkit-scrollbar {
-    display: none;
-}
+            </div>
 
-.tier-tab {
-    min-width: 105px;
 
-    height: 72px;
 
-    display: flex;
+            <!-- TIER LIST -->
 
-    flex-direction: column;
+            <div class="tier-list">
 
-    align-items: center;
 
-    justify-content: center;
+                <div class="tier-header">
 
-    gap: 5px;
+                    <span>
+                        #
+                    </span>
 
-    background: transparent;
+                    <span>
+                        PLAYER
+                    </span>
 
-    border: none;
+                    <span>
+                        REGION
+                    </span>
 
-    border-bottom:
-        2px solid transparent;
+                    <span>
+                        TIERS
+                    </span>
 
-    color: #566273;
+                </div>
 
-    cursor: pointer;
 
-    transition: 0.2s;
 
-    font-family: inherit;
-}
+                <!-- PLAYER 1 -->
 
-.tier-tab span {
-    font-size: 22px;
+                <div class="tier-player">
 
-    line-height: 1;
-}
+                    <div class="tier-rank rank-1">
+                        1.
+                    </div>
 
-.tier-tab small {
-    font-size: 10px;
 
-    font-weight: bold;
+                    <div class="tier-player-info">
 
-    letter-spacing: 1px;
-}
+                        <div class="minecraft-head">
 
-.tier-tab:hover {
-    background:
-        #111a24;
+                            <img
+                                src="https://mc-heads.net/avatar/Masumbaccha/64"
+                                alt="Masumbaccha"
+                            >
 
-    color:
-        #b9c3cf;
-}
+                        </div>
 
-.tier-tab.active {
-    color: #ffffff;
 
-    border-bottom-color:
-        #ffffff;
+                        <div>
 
-    background:
-        #111821;
-}
+                            <h3>
+                                Masumbaccha
+                            </h3>
 
+                            <p>
+                                ⚔ Combat Grandmaster
+                                <span>
+                                    (450 points)
+                                </span>
+                            </p>
 
-/* =========================================================
-   TIER LIST
-========================================================= */
+                        </div>
 
-.tier-list {
-    max-width: 1120px;
+                    </div>
 
-    margin: auto;
 
-    padding:
-        0 10px 10px;
+                    <div class="region na">
+                        NA
+                    </div>
 
-    background:
-        rgba(16,23,33,0.96);
 
-    border:
-        1px solid #1d2936;
+                    <div class="tier-badges">
 
-    border-radius:
-        0 0 16px 16px;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    overflow: hidden;
-}
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-.tier-header {
-    display: grid;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    grid-template-columns:
-        155px
-        minmax(380px, 1fr)
-        80px
-        minmax(360px, 1fr);
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    align-items: center;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    padding:
-        16px 15px;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    color: #3f4b5c;
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
 
-    font-size: 11px;
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
 
-    font-weight: bold;
+                    </div>
 
-    letter-spacing: 1px;
+                </div>
 
-    background:
-        #101721;
-}
 
 
-/* =========================================================
-   TIER PLAYER
-========================================================= */
+                <!-- PLAYER 2 -->
 
-.tier-player {
-    min-height: 78px;
+                <div class="tier-player">
 
-    display: grid;
+                    <div class="tier-rank rank-2">
+                        2.
+                    </div>
 
-    grid-template-columns:
-        155px
-        minmax(380px, 1fr)
-        80px
-        minmax(360px, 1fr);
 
-    align-items: center;
+                    <div class="tier-player-info">
 
-    margin-bottom: 8px;
+                        <div class="minecraft-head">
 
-    background:
-        #131c27;
+                            <img
+                                src="https://mc-heads.net/avatar/Shinchan0n/64"
+                                alt="Shinchan0n"
+                            >
 
-    border:
-        1px solid #202d3c;
+                        </div>
 
-    border-radius:
-        11px;
 
-    overflow: hidden;
+                        <div>
 
-    transition: 0.2s;
-}
+                            <h3>
+                                Shinchan0n
+                            </h3>
 
-.tier-player:hover {
-    background:
-        #17212d;
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (330 points)
+                                </span>
+                            </p>
 
-    border-color:
-        #34465a;
+                        </div>
 
-    transform:
-        translateX(3px);
-}
+                    </div>
 
 
-/* =========================================================
-   TIER RANK
-========================================================= */
+                    <div class="region na">
+                        NA
+                    </div>
 
-.tier-rank {
-    height: 100%;
 
-    min-height: 78px;
+                    <div class="tier-badges">
 
-    display: flex;
+                        <span class="tier-badge ht3">
+                            HT3
+                        </span>
 
-    align-items: center;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    padding-left: 20px;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    color: #f2f4f7;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    font-size: 32px;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    font-weight: 900;
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-    font-style: italic;
-}
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-.rank-1 {
-    background:
-        linear-gradient(
-            120deg,
-            #f3b82f,
-            #e7a923
-        );
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-    color: white;
+                    </div>
 
-    font-size: 34px;
-}
+                </div>
 
-.rank-2 {
-    background:
-        linear-gradient(
-            120deg,
-            #9daab2,
-            #7d8b95
-        );
-}
 
-.rank-3 {
-    background:
-        linear-gradient(
-            120deg,
-            #bd6726,
-            #98501c
-        );
-}
 
+                <!-- PLAYER 3 -->
 
-/* =========================================================
-   TIER PLAYER INFO
-========================================================= */
+                <div class="tier-player">
 
-.tier-player-info {
-    display: flex;
+                    <div class="tier-rank rank-3">
+                        3.
+                    </div>
 
-    align-items: center;
 
-    gap: 14px;
+                    <div class="tier-player-info">
 
-    padding:
-        8px 15px;
-}
+                        <div class="minecraft-head">
 
-.minecraft-head {
-    width: 62px;
+                            <img
+                                src="https://mc-heads.net/avatar/Wixzen/64"
+                                alt="Wixzen"
+                            >
 
-    height: 62px;
+                        </div>
 
-    flex-shrink: 0;
 
-    overflow: hidden;
-}
+                        <div>
 
-.minecraft-head img {
-    width: 100%;
+                            <h3>
+                                Wixzen
+                            </h3>
 
-    height: 100%;
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (326 points)
+                                </span>
+                            </p>
 
-    image-rendering: pixelated;
-}
+                        </div>
 
-.tier-player-info h3 {
-    margin:
-        0 0 5px;
+                    </div>
 
-    color:
-        #dce5ef;
 
-    font-size: 21px;
-}
+                    <div class="region eu">
+                        EU
+                    </div>
 
-.tier-player-info p {
-    margin: 0;
 
-    color:
-        #8da1b7;
+                    <div class="tier-badges">
 
-    font-size: 13px;
-}
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
 
-.tier-player-info p span {
-    color:
-        #71869d;
-}
+                        <span class="tier-badge lt3">
+                            LT3
+                        </span>
 
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-/* =========================================================
-   REGION
-========================================================= */
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-.region {
-    width: 42px;
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
 
-    height: 40px;
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
 
-    display: flex;
+                        <span class="tier-badge lt1">
+                            LT1
+                        </span>
 
-    align-items: center;
-    justify-content: center;
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-    border-radius:
-        8px;
+                    </div>
 
-    font-size: 16px;
+                </div>
 
-    font-weight: 900;
-}
 
-.region.na {
-    background:
-        #45242b;
 
-    color:
-        #e75d70;
-}
+                <!-- PLAYER 4 -->
 
-.region.eu {
-    background:
-        #173d23;
+                <div class="tier-player">
 
-    color:
-        #64e47a;
-}
+                    <div class="tier-rank">
+                        4.
+                    </div>
 
 
-/* =========================================================
-   TIER BADGES
-========================================================= */
+                    <div class="tier-player-info">
 
-.tier-badges {
-    display: flex;
+                        <div class="minecraft-head">
 
-    align-items: center;
+                            <img
+                                src="https://mc-heads.net/avatar/11k/64"
+                                alt="11k"
+                            >
 
-    gap: 7px;
+                        </div>
 
-    padding:
-        10px 12px;
 
-    flex-wrap: wrap;
-}
+                        <div>
 
-.tier-badge {
-    min-width: 34px;
+                            <h3>
+                                11k
+                            </h3>
 
-    padding: 5px;
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (290 points)
+                                </span>
+                            </p>
 
-    text-align: center;
+                        </div>
 
-    border-radius:
-        8px;
+                    </div>
 
-    background:
-        #182230;
 
-    border:
-        1px solid #29394b;
+                    <div class="region na">
+                        NA
+                    </div>
 
-    font-size: 10px;
 
-    font-weight: 900;
-}
+                    <div class="tier-badges">
 
+                        <span class="tier-badge lt3">
+                            LT3
+                        </span>
 
-/* HIGH TIERS */
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-.tier-badge.ht1 {
-    color:
-        #ffd447;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    border-color:
-        #554718;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    background:
-        #292719;
-}
+                        <span class="tier-badge ht2">
+                            HT2
+                        </span>
 
-.tier-badge.ht2 {
-    color:
-        #f4c84b;
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-    border-color:
-        #493d20;
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-    background:
-        #27251b;
-}
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-.tier-badge.ht3 {
-    color:
-        #d99345;
+                    </div>
 
-    border-color:
-        #523721;
+                </div>
 
-    background:
-        #29221b;
-}
 
-.tier-badge.ht4 {
-    color:
-        #9b9bd0;
 
-    border-color:
-        #36365c;
+                <!-- PLAYER 5 -->
 
-    background:
-        #222337;
-}
+                <div class="tier-player">
 
+                    <div class="tier-rank">
+                        5.
+                    </div>
 
-/* LOW TIERS */
 
-.tier-badge.lt1 {
-    color:
-        #ffd447;
+                    <div class="tier-player-info">
 
-    border-color:
-        #554718;
+                        <div class="minecraft-head">
 
-    background:
-        #292719;
-}
+                            <img
+                                src="https://mc-heads.net/avatar/Blazebeacon/64"
+                                alt="Blazebeacon"
+                            >
 
-.tier-badge.lt2 {
-    color:
-        #a8b4c4;
+                        </div>
 
-    border-color:
-        #354353;
 
-    background:
-        #202936;
-}
+                        <div>
 
-.tier-badge.lt3 {
-    color:
-        #c47d3d;
+                            <h3>
+                                Blazebeacon
+                            </h3>
 
-    border-color:
-        #56381f;
+                            <p>
+                                ⚔ Combat Master
+                                <span>
+                                    (260 points)
+                                </span>
+                            </p>
 
-    background:
-        #2a241f;
-}
+                        </div>
 
+                    </div>
 
-/* =========================================================
-   TIER NOTE
-========================================================= */
 
-.tier-note {
-    text-align: center;
+                    <div class="region eu">
+                        EU
+                    </div>
 
-    margin-top: 20px;
 
-    color:
-        #8a96a5;
+                    <div class="tier-badges">
 
-    font-size: 10px;
+                        <span class="tier-badge lt3">
+                            LT3
+                        </span>
 
-    letter-spacing: 2px;
-}
+                        <span class="tier-badge ht4">
+                            HT4
+                        </span>
 
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-/* =========================================================
-   DISCORD
-========================================================= */
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-.discord-box {
-    max-width: 700px;
+                        <span class="tier-badge ht1">
+                            HT1
+                        </span>
 
-    margin:
-        70px auto;
+                        <span class="tier-badge ht2">
+                            HT2
+                        </span>
 
-    padding:
-        70px 30px;
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-    text-align: center;
+                        <span class="tier-badge lt2">
+                            LT2
+                        </span>
 
-    background:
-        rgba(10,10,10,0.86);
+                    </div>
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+                </div>
 
-    backdrop-filter:
-        blur(6px);
-}
 
-.discord-box h2 {
-    margin-bottom: 20px;
+            </div>
 
-    font-size: 35px;
 
-    letter-spacing: 4px;
-}
+            <p class="tier-note">
+                TIER LIST • ELYSIUM SMP
+            </p>
 
-.discord-box p:not(.eyebrow) {
-    max-width: 500px;
+        </section>
 
-    margin:
-        0 auto 30px;
 
-    color:
-        #888888;
 
-    font-size: 13px;
+        <!-- ================= DISCORD ================= -->
 
-    line-height: 1.8;
-}
+        <section
+            id="discord"
+            class="section"
+        >
 
-.discord-button {
-    background:
-        #eeeeee;
+            <div class="discord-box">
 
-    color:
-        #080808;
+                <p class="eyebrow">
+                    ELYSIUM COMMUNITY
+                </p>
 
-    border:
-        1px solid #eeeeee;
-}
+                <h2>
+                    ELYSIUM DISCORD
+                </h2>
 
-.discord-button:hover {
-    background:
-        white;
+                <p>
+                    Join the community, get updates,
+                    participate in events and stay connected.
+                </p>
 
-    transform:
-        translateY(-2px);
-}
 
+                <a
+                    id="discordLink"
+                    href="https://discord.gg/EsDQqvrx7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="discord-button"
+                >
+                    JOIN DISCORD
+                </a>
 
-/* =========================================================
-   MODAL
-========================================================= */
+            </div>
 
-.modal {
-    position: fixed;
+        </section>
 
-    inset: 0;
+    </main>
 
-    z-index: 2000;
 
-    display: none;
 
-    align-items: center;
+    <!-- ================= EVENT MODAL ================= -->
 
-    justify-content: center;
+    <div
+        id="eventModal"
+        class="modal"
+    >
 
-    padding: 20px;
+        <div class="modal-box">
 
-    background:
-        rgba(0,0,0,0.75);
+            <button
+                class="modal-close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
 
-    backdrop-filter:
-        blur(8px);
-}
 
-.modal.show {
-    display: flex;
-}
+            <p class="eyebrow">
+                ELYSIUM EVENT
+            </p>
 
-.modal-box {
-    position: relative;
 
-    width: 100%;
+            <h2 id="modalTitle">
+                EVENT
+            </h2>
 
-    max-width: 500px;
 
-    padding:
-        45px 35px;
+            <p id="modalText">
+                Event information.
+            </p>
 
-    text-align: center;
 
-    background:
-        #0d0d0d;
+            <button
+                class="primary-button"
+                onclick="closeModal()"
+            >
+                CLOSE
+            </button>
 
-    border:
-        1px solid #292929;
+        </div>
 
-    animation:
-        modalIn 0.25s ease;
-}
+    </div>
 
-@keyframes modalIn {
 
-    from {
-        opacity: 0;
 
-        transform:
-            scale(0.96)
-            translateY(10px);
-    }
+    <!-- ================= FOOTER ================= -->
 
-    to {
-        opacity: 1;
+    <footer>
 
-        transform:
-            scale(1)
-            translateY(0);
-    }
-}
+        <strong>
+            ✧ ELYSIUM SMP ✧
+        </strong>
 
-.modal-close {
-    position: absolute;
+        <span>
+            SURVIVE • BUILD • CONQUER
+        </span>
 
-    top: 12px;
-    right: 15px;
+        <small>
+            © 2026 Elysium SMP
+        </small>
 
-    background:
-        transparent;
+    </footer>
 
-    border:
-        none;
 
-    color:
-        #666666;
 
-    font-size:
-        28px;
+    <script src="script.js"></script>
 
-    cursor:
-        pointer;
-}
+</body>
 
-.modal-close:hover {
-    color:
-        white;
-}
-
-.modal-box h2 {
-    margin-bottom:
-        20px;
-
-    font-size:
-        30px;
-
-    letter-spacing:
-        3px;
-}
-
-.modal-box p:not(.eyebrow) {
-    margin-bottom:
-        25px;
-
-    color:
-        #777777;
-
-    font-size:
-        13px;
-
-    line-height:
-        1.8;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding:
-        40px 20px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    border-top:
-        1px solid #161616;
-
-    background:
-        #060606;
-}
-
-footer strong {
-    font-size:
-        13px;
-
-    letter-spacing:
-        3px;
-}
-
-footer span {
-    color:
-        #555555;
-
-    font-size:
-        9px;
-
-    letter-spacing:
-        2px;
-}
-
-footer small {
-    margin-top:
-        8px;
-
-    color:
-        #3f3f3f;
-
-    font-size:
-        9px;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1000px) {
-
-    .home-cards {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .players-grid {
-        grid-template-columns:
-            repeat(3, 1fr);
-    }
-
-    .events-grid {
-        grid-template-columns:
-            1fr;
-
-        max-width:
-            600px;
-    }
-}
-
-
-/* =========================================================
-   PVP TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .tier-header {
-        display:
-            none;
-    }
-
-    .tier-player {
-        grid-template-columns:
-            75px
-            1fr
-            80px;
-    }
-
-    .tier-badges {
-        grid-column:
-            2 / 4;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 750px) {
-
-    .navbar {
-        flex-wrap:
-            wrap;
-    }
-
-    .menu-toggle {
-        display:
-            block;
-    }
-
-    .nav-menu {
-        display:
-            none;
-
-        width:
-            100%;
-
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
-
-        padding-top:
-            10px;
-    }
-
-    .nav-menu.open {
-        display:
-            flex;
-    }
-
-    .nav-btn {
-        width:
-            100%;
-
-        text-align:
-            left;
-    }
-
-    .section {
-        padding:
-            70px 5%;
-
-        background-position:
-            center;
-    }
-
-    .hero {
-        margin-top:
-            35px;
-    }
-
-    .hero h1 {
-        font-size:
-            clamp(50px, 17vw, 90px);
-
-        letter-spacing:
-            7px;
-
-        text-indent:
-            7px;
-    }
-
-    .hero-subtitle {
-        font-size:
-            9px;
-
-        letter-spacing:
-            4px;
-    }
-
-    .stats {
-        grid-template-columns:
-            1fr;
-
-        max-width:
-            300px;
-    }
-
-    .hero-buttons {
-        flex-direction:
-            column;
-
-        max-width:
-            300px;
-
-        margin-left:
-            auto;
-
-        margin-right:
-            auto;
-    }
-
-    .home-cards {
-        grid-template-columns:
-            1fr;
-    }
-
-    .players-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .discord-box {
-        padding:
-            50px 20px;
-    }
-
-    .discord-box h2 {
-        font-size:
-            25px;
-    }
-
-
-    /* PVP */
-
-    .tier-tabs {
-        border-radius:
-            10px 10px 0 0;
-    }
-
-    .tier-tab {
-        min-width:
-            82px;
-
-        height:
-            65px;
-    }
-
-    .tier-tab span {
-        font-size:
-            18px;
-    }
-
-    .tier-tab small {
-        font-size:
-            8px;
-    }
-
-    .tier-list {
-        padding:
-            0 6px 6px;
-    }
-
-    .tier-player {
-        display:
-            grid;
-
-        grid-template-columns:
-            65px 1fr;
-
-        padding:
-            0;
-    }
-
-    .tier-rank {
-        min-height:
-            100%;
-
-        padding-left:
-            15px;
-
-        font-size:
-            25px;
-    }
-
-    .tier-player-info {
-        padding:
-            12px;
-    }
-
-    .tier-player > .region {
-        grid-column:
-            1;
-
-        margin:
-            0 auto 12px;
-    }
-
-    .tier-badges {
-        grid-column:
-            2;
-
-        padding:
-            0 12px 14px;
-    }
-
-    .tier-player-info h3 {
-        font-size:
-            16px;
-    }
-
-    .tier-player-info p {
-        font-size:
-            10px;
-    }
-
-    .minecraft-head {
-        width:
-            50px;
-
-        height:
-            50px;
-    }
-
-    .tier-badges {
-        gap:
-            5px;
-    }
-
-    .tier-badge {
-        min-width:
-            31px;
-
-        padding:
-            4px;
-
-        font-size:
-            9px;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 450px) {
-
-    .players-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-    .tier-player {
-        grid-template-columns:
-            55px 1fr;
-    }
-
-    .tier-player-info {
-        gap:
-            9px;
-    }
-
-    .tier-player-info h3 {
-        font-size:
-            14px;
-    }
-
-    .tier-player-info p {
-        font-size:
-            9px;
-    }
-
-    .tier-badge {
-        min-width:
-            28px;
-
-        font-size:
-            8px;
-    }
-}
-```
+</html>
