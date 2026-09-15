@@ -916,7 +916,6 @@ function renderMCTiers(category = "overall") {
         row.appendChild(tiersBox);
 
         container.appendChild(row);
-
     });
 
 }
