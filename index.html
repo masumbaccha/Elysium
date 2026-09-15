@@ -30,15 +30,13 @@
     <div class="background"></div>
 
 
+
     <!-- ================= NAVBAR ================= -->
 
     <header class="navbar">
 
-        <div
-            class="logo"
-            onclick="showSection('home')"
-        >
-            ✧ ELYSIUM ✧
+        <div class="logo">
+            ELYSIUM <span>SMP</span>
         </div>
 
 
@@ -50,14 +48,22 @@
         </button>
 
 
-        <nav id="navMenu">
+        <nav>
 
             <button onclick="showSection('home')">
                 HOME
             </button>
 
+            <button onclick="showSection('about')">
+                ABOUT
+            </button>
+
             <button onclick="showSection('rules')">
                 RULES
+            </button>
+
+            <button onclick="showSection('pvp')">
+                PVP
             </button>
 
             <button onclick="showSection('players')">
@@ -68,12 +74,8 @@
                 EVENTS
             </button>
 
-            <button onclick="showSection('pvp')">
-                PVP
-            </button>
-
-            <button onclick="showSection('discord')">
-                DISCORD
+            <button onclick="showSection('join')">
+                JOIN
             </button>
 
         </nav>
@@ -82,865 +84,450 @@
 
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- ================= HOME ================= -->
 
-    <main>
+    <section
+        id="home"
+        class="section hero"
+    >
 
+        <div class="hero-content">
 
-        <!-- ================= HOME ================= -->
-
-        <section
-            id="home"
-            class="section active"
-        >
-
-            <div class="hero">
-
-                <div class="hero-line"></div>
-
-                <p class="eyebrow">
-                    WELCOME TO
-                </p>
-
-                <h1>
-                    ELYSIUM
-                </h1>
-
-                <div class="subtitle">
-                    SURVIVE. BUILD. CONQUER.
-                </div>
-
-
-                <div class="status">
-
-                    <span class="status-dot"></span>
-
-                    SERVER ONLINE
-
-                </div>
-
-
-                <div class="server-stats">
-
-
-                    <div class="stat">
-
-                        <span>
-                            PLAYERS
-                        </span>
-
-                        <strong id="playerCount">
-                            12 / 50
-                        </strong>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <span>
-                            VERSION
-                        </span>
-
-                        <strong>
-                            1.21+
-                        </strong>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <span>
-                            PLATFORM
-                        </span>
-
-                        <strong>
-                            JAVA + BEDROCK
-                        </strong>
-
-                    </div>
-
-
-                </div>
-
-
-                <div class="hero-buttons">
-
-                    <button
-                        class="primary-btn"
-                        onclick="copyIP()"
-                    >
-                        JOIN SERVER
-                    </button>
-
-
-                    <button
-                        class="secondary-btn"
-                        onclick="showSection('events')"
-                    >
-                        VIEW EVENTS
-                    </button>
-
-                </div>
-
-
-                <p id="copyMessage"></p>
-
-            </div>
-
-
-
-            <div class="home-cards">
-
-
-                <div
-                    class="info-card"
-                    onclick="showSection('rules')"
-                >
-
-                    <span>
-                        01
-                    </span>
-
-                    <h3>
-                        RULES
-                    </h3>
-
-                    <p>
-                        Know the laws of Elysium.
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="info-card"
-                    onclick="showSection('players')"
-                >
-
-                    <span>
-                        02
-                    </span>
-
-                    <h3>
-                        PLAYERS
-                    </h3>
-
-                    <p>
-                        Meet the people of Elysium.
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="info-card"
-                    onclick="showSection('pvp')"
-                >
-
-                    <span>
-                        03
-                    </span>
-
-                    <h3>
-                        PVP
-                    </h3>
-
-                    <p>
-                        Prove your worth.
-                    </p>
-
-                </div>
-
-
-                <div
-                    class="info-card"
-                    onclick="showSection('events')"
-                >
-
-                    <span>
-                        04
-                    </span>
-
-                    <h3>
-                        EVENTS
-                    </h3>
-
-                    <p>
-                        Take part in the action.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= RULES ================= -->
-
-        <section
-            id="rules"
-            class="section"
-        >
-
-            <div class="page-title">
-
-                <p>
-                    ELYSIUM SMP
-                </p>
-
-                <h2>
-                    SERVER RULES
-                </h2>
-
-            </div>
-
-
-            <div class="rules-container">
-
-
-                <div class="rule">
-
-                    <button onclick="toggleRule(this)">
-
-                        <span>
-                            01 — RESPECT EVERYONE
-                        </span>
-
-                        <b>
-                            +
-                        </b>
-
-                    </button>
-
-
-                    <div class="rule-content">
-
-                        Treat every member with respect.
-                        Harassment, discrimination and
-                        targeted toxicity are not allowed.
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="rule">
-
-                    <button onclick="toggleRule(this)">
-
-                        <span>
-                            02 — NO CHEATING
-                        </span>
-
-                        <b>
-                            +
-                        </b>
-
-                    </button>
-
-
-                    <div class="rule-content">
-
-                        Hacks, cheats and unfair
-                        modifications that provide
-                        an advantage over other players
-                        are prohibited.
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="rule">
-
-                    <button onclick="toggleRule(this)">
-
-                        <span>
-                            03 — NO GRIEFING
-                        </span>
-
-                        <b>
-                            +
-                        </b>
-
-                    </button>
-
-
-                    <div class="rule-content">
-
-                        Do not destroy, modify or
-                        sabotage another player's
-                        builds without their permission.
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="rule">
-
-                    <button onclick="toggleRule(this)">
-
-                        <span>
-                            04 — NO STEALING
-                        </span>
-
-                        <b>
-                            +
-                        </b>
-
-                    </button>
-
-
-                    <div class="rule-content">
-
-                        Do not take another player's
-                        items or resources without
-                        permission.
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="rule">
-
-                    <button onclick="toggleRule(this)">
-
-                        <span>
-                            05 — EXPLOITS
-                        </span>
-
-                        <b>
-                            +
-                        </b>
-
-                    </button>
-
-
-                    <div class="rule-content">
-
-                        Report serious bugs and exploits
-                        to staff instead of abusing them
-                        for an unfair advantage.
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="rule">
-
-                    <button onclick="toggleRule(this)">
-
-                        <span>
-                            06 — STAFF DECISIONS
-                        </span>
-
-                        <b>
-                            +
-                        </b>
-
-                    </button>
-
-
-                    <div class="rule-content">
-
-                        Respect staff decisions.
-                        If you believe a decision is unfair,
-                        contact administration through Discord.
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= PLAYERS ================= -->
-
-        <section
-            id="players"
-            class="section"
-        >
-
-            <div class="page-title">
-
-                <p>
-                    ELYSIUM SMP
-                </p>
-
-                <h2>
-                    PLAYERS
-                </h2>
-
-            </div>
-
-
-            <div class="search-wrapper">
-
-                <input
-                    id="playerSearch"
-                    class="search"
-                    type="text"
-                    placeholder="Search players..."
-                    oninput="searchPlayers()"
-                >
-
-            </div>
-
-
-            <!-- IMPORTANT:
-                 JavaScript creates all player cards here.
-                 DO NOT add individual players here.
-            -->
-
-            <div
-                class="players-grid"
-                id="playersGrid"
-            >
-            </div>
-
-
-            <p
-                id="noPlayers"
-                class="no-results"
-                style="display: none;"
-            >
-                No players found.
+            <p class="eyebrow">
+                WELCOME TO
             </p>
 
-        </section>
+            <h1>
+                ELYSIUM
+            </h1>
+
+            <h2>
+                SMP
+            </h2>
+
+            <p class="subtitle">
+                SURVIVE · BUILD · CONQUER
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="showSection('join')"
+                >
+                    JOIN THE SERVER
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="showSection('about')"
+                >
+                    EXPLORE
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
 
-        <!-- ================= EVENTS ================= -->
+    <!-- ================= ABOUT ================= -->
 
-        <section
-            id="events"
-            class="section"
-        >
+    <section
+        id="about"
+        class="section"
+    >
 
-            <div class="page-title">
+        <div class="page-title">
+
+            <p>
+                DISCOVER ELYSIUM
+            </p>
+
+            <h2>
+                ABOUT
+            </h2>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-card">
+
+                <span class="card-number">
+                    01
+                </span>
+
+                <h3>
+                    SURVIVE
+                </h3>
 
                 <p>
-                    ELYSIUM SMP
+                    Enter a world where every decision matters.
+                    Gather resources, explore dangerous lands,
+                    and survive alongside other players.
                 </p>
 
-                <h2>
-                    EVENTS
-                </h2>
-
             </div>
 
 
-            <div class="event-grid">
+            <div class="about-card">
 
+                <span class="card-number">
+                    02
+                </span>
 
-                <!-- PVP EVENT -->
-
-                <article class="event-card">
-
-                    <div class="event-top">
-
-                        <span class="event-tag">
-                            UPCOMING
-                        </span>
-
-                        <span class="event-symbol">
-                            ⚔
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        ELYSIUM PVP
-                    </h3>
-
-
-                    <p>
-
-                        Enter the arena and prove
-                        your worth. Only the strongest
-                        will survive.
-
-                    </p>
-
-
-                    <div class="countdown-label">
-                        STARTS IN
-                    </div>
-
-
-                    <div
-                        id="countdown"
-                        class="countdown"
-                    >
-                        Loading...
-                    </div>
-
-
-                    <button
-                        onclick="showEvent('pvp')"
-                    >
-                        EVENT DETAILS
-                    </button>
-
-                </article>
-
-
-
-                <!-- END WAR -->
-
-                <article class="event-card">
-
-                    <div class="event-top">
-
-                        <span class="event-tag">
-                            UPCOMING
-                        </span>
-
-                        <span class="event-symbol">
-                            ◆
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        END WAR
-                    </h3>
-
-
-                    <p>
-
-                        Prepare for an intense battle
-                        in the End. Gear up and fight
-                        for victory.
-
-                    </p>
-
-
-                    <button
-                        onclick="showEvent('endwar')"
-                    >
-                        EVENT DETAILS
-                    </button>
-
-                </article>
-
-
-
-                <!-- MEDIA EVENT -->
-
-                <article class="event-card completed">
-
-                    <div class="event-top">
-
-                        <span class="event-tag">
-                            COMPLETED
-                        </span>
-
-                        <span class="event-symbol">
-                            ✦
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        MEDIA EVENT
-                    </h3>
-
-
-                    <p>
-
-                        The Elysium Media event has
-                        concluded. Check the winner
-                        announcement.
-
-                    </p>
-
-
-                    <button
-                        onclick="showEvent('media')"
-                    >
-                        VIEW EVENT
-                    </button>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= PVP ================= -->
-
-        <section
-            id="pvp"
-            class="section"
-        >
-
-            <div class="page-title">
+                <h3>
+                    BUILD
+                </h3>
 
                 <p>
-                    ELYSIUM PVP
+                    Create your own base, establish kingdoms,
+                    and turn the world into something that
+                    represents your imagination.
                 </p>
 
-                <h2>
-                    LEADERBOARD
-                </h2>
+            </div>
+
+
+            <div class="about-card">
+
+                <span class="card-number">
+                    03
+                </span>
+
+                <h3>
+                    CONQUER
+                </h3>
+
+                <p>
+                    Fight rivals, dominate PvP battles,
+                    participate in events, and rise through
+                    the ranks of Elysium.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-description">
+
+            <p>
+                Elysium SMP is a community-focused Minecraft
+                survival server built around competition,
+                creativity, events, and player interaction.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= RULES ================= -->
+
+    <section
+        id="rules"
+        class="section"
+    >
+
+        <div class="page-title">
+
+            <p>
+                PLAY FAIR
+            </p>
+
+            <h2>
+                RULES
+            </h2>
+
+        </div>
+
+
+        <div class="rules-grid">
+
+            <div class="rule-card">
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    NO CHEATING
+                </h3>
+
+                <p>
+                    Any hacked client, unfair modification,
+                    exploit, or cheat is strictly prohibited.
+                </p>
 
             </div>
 
 
-            <div class="leaderboard">
+            <div class="rule-card">
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    RESPECT PLAYERS
+                </h3>
+
+                <p>
+                    Treat everyone with respect. Harassment,
+                    bullying, discrimination, and excessive
+                    toxicity are not allowed.
+                </p>
+
+            </div>
 
 
-                <div class="leader header-row">
+            <div class="rule-card">
 
-                    <span>
-                        #
-                    </span>
+                <span>
+                    03
+                </span>
 
-                    <span>
-                        PLAYER
-                    </span>
+                <h3>
+                    NO GRIEFING
+                </h3>
 
-                    <span>
-                        KILLS
-                    </span>
+                <p>
+                    Do not destroy, steal from, or intentionally
+                    damage another player's builds without permission.
+                </p>
 
-                    <span>
-                        WINS
-                    </span>
-
-                </div>
+            </div>
 
 
-                <div class="leader">
+            <div class="rule-card">
 
-                    <span class="position first">
-                        1
-                    </span>
+                <span>
+                    04
+                </span>
 
-                    <strong>
-                        Masumbaccha
-                    </strong>
+                <h3>
+                    NO EXPLOITING
+                </h3>
 
-                    <span>
-                        87
-                    </span>
+                <p>
+                    Do not abuse bugs, glitches, duplication methods,
+                    or unintended mechanics for personal advantage.
+                </p>
 
-                    <span>
-                        24
-                    </span>
-
-                </div>
+            </div>
 
 
-                <div class="leader">
+            <div class="rule-card">
 
-                    <span class="position second">
-                        2
-                    </span>
+                <span>
+                    05
+                </span>
 
-                    <strong>
-                        Shinchan0n
-                    </strong>
+                <h3>
+                    STAFF DECISIONS
+                </h3>
 
-                    <span>
-                        73
-                    </span>
+                <p>
+                    Staff decisions should be respected.
+                    If you disagree, use the appropriate
+                    appeal or support channels.
+                </p>
 
-                    <span>
-                        20
-                    </span>
-
-                </div>
+            </div>
 
 
-                <div class="leader">
+            <div class="rule-card">
 
-                    <span class="position third">
-                        3
-                    </span>
+                <span>
+                    06
+                </span>
 
-                    <strong>
-                        Wixzen
-                    </strong>
+                <h3>
+                    HAVE FUN
+                </h3>
 
-                    <span>
-                        61
-                    </span>
+                <p>
+                    Elysium is built for everyone.
+                    Play fairly, enjoy the community,
+                    and help make the server better.
+                </p>
 
-                    <span>
-                        18
-                    </span>
+            </div>
 
-                </div>
+        </div>
 
-
-                <div class="leader">
-
-                    <span class="position">
-                        4
-                    </span>
-
-                    <strong>
-                        11k
-                    </strong>
-
-                    <span>
-                        48
-                    </span>
-
-                    <span>
-                        14
-                    </span>
-
-                </div>
+    </section>
 
 
-                <div class="leader">
 
-                    <span class="position">
-                        5
-                    </span>
+    <!-- ================= PVP ================= -->
 
-                    <strong>
-                        Blazebeacon
-                    </strong>
+    <section
+        id="pvp"
+        class="section"
+    >
 
-                    <span>
-                        39
-                    </span>
+        <div class="page-title">
 
-                    <span>
-                        11
-                    </span>
+            <p>
+                ELYSIUM PVP
+            </p>
 
-                </div>
+            <h2>
+                TIER LIST
+            </h2>
 
+        </div>
+
+
+
+        <!-- ================= MCTIERS-STYLE TIER LIST ================= -->
+
+        <div class="mc-tiers">
+
+            <div class="mc-tier-tabs">
+
+                <button
+                    class="mc-tier-tab active"
+                    onclick="showTierCategory('overall', this)"
+                >
+                    <span>◆</span>
+                    Overall
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('ltms', this)"
+                >
+                    <span>⚔</span>
+                    LTMs
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('vanilla', this)"
+                >
+                    <span>◇</span>
+                    Vanilla
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('uhc', this)"
+                >
+                    <span>◈</span>
+                    UHC
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('pot', this)"
+                >
+                    <span>✦</span>
+                    Pot
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('netherop', this)"
+                >
+                    <span>♢</span>
+                    NetherOP
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('smp', this)"
+                >
+                    <span>♜</span>
+                    SMP
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('sword', this)"
+                >
+                    <span>⚔</span>
+                    Sword
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('axe', this)"
+                >
+                    <span>♠</span>
+                    Axe
+                </button>
+
+                <button
+                    class="mc-tier-tab"
+                    onclick="showTierCategory('mace', this)"
+                >
+                    <span>◆</span>
+                    Mace
+                </button>
 
             </div>
 
 
 
-            <!-- ================= MCTIERS-STYLE TIER LIST ================= -->
+            <div class="mc-tier-panel">
 
-            <div class="mc-tiers">
+                <div class="mc-tier-topbar">
 
-                <div class="mc-tier-tabs">
-                    <button class="mc-tier-tab active" onclick="showTierCategory('overall', this)">
-                        <span>🏆</span> Overall
-                    </button>
+                    <div class="mc-tier-info">
+                        INFORMATION
+                    </div>
 
-                    <button class="mc-tier-tab" onclick="showTierCategory('ltms', this)">
-                        <span>⚔</span> LTMs
-                    </button>
+                    <div class="mc-tier-server">
 
-                    <button class="mc-tier-tab" onclick="showTierCategory('vanilla', this)">
-                        <span>⬡</span> Vanilla
-                    </button>
-
-                    <button class="mc-tier-tab" onclick="showTierCategory('uhc', this)">
-                        <span>♥</span> UHC
-                    </button>
-
-                    <button class="mc-tier-tab" onclick="showTierCategory('pot', this)">
-                        <span>⚗</span> Pot
-                    </button>
-
-                    <button class="mc-tier-tab" onclick="showTierCategory('netherop', this)">
-                        <span>◉</span> NetherOP
-                    </button>
-
-                    <button class="mc-tier-tab" onclick="showTierCategory('smp', this)">
-                        <span>◈</span> SMP
-                    </button>
-
-                    <button class="mc-tier-tab" onclick="showTierCategory('sword', this)">
-                        <span>⚔</span> Sword
-                    </button>
-
-                    <button class="mc-tier-tab" onclick="showTierCategory('axe', this)">
-                        <span>◈</span> Axe
-                    </button>
-
-                    <button class="mc-tier-tab" onclick="showTierCategory('mace', this)">
-                        <span>⚒</span> Mace
-                    </button>
-                </div>
-
-
-                <div class="mc-tier-panel">
-
-                    <div class="mc-tier-topbar">
-
-                        <span class="mc-tier-info">
-                            ⓘ Information
+                        <span>
+                            ●
                         </span>
 
-                        <span class="mc-tier-server">
+                        <b>
+                            ELYSIUM SMP
+                        </b>
 
-                            PVP CLUB
-
-                            <b>
-                                elysiumsmp.playwithbao.com
-                            </b>
-
-                            <span>
-                                ●
-                            </span>
-
-                        </span>
+                        elysiumsmp.playwithbao.com
 
                     </div>
 
-
-                    <div class="mc-tier-headings">
-
-                        <span>
-                            #
-                        </span>
-
-                        <span>
-                            PLAYER
-                        </span>
-
-                        <span>
-                            REGION
-                        </span>
-
-                        <span>
-                            TIERS
-                        </span>
-
-                    </div>
+                </div>
 
 
-                    <div id="mcTierRows"></div>
+
+                <div class="mc-tier-headings">
+
+                    <span>
+                        # PLAYER
+                    </span>
+
+                    <span>
+                        REGION
+                    </span>
+
+                    <span>
+                        TIERS
+                    </span>
+
+                    <span>
+                        PVP CLUB
+                    </span>
 
                 </div>
+
+
+
+                <div id="mcTierRows"></div>
+
 
 
                 <p class="mc-tier-note">
@@ -949,74 +536,212 @@
 
             </div>
 
+        </div>
 
-            <p class="leader-note">
+    </section>
 
-                PvP statistics are currently
-                displayed as sample data.
 
+
+    <!-- ================= PLAYERS ================= -->
+
+    <section
+        id="players"
+        class="section"
+    >
+
+        <div class="page-title">
+
+            <p>
+                MEET THE COMMUNITY
             </p>
 
-        </section>
+            <h2>
+                PLAYERS
+            </h2>
+
+        </div>
 
 
+        <div
+            id="playerGrid"
+            class="players-grid"
+        ></div>
 
-        <!-- ================= DISCORD ================= -->
 
-        <section
-            id="discord"
-            class="section"
+        <div
+            id="noPlayers"
+            class="no-players"
         >
+            No players found.
+        </div>
 
-            <div class="discord-box">
+    </section>
 
-                <div class="discord-symbol">
-                    ✦
+
+
+    <!-- ================= EVENTS ================= -->
+
+    <section
+        id="events"
+        class="section"
+    >
+
+        <div class="page-title">
+
+            <p>
+                ELYSIUM ACTIVITIES
+            </p>
+
+            <h2>
+                EVENTS
+            </h2>
+
+        </div>
+
+
+        <div class="events-grid">
+
+            <div class="event-card">
+
+                <div class="event-date">
+                    TBA
                 </div>
 
-
-                <p class="eyebrow">
-                    JOIN THE COMMUNITY
-                </p>
-
-
-                <h2>
-                    ELYSIUM DISCORD
-                </h2>
-
+                <h3>
+                    PVP TOURNAMENT
+                </h3>
 
                 <p>
-
-                    Stay updated with announcements,
-                    events, server news and the
-                    Elysium community.
-
+                    Test your combat skills against
+                    the best fighters on Elysium.
                 </p>
 
+                <span>
+                    COMING SOON
+                </span>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-date">
+                    TBA
+                </div>
+
+                <h3>
+                    BUILDING EVENT
+                </h3>
+
+                <p>
+                    Show your creativity and compete
+                    against other builders.
+                </p>
+
+                <span>
+                    COMING SOON
+                </span>
+
+            </div>
+
+
+            <div class="event-card">
+
+                <div class="event-date">
+                    TBA
+                </div>
+
+                <h3>
+                    COMMUNITY EVENT
+                </h3>
+
+                <p>
+                    Join the community for a special
+                    server-wide event.
+                </p>
+
+                <span>
+                    COMING SOON
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= JOIN ================= -->
+
+    <section
+        id="join"
+        class="section join-section"
+    >
+
+        <div class="page-title">
+
+            <p>
+                BECOME PART OF ELYSIUM
+            </p>
+
+            <h2>
+                JOIN
+            </h2>
+
+        </div>
+
+
+        <div class="join-box">
+
+            <div class="join-item">
+
+                <span>
+                    SERVER IP
+                </span>
+
+                <strong>
+                    elysiumsmp.playwithbao.com
+                </strong>
+
+                <button
+                    onclick="copyIP()"
+                >
+                    COPY IP
+                </button>
+
+            </div>
+
+
+            <div class="join-item">
+
+                <span>
+                    DISCORD
+                </span>
+
+                <strong>
+                    ELYSIUM SMP COMMUNITY
+                </strong>
 
                 <a
-                    id="discordLink"
                     href="https://discord.gg/EsDQqvrx7"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="discord-button"
                 >
                     JOIN DISCORD
                 </a>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-    </main>
 
-
-
-    <!-- ================= EVENT MODAL ================= -->
+    <!-- ================= MODAL ================= -->
 
     <div
-        id="eventModal"
+        id="playerModal"
         class="modal"
     >
 
@@ -1024,32 +749,22 @@
 
             <button
                 class="close-modal"
-                onclick="closeModal()"
+                onclick="closePlayerModal()"
             >
                 ×
             </button>
 
-
             <p class="eyebrow">
-                ELYSIUM EVENT
+                PLAYER PROFILE
             </p>
 
-
-            <h2 id="modalTitle">
-                EVENT
+            <h2 id="modalName">
+                Player
             </h2>
 
-
-            <p id="modalText">
+            <p id="modalInfo">
+                Player information.
             </p>
-
-
-            <button
-                class="primary-btn"
-                onclick="closeModal()"
-            >
-                CLOSE
-            </button>
 
         </div>
 
@@ -1062,14 +777,12 @@
     <footer>
 
         <div class="footer-logo">
-            ✧ ELYSIUM SMP ✧
+            ELYSIUM SMP
         </div>
 
-
         <p>
-            SURVIVE • BUILD • CONQUER
+            SURVIVE · BUILD · CONQUER
         </p>
-
 
         <small>
             © 2026 Elysium SMP
