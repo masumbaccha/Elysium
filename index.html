@@ -712,7 +712,6 @@
             </div>
 
 
-            
             <!-- ================= MCTIERS-STYLE TIER LIST ================= -->
 
             <div class="mc-tiers">
@@ -915,6 +914,82 @@
             <button
                 class="primary-btn"
                 onclick="closeModal()"
+            >
+                CLOSE
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= PLAYER PROFILE MODAL ================= -->
+
+    <div
+        id="playerModal"
+        class="modal"
+    >
+
+        <div class="modal-box player-modal-box">
+
+            <button
+                class="close-modal"
+                onclick="closePlayerModal()"
+            >
+                ×
+            </button>
+
+
+            <div class="player-modal-skin">
+
+                <img
+                    id="playerModalSkin"
+                    src=""
+                    alt="Minecraft skin"
+                >
+
+            </div>
+
+
+            <h2 id="playerModalName">
+                PLAYER
+            </h2>
+
+
+            <div class="player-modal-info">
+
+                <div class="player-detail">
+
+                    <span>
+                        ABOUT
+                    </span>
+
+                    <p id="playerModalAbout">
+                        Not specified
+                    </p>
+
+                </div>
+
+
+                <div class="player-detail">
+
+                    <span>
+                        GAMEMODE
+                    </span>
+
+                    <p id="playerModalGamemode">
+                        Not specified
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="closePlayerModal()"
             >
                 CLOSE
             </button>
