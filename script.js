@@ -15,41 +15,264 @@ const DISCORD_LINK = "https://discord.gg/EsDQqvrx7";
 
 /* ==========================================
    ELYSIUM PLAYERS
-   EDIT THIS LIST WHENEVER YOU WANT
 ========================================== */
 
 const players = [
-    { name: "Masumbaccha", role: "Founder" },
-    { name: "Shinchan0n", role: "President" },
-    { name: "Wixzen", role: "Vice-President" },
+    {
+        name: "Masumbaccha",
+        role: "Founder",
+        skin: "judelow",
+        about: "I don't need to be the best, I just need to keep improving.",
+        gamemode: "Survival"
+    },
 
-    { name: "11k", role: "Governor" },
-    { name: "Blazebeacon", role: "Governor" },
+    {
+        name: "Shinchan0n",
+        role: "President",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
 
-    { name: "Ahil", role: "Civilian" },
-    { name: "Arabicveled", role: "Civilian" },
-    { name: "Someone", role: "Civilian" },
-    { name: "Ishan", role: "Civilian" },
-    { name: "Mzxwan", role: "Civilian" },
-    { name: "Nivio", role: "Civilian" },
-    { name: "NotFlint", role: "Civilian" },
-    { name: "608ms", role: "Civilian" },
-    { name: "Amayy", role: "Civilian" },
-    { name: "Athubroplayz", role: "Civilian" },
-    { name: "EliteYshh", role: "Civilian" },
-    { name: "Greenery", role: "Civilian" },
-    { name: "KomAP", role: "Civilian" },
-    { name: "Ghost", role: "Civilian" },
-    { name: "Mepp00", role: "Civilian" },
-    { name: "Rain", role: "Civilian" },
-    { name: "seish", role: "Civilian" },
-    { name: "Rachitified", role: "Civilian" },
-    { name: "Kat", role: "Civilian" },
-    { name: "Ahha", role: "Civilian" },
-    { name: "Hunt Vantage", role: "Civilian" },
-    { name: "Ily", role: "Civilian" },
-    { name: "Itx Ammar", role: "Civilian" },
-    { name: "Purplix", role: "Civilian" }
+    {
+        name: "Wixzen",
+        role: "Vice-President",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "11k",
+        role: "Governor",
+        skin: "nerd",
+        about: "Speed is specialty hahahah. Ello I'm 11k, 11k is my name. Uh I can pvp alittle but mostly I grind I got like 250 gear sets cuz I grind for like 20 hours daily. And uhh when I'm locked in I'm ht1 most times I'm ht10 ur welcome",
+        gamemode: "Nethpot and Diapot"
+    },
+
+    {
+        name: "Blazebeacon",
+        role: "Governor",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Supperior_Hassan",
+        role: "Civilian",
+        skin: "wemmbu",
+        about: "A combat specialist",
+        gamemode: "Nethpot and Diapot"
+    },
+
+    {
+        name: "dogyp0ty44",
+        role: "Civilian",
+        skin: "dogyp0ty44",
+        about: "I can't do anything. 11k invited me idk. I can't fight, I just boss people around.",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Lezux",
+        role: "Civilian",
+        skin: "tai",
+        about: "uh what do i type idk",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Ahil",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Arabicveled",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Someone",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Ishan",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Mzxwan",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Nivio",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "NotFlint",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "608ms",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Amayy",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Athubroplayz",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "EliteYshh",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Greenery",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "KomAP",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Ghost",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Mepp00",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Rain",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "seish",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Rachitified",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Kat",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Ahha",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Hunt Vantage",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Ily",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Itx Ammar",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    },
+
+    {
+        name: "Purplix",
+        role: "Civilian",
+        skin: "Steve",
+        about: "Not specified",
+        gamemode: "Not specified"
+    }
 ];
 
 
@@ -211,7 +434,7 @@ function loadPlayers() {
 
     grid.innerHTML = "";
 
-    players.forEach(player => {
+    players.forEach((player, index) => {
 
         const card =
             document.createElement("div");
@@ -221,19 +444,43 @@ function loadPlayers() {
         card.dataset.name =
             player.name;
 
+        card.onclick = function () {
+            showPlayerProfile(index);
+        };
+
+
         const avatar =
             document.createElement("div");
 
         avatar.className = "avatar";
 
-        avatar.innerText =
-            player.name.charAt(0).toUpperCase();
+
+        const skin =
+            document.createElement("img");
+
+        skin.className = "player-card-skin";
+
+        skin.src =
+            `https://mc-heads.net/avatar/${encodeURIComponent(player.skin)}/64`;
+
+        skin.alt =
+            `${player.name} Minecraft skin`;
+
+        skin.onerror =
+            function () {
+
+                this.src =
+                    "https://mc-heads.net/avatar/Steve/64";
+
+            };
+
 
         const name =
             document.createElement("h3");
 
         name.innerText =
             player.name;
+
 
         const rank =
             document.createElement("span");
@@ -247,6 +494,9 @@ function loadPlayers() {
         rank.innerText =
             player.role.toUpperCase();
 
+
+        avatar.appendChild(skin);
+
         card.appendChild(avatar);
         card.appendChild(name);
         card.appendChild(rank);
@@ -254,6 +504,122 @@ function loadPlayers() {
         grid.appendChild(card);
 
     });
+}
+
+
+/* ==========================================
+   PLAYER PROFILE
+========================================== */
+
+function showPlayerProfile(index) {
+
+    const player =
+        players[index];
+
+    if (!player) {
+        return;
+    }
+
+    const modal =
+        document.getElementById("playerModal");
+
+    const name =
+        document.getElementById("playerModalName");
+
+    const about =
+        document.getElementById("playerModalAbout");
+
+    const gamemode =
+        document.getElementById("playerModalGamemode");
+
+    const skin =
+        document.getElementById("playerModalSkin");
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    if (name) {
+        name.innerText =
+            player.name;
+    }
+
+
+    if (about) {
+        about.innerText =
+            player.about || "Not specified";
+    }
+
+
+    if (gamemode) {
+        gamemode.innerText =
+            player.gamemode || "Not specified";
+    }
+
+
+    if (skin) {
+
+        skin.src =
+            `https://mc-heads.net/avatar/${encodeURIComponent(player.skin || "Steve")}/128`;
+
+        skin.alt =
+            `${player.name} Minecraft skin`;
+
+        skin.onerror =
+            function () {
+
+                this.src =
+                    "https://mc-heads.net/avatar/Steve/128";
+
+            };
+
+    }
+
+
+    modal.classList.add("show");
+}
+
+
+/* ==========================================
+   CLOSE PLAYER PROFILE
+========================================== */
+
+function closePlayerModal() {
+
+    const modal =
+        document.getElementById("playerModal");
+
+    if (modal) {
+
+        modal.classList.remove("show");
+
+    }
+}
+
+
+/* ==========================================
+   PLAYER MODAL OUTSIDE CLICK
+========================================== */
+
+const playerModal =
+    document.getElementById("playerModal");
+
+if (playerModal) {
+
+    playerModal.addEventListener(
+        "click",
+        function(event) {
+
+            if (event.target === this) {
+
+                closePlayerModal();
+
+            }
+
+        }
+    );
 }
 
 
@@ -315,15 +681,6 @@ function searchPlayers() {
 /* ==========================================
    EVENT COUNTDOWN
 ========================================== */
-
-/*
-   CHANGE THIS DATE WHEN YOUR EVENT DATE
-   CHANGES.
-
-   Current:
-   18 September 2026
-   9:00 PM
-*/
 
 const eventDate =
     new Date(
@@ -420,8 +777,6 @@ function showEvent(event) {
     }
 
 
-    /* PVP */
-
     if (event === "pvp") {
 
         title.innerText =
@@ -435,8 +790,6 @@ function showEvent(event) {
     }
 
 
-    /* END WAR */
-
     else if (event === "endwar") {
 
         title.innerText =
@@ -449,8 +802,6 @@ function showEvent(event) {
             "the final event information.";
     }
 
-
-    /* MEDIA EVENT */
 
     else if (event === "media") {
 
@@ -520,6 +871,7 @@ document.addEventListener(
         if (event.key === "Escape") {
 
             closeModal();
+            closePlayerModal();
 
         }
 
@@ -545,16 +897,6 @@ if (discordLink) {
 /* ==========================================
    DEMO PLAYER COUNT
 ========================================== */
-
-/*
-   IMPORTANT:
-   This is NOT the 30-player roster.
-
-   This is only the fake ONLINE counter
-   shown on the homepage.
-
-   It does NOT connect to Minecraft.
-*/
 
 let demoPlayers = 12;
 
@@ -606,7 +948,7 @@ showSection("home");
 
 /* ==========================================
    MCTIERS-STYLE PVP TIER LIST
-   ========================================== */
+========================================== */
 
 const mcTierPlayers = [
     {
