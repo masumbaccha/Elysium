@@ -3,27 +3,44 @@
    MAIN STYLESHEET
 ========================================== */
 
+
+/* ==========================================
+   GLOBAL RESET
+========================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
+
 
 body {
     background: #060606;
     color: #eeeeee;
     font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
     overflow-x: hidden;
 }
 
 
+button,
+a {
+    font-family: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
 /* ==========================================
-   GLOBAL BACKGROUND
+   BACKGROUND
 ========================================== */
 
 .background {
@@ -33,42 +50,39 @@ body {
 
     background:
         linear-gradient(
-            rgba(4, 4, 4, 0.72),
-            rgba(4, 4, 4, 0.88)
+            rgba(0, 0, 0, 0.78),
+            rgba(0, 0, 0, 0.88)
         ),
-        repeating-linear-gradient(
-            45deg,
-            #111 0,
-            #111 2px,
-            #090909 2px,
-            #090909 7px
-        );
+        url("background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    filter: brightness(0.65);
 }
 
-.background::before {
+
+.background::after {
     content: "";
+
     position: absolute;
     inset: 0;
 
-    background-image:
-        radial-gradient(
-            rgba(255,255,255,0.10) 1px,
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
             transparent 1px
         );
 
-    background-size: 38px 38px;
+    background-size: 50px 50px;
 
-    animation: moveParticles 25s linear infinite;
-}
-
-@keyframes moveParticles {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: 500px 500px;
-    }
+    opacity: 0.25;
 }
 
 
@@ -76,84 +90,79 @@ body {
    NAVBAR
 ========================================== */
 
-.navbar {
-    position: sticky;
+nav {
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    right: 0;
 
-    min-height: 70px;
+    height: 70px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 15px 6%;
+    padding: 0 6%;
 
-    background: rgba(8, 8, 8, 0.94);
+    background: rgba(5, 5, 5, 0.88);
 
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid #222;
 
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(12px);
+
+    z-index: 1000;
 }
+
 
 .logo {
-    cursor: pointer;
+    color: #ffffff;
 
-    font-size: 21px;
+    font-size: 19px;
     font-weight: bold;
 
-    letter-spacing: 4px;
+    letter-spacing: 3px;
 
-    transition: 0.25s;
+    text-decoration: none;
 }
 
-.logo:hover {
-    text-shadow: 0 0 18px rgba(255,255,255,0.4);
-}
 
-nav {
+.nav-links {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 28px;
+
+    list-style: none;
 }
 
-nav button {
-    padding: 10px 13px;
 
-    background: transparent;
-
+.nav-links a {
     color: #888;
 
-    border: none;
+    text-decoration: none;
 
     font-size: 11px;
     font-weight: bold;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 
-    cursor: pointer;
-
-    transition: 0.2s;
+    transition: 0.25s;
 }
 
-nav button:hover,
-nav button.active {
-    color: white;
-    background: #181818;
+
+.nav-links a:hover {
+    color: #ffffff;
 }
+
 
 .menu-toggle {
     display: none;
 
-    background: transparent;
+    background: none;
+    border: none;
 
-    border: 1px solid #333;
+    color: #ffffff;
 
-    color: white;
-
-    padding: 8px 12px;
-
-    cursor: pointer;
+    font-size: 25px;
 }
 
 
@@ -161,118 +170,62 @@ nav button.active {
    SECTIONS
 ========================================== */
 
-.section {
-    display: none;
-
+section {
     position: relative;
 
-    min-height: 85vh;
+    min-height: 100vh;
 
-    padding: 90px 7%;
+    padding: 120px 7% 80px;
 
-    overflow: hidden;
-
-    animation: sectionIn 0.45s ease;
-}
-
-.section.active {
-    display: block;
-}
-
-@keyframes sectionIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
-/* ==========================================
-   SECTION BACKGROUNDS
-   ALL PNG FILES ARE BESIDE style.css
-========================================== */
+section::before {
+    content: "";
 
-#home {
+    position: absolute;
+    inset: 0;
+
     background:
         linear-gradient(
-            rgba(0,0,0,0.48),
-            rgba(0,0,0,0.76)
-        ),
-        url("home-bg.png");
+            rgba(0,0,0,0.82),
+            rgba(0,0,0,0.92)
+        );
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    z-index: -1;
 }
 
-#rules {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.55),
-            rgba(0,0,0,0.80)
-        ),
-        url("rules-bg.png");
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+.section-title {
+    margin-bottom: 50px;
+
+    text-align: center;
+
+    font-size: 38px;
+
+    letter-spacing: 5px;
 }
 
-#players {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.55),
-            rgba(0,0,0,0.80)
-        ),
-        url("players-bg.png");
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+.section-title span {
+    color: #777;
 }
 
-#events {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.50),
-            rgba(0,0,0,0.78)
-        ),
-        url("events-bg.png");
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
+.section-subtitle {
+    margin-top: -35px;
+    margin-bottom: 40px;
 
-#pvp {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.48),
-            rgba(0,0,0,0.78)
-        ),
-        url("pvp-bg.png");
+    text-align: center;
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
+    color: #777;
 
-#discord {
-    background:
-        linear-gradient(
-            rgba(0,0,0,0.52),
-            rgba(0,0,0,0.80)
-        ),
-        url("discord-bg.png");
+    font-size: 12px;
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    letter-spacing: 2px;
 }
 
 
@@ -280,311 +233,153 @@ nav button.active {
    HOME
 ========================================== */
 
-.hero {
-    max-width: 1000px;
-
-    margin: auto;
-
+#home {
     text-align: center;
 
-    padding-top: 60px;
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.7),
+            rgba(0,0,0,0.88)
+        ),
+        url("home-bg.png");
+
+    background-size: cover;
+    background-position: center;
 }
 
-.hero-line {
-    width: 80px;
-    height: 1px;
 
-    background: #777;
+.home-content {
+    max-width: 900px;
 
-    margin: auto auto 25px;
+    margin: auto;
 }
 
-.eyebrow {
-    color: #aaa;
 
-    font-size: 11px;
+.home-content h1 {
+    margin-bottom: 20px;
 
-    letter-spacing: 5px;
-
-    margin-bottom: 18px;
-}
-
-.hero h1 {
-    font-size: clamp(60px, 12vw, 130px);
-
-    letter-spacing: 12px;
-
-    line-height: 1;
-
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.12),
-        0 0 40px rgba(255,255,255,0.05);
-
-    animation: glow 3s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow:
-            0 0 5px rgba(255,255,255,0.08);
-    }
-
-    to {
-        text-shadow:
-            0 0 35px rgba(255,255,255,0.18);
-    }
-}
-
-.subtitle {
-    margin-top: 20px;
-
-    color: #bbb;
+    font-size: clamp(45px, 8vw, 90px);
 
     letter-spacing: 8px;
 
-    font-size: 13px;
+    text-shadow:
+        0 0 30px rgba(255,255,255,0.12);
 }
 
-.status {
-    display: inline-flex;
-    align-items: center;
 
-    margin-top: 40px;
+.home-content p {
+    margin-bottom: 35px;
 
-    padding: 10px 18px;
+    color: #888;
 
-    background: rgba(16,16,16,0.86);
+    font-size: 14px;
 
-    border: 1px solid #303030;
-
-    color: #aaa;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    backdrop-filter: blur(8px);
+    letter-spacing: 4px;
 }
 
-.status-dot {
-    width: 8px;
-    height: 8px;
 
-    margin-right: 9px;
-
-    border-radius: 50%;
-
-    background: #72ff72;
-
-    box-shadow: 0 0 12px #72ff72;
-}
-
-.server-stats {
+.home-buttons {
     display: flex;
 
     justify-content: center;
 
+    gap: 15px;
+
     flex-wrap: wrap;
-
-    gap: 12px;
-
-    margin-top: 25px;
 }
 
-.stat {
-    min-width: 160px;
 
-    padding: 17px 20px;
+.primary-btn,
+.secondary-btn {
+    padding: 14px 24px;
 
-    background: rgba(15,15,15,0.86);
+    border: 1px solid #444;
 
-    border: 1px solid #292929;
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
 
     transition: 0.25s;
-
-    backdrop-filter: blur(8px);
 }
 
-.stat:hover {
-    transform: translateY(-5px);
 
-    border-color: #555;
+.primary-btn {
+    background: #eeeeee;
+
+    color: #050505;
+
+    border-color: #eeeeee;
 }
 
-.stat span {
+
+.primary-btn:hover {
+    background: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+
+.secondary-btn {
+    background: rgba(255,255,255,0.03);
+
+    color: #ffffff;
+}
+
+
+.secondary-btn:hover {
+    background: rgba(255,255,255,0.1);
+
+    border-color: #777;
+}
+
+
+/* ==========================================
+   SERVER INFO
+========================================== */
+
+.server-info {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 35px;
+}
+
+
+.info-box {
+    min-width: 140px;
+
+    padding: 18px;
+
+    background: rgba(10,10,10,0.8);
+
+    border: 1px solid #282828;
+}
+
+
+.info-box span {
     display: block;
 
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 
-    color: #777;
+    color: #666;
 
     font-size: 9px;
 
     letter-spacing: 2px;
 }
 
-.stat strong {
-    font-size: 13px;
+
+.info-box strong {
+    font-size: 12px;
 
     letter-spacing: 1px;
-}
-
-.hero-buttons {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-top: 35px;
-
-    flex-wrap: wrap;
-}
-
-.primary-btn,
-.secondary-btn,
-.event-card button,
-.discord-button {
-    padding: 13px 25px;
-
-    font-family: inherit;
-
-    font-weight: bold;
-
-    font-size: 11px;
-
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-
-    transition: 0.25s;
-}
-
-.primary-btn {
-    background: white;
-
-    color: #080808;
-
-    border: 1px solid white;
-}
-
-.primary-btn:hover {
-    background: #ccc;
-
-    transform: translateY(-3px);
-}
-
-.secondary-btn {
-    background: #111;
-
-    color: white;
-
-    border: 1px solid #444;
-}
-
-.secondary-btn:hover {
-    background: #1c1c1c;
-
-    border-color: #777;
-
-    transform: translateY(-3px);
-}
-
-#copyMessage {
-    height: 20px;
-
-    margin-top: 13px;
-
-    color: #aaa;
-
-    font-size: 11px;
-}
-
-
-/* ==========================================
-   HOME CARDS
-========================================== */
-
-.home-cards {
-    max-width: 1050px;
-
-    margin: 80px auto 0;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(200px, 1fr));
-
-    gap: 13px;
-}
-
-.info-card {
-    padding: 25px;
-
-    background: rgba(12,12,12,0.86);
-
-    border: 1px solid #252525;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
-    backdrop-filter: blur(8px);
-}
-
-.info-card:hover {
-    transform: translateY(-7px);
-
-    background: rgba(21,21,21,0.92);
-
-    border-color: #555;
-}
-
-.info-card span {
-    color: #777;
-
-    font-size: 10px;
-}
-
-.info-card h3 {
-    margin: 15px 0 8px;
-
-    font-size: 18px;
-
-    letter-spacing: 2px;
-}
-
-.info-card p {
-    color: #888;
-
-    font-size: 12px;
-}
-
-
-/* ==========================================
-   PAGE TITLES
-========================================== */
-
-.page-title {
-    text-align: center;
-
-    margin-bottom: 45px;
-}
-
-.page-title p {
-    color: #aaa;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-}
-
-.page-title h2 {
-    margin-top: 10px;
-
-    font-size: clamp(30px, 5vw, 48px);
-
-    letter-spacing: 5px;
 }
 
 
@@ -592,24 +387,41 @@ nav button.active {
    RULES
 ========================================== */
 
+#rules {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.76),
+            rgba(0,0,0,0.92)
+        ),
+        url("rules-bg.png");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
 .rules-container {
-    max-width: 850px;
+    width: min(850px, 100%);
 
     margin: auto;
 }
 
+
 .rule {
     margin-bottom: 10px;
 
-    background: rgba(13,13,13,0.88);
+    border: 1px solid #252525;
 
-    border: 1px solid #272727;
+    background: rgba(10,10,10,0.85);
 
     backdrop-filter: blur(8px);
 }
 
-.rule button {
+
+.rule-header {
     width: 100%;
+
+    padding: 20px 22px;
 
     display: flex;
 
@@ -617,51 +429,46 @@ nav button.active {
 
     justify-content: space-between;
 
-    padding: 20px;
-
     background: transparent;
+
+    color: #ffffff;
 
     border: none;
 
-    color: white;
-
     text-align: left;
 
-    cursor: pointer;
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
 }
 
-.rule button:hover {
-    background: rgba(21,21,21,0.8);
-}
 
-.rule button b {
+.rule-header span:last-child {
     color: #777;
 
     font-size: 18px;
 }
+
 
 .rule-content {
     max-height: 0;
 
     overflow: hidden;
 
-    padding: 0 20px;
-
-    color: #aaa;
-
-    line-height: 1.7;
-
-    font-size: 13px;
-
-    transition:
-        max-height 0.3s ease,
-        padding 0.3s ease;
+    transition: max-height 0.3s ease;
 }
 
-.rule.open .rule-content {
-    max-height: 150px;
 
-    padding: 0 20px 20px;
+.rule-content p {
+    padding: 0 22px 20px;
+
+    color: #888;
+
+    font-size: 12px;
+
+    line-height: 1.8;
 }
 
 
@@ -669,48 +476,30 @@ nav button.active {
    PLAYERS
 ========================================== */
 
-.search-wrapper {
-    display: flex;
+#players {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.76),
+            rgba(0,0,0,0.93)
+        ),
+        url("players-bg.png");
 
-    justify-content: center;
-
-    margin-bottom: 30px;
+    background-size: cover;
+    background-position: center;
 }
 
-.search {
-    width: min(500px, 100%);
-
-    padding: 15px 18px;
-
-    background: rgba(16,16,16,0.9);
-
-    border: 1px solid #303030;
-
-    color: white;
-
-    outline: none;
-
-    font-family: inherit;
-
-    backdrop-filter: blur(8px);
-}
-
-.search:focus {
-    border-color: #666;
-}
 
 .players-grid {
-    max-width: 1000px;
-
-    margin: auto;
+    width: 100%;
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(190px, 1fr));
+        repeat(auto-fit, minmax(180px, 1fr));
 
-    gap: 13px;
+    gap: 18px;
 }
+
 
 .player-card {
     padding: 28px 20px;
@@ -724,15 +513,22 @@ nav button.active {
     transition: 0.3s;
 
     backdrop-filter: blur(8px);
+
+    cursor: pointer;
 }
+
 
 .player-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-6px);
 
-    border-color: #666;
+    border-color: #555;
 
-    background: rgba(21,21,21,0.92);
+    background: rgba(25,25,25,0.95);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.45);
 }
+
 
 .avatar {
     width: 62px;
@@ -741,7 +537,6 @@ nav button.active {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     margin: 0 auto 15px;
@@ -750,14 +545,28 @@ nav button.active {
 
     border: 1px solid #444;
 
-    font-size: 24px;
-
-    font-weight: bold;
+    overflow: hidden;
 }
+
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    image-rendering: pixelated;
+}
+
 
 .player-card h3 {
     margin-bottom: 10px;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
 }
+
 
 .rank {
     color: #888;
@@ -767,128 +576,124 @@ nav button.active {
     letter-spacing: 2px;
 }
 
-.no-results {
-    display: none;
-
-    text-align: center;
-
-    margin-top: 30px;
-
-    color: #777;
-}
-
 
 /* ==========================================
    EVENTS
 ========================================== */
 
-.event-grid {
-    max-width: 1050px;
+#events {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.76),
+            rgba(0,0,0,0.93)
+        ),
+        url("events-bg.png");
 
-    margin: auto;
+    background-size: cover;
+    background-position: center;
+}
 
+
+.events-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(270px, 1fr));
+        repeat(auto-fit, minmax(250px, 1fr));
 
-    gap: 16px;
+    gap: 20px;
 }
+
 
 .event-card {
     padding: 30px;
 
-    background: rgba(16,16,16,0.88);
+    background: rgba(12,12,12,0.88);
 
     border: 1px solid #292929;
 
     transition: 0.3s;
-
-    backdrop-filter: blur(8px);
 }
+
 
 .event-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 
-    border-color: #666;
+    border-color: #555;
 }
 
-.event-card.completed {
-    opacity: 0.75;
-}
-
-.event-top {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-.event-tag {
-    color: #888;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-}
-
-.event-symbol {
-    color: #aaa;
-
-    font-size: 20px;
-}
 
 .event-card h3 {
-    margin: 20px 0 12px;
+    margin-bottom: 12px;
 
-    font-size: 25px;
-
-    letter-spacing: 2px;
+    font-size: 18px;
 }
 
-.event-card p {
-    min-height: 65px;
 
-    margin-bottom: 20px;
+.event-card p {
+    margin-bottom: 15px;
 
     color: #888;
 
-    font-size: 13px;
+    font-size: 12px;
 
     line-height: 1.7;
 }
 
-.countdown-label {
-    color: #777;
 
-    font-size: 9px;
+.event-date {
+    color: #aaa;
+
+    font-size: 10px;
 
     letter-spacing: 2px;
-
-    margin-bottom: 7px;
 }
+
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
 
 .countdown {
-    margin-bottom: 22px;
+    display: flex;
 
-    font-weight: bold;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 35px;
+
+    flex-wrap: wrap;
+}
+
+
+.count-box {
+    min-width: 80px;
+
+    padding: 18px 12px;
+
+    background: rgba(10,10,10,0.8);
+
+    border: 1px solid #292929;
+
+    text-align: center;
+}
+
+
+.count-box strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 24px;
+}
+
+
+.count-box span {
+    color: #666;
+
+    font-size: 8px;
 
     letter-spacing: 2px;
-}
-
-.event-card button {
-    background: #eee;
-
-    color: #080808;
-
-    border: 1px solid #eee;
-}
-
-.event-card button:hover {
-    background: #bbb;
-
-    transform: translateY(-2px);
 }
 
 
@@ -896,47 +701,130 @@ nav button.active {
    PVP
 ========================================== */
 
-.leaderboard {
-    max-width: 900px;
+#pvp {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.76),
+            rgba(0,0,0,0.94)
+        ),
+        url("pvp-bg.png");
 
-    margin: auto;
-
-    border: 1px solid #292929;
-
-    overflow: hidden;
-
-    backdrop-filter: blur(8px);
+    background-size: cover;
+    background-position: center;
 }
 
-.leader {
+
+.pvp-container {
+    width: min(1050px, 100%);
+
+    margin: auto;
+}
+
+
+.pvp-modes {
     display: grid;
 
     grid-template-columns:
-        60px 1fr 100px 100px;
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 15px;
+
+    margin-bottom: 45px;
+}
+
+
+.pvp-mode {
+    padding: 20px;
+
+    background: rgba(12,12,12,0.88);
+
+    border: 1px solid #292929;
+
+    text-align: center;
+
+    transition: 0.3s;
+}
+
+
+.pvp-mode:hover {
+    border-color: #555;
+
+    transform: translateY(-4px);
+}
+
+
+.pvp-mode h3 {
+    margin-bottom: 8px;
+
+    font-size: 13px;
+}
+
+
+.pvp-mode p {
+    color: #777;
+
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   MCTIERS
+========================================== */
+
+.mctiers {
+    width: 100%;
+
+    margin-top: 20px;
+}
+
+
+.mctiers-title {
+    margin-bottom: 20px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color: #aaa;
+}
+
+
+.tier-table {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid #292929;
+}
+
+
+.tier-row {
+    min-width: 700px;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr 1fr;
 
     align-items: center;
 
-    padding: 18px 20px;
+    padding: 14px 18px;
+
+    background: rgba(10,10,10,0.85);
 
     border-bottom: 1px solid #222;
-
-    background: rgba(16,16,16,0.88);
-
-    transition: 0.2s;
 }
 
-.leader:last-child {
+
+.tier-row:last-child {
     border-bottom: none;
 }
 
-.leader:not(.header-row):hover {
-    background: rgba(24,24,24,0.92);
 
-    transform: translateX(5px);
-}
-
-.header-row {
-    background: rgba(25,25,25,0.94);
+.tier-row.header {
+    background: #151515;
 
     color: #777;
 
@@ -945,30 +833,58 @@ nav button.active {
     letter-spacing: 2px;
 }
 
-.position {
+
+.tier-player {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.tier-player img {
+    width: 38px;
+    height: 38px;
+
+    image-rendering: pixelated;
+
+    background: #222;
+
+    border: 1px solid #333;
+}
+
+
+.tier-player strong {
+    font-size: 11px;
+}
+
+
+.tier-region,
+.tier-points,
+.tier-rank {
     color: #888;
-}
-
-.first {
-    color: #fff;
-}
-
-.second {
-    color: #bbb;
-}
-
-.third {
-    color: #999;
-}
-
-.leader-note {
-    text-align: center;
-
-    margin-top: 20px;
-
-    color: #777;
 
     font-size: 10px;
+}
+
+
+.tier-badge {
+    display: inline-block;
+
+    width: fit-content;
+
+    padding: 5px 9px;
+
+    border: 1px solid #444;
+
+    color: #ccc;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
 }
 
 
@@ -976,66 +892,36 @@ nav button.active {
    DISCORD
 ========================================== */
 
-.discord-box {
-    max-width: 700px;
+#discord {
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.76),
+            rgba(0,0,0,0.93)
+        ),
+        url("discord-bg.png");
 
-    margin: 40px auto;
-
-    padding: 75px 35px;
+    background-size: cover;
+    background-position: center;
 
     text-align: center;
-
-    background: rgba(16,16,16,0.88);
-
-    border: 1px solid #292929;
-
-    backdrop-filter: blur(10px);
 }
 
-.discord-symbol {
-    margin-bottom: 20px;
 
-    color: #aaa;
+.discord-content {
+    width: min(700px, 100%);
 
-    font-size: 30px;
+    margin: auto;
 }
 
-.discord-box h2 {
-    margin-bottom: 20px;
 
-    font-size: clamp(30px, 6vw, 48px);
-
-    letter-spacing: 4px;
-}
-
-.discord-box > p:not(.eyebrow) {
-    max-width: 500px;
-
-    margin: 0 auto 30px;
+.discord-content p {
+    margin-bottom: 30px;
 
     color: #888;
 
-    font-size: 13px;
-
     line-height: 1.8;
-}
 
-.discord-button {
-    display: inline-block;
-
-    text-decoration: none;
-
-    background: white;
-
-    color: black;
-
-    border: 1px solid white;
-}
-
-.discord-button:hover {
-    background: #ccc;
-
-    transform: translateY(-3px);
+    font-size: 13px;
 }
 
 
@@ -1053,7 +939,6 @@ nav button.active {
     display: none;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 20px;
@@ -1063,9 +948,11 @@ nav button.active {
     backdrop-filter: blur(8px);
 }
 
+
 .modal.show {
     display: flex;
 }
+
 
 .modal-box {
     position: relative;
@@ -1078,36 +965,32 @@ nav button.active {
 
     border: 1px solid #444;
 
-    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.8);
 
     animation: modalIn 0.25s ease;
 }
 
+
 @keyframes modalIn {
+
     from {
         opacity: 0;
-        transform: scale(0.95);
+
+        transform:
+            translateY(20px)
+            scale(0.97);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
-.modal-box h2 {
-    margin-bottom: 18px;
-
-    letter-spacing: 3px;
-}
-
-.modal-box p:not(.eyebrow) {
-    margin-bottom: 25px;
-
-    color: #888;
-
-    line-height: 1.7;
-}
 
 .close-modal {
     position: absolute;
@@ -1115,19 +998,156 @@ nav button.active {
     top: 15px;
     right: 18px;
 
+    width: 32px;
+    height: 32px;
+
     background: transparent;
 
-    border: none;
+    border: 1px solid #333;
 
-    color: #777;
+    color: #888;
 
-    font-size: 28px;
+    font-size: 20px;
 
-    cursor: pointer;
+    line-height: 1;
+
+    transition: 0.2s;
 }
 
+
 .close-modal:hover {
-    color: white;
+    color: #fff;
+
+    border-color: #666;
+}
+
+
+.modal-box h2 {
+    margin-bottom: 15px;
+
+    font-size: 25px;
+
+    letter-spacing: 3px;
+}
+
+
+.modal-box p {
+    margin-bottom: 25px;
+
+    color: #888;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* ==========================================
+   PLAYER PROFILE MODAL
+========================================== */
+
+.player-modal-box {
+    width: min(460px, 100%);
+
+    padding: 40px 35px;
+
+    text-align: center;
+}
+
+
+.player-modal-skin {
+    width: 150px;
+    height: 150px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #181818;
+
+    border: 1px solid #3a3a3a;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.5);
+}
+
+
+.player-modal-skin img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    image-rendering: pixelated;
+}
+
+
+#playerModalName {
+    margin-bottom: 30px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    letter-spacing: 3px;
+}
+
+
+.player-modal-info {
+    display: grid;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+
+    text-align: left;
+}
+
+
+.player-detail {
+    padding: 18px;
+
+    background: #151515;
+
+    border: 1px solid #292929;
+}
+
+
+.player-detail span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #666;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+.player-detail p {
+    margin: 0;
+
+    color: #dddddd;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    word-break: break-word;
+}
+
+
+.player-modal-box .primary-btn {
+    min-width: 120px;
 }
 
 
@@ -1136,31 +1156,44 @@ nav button.active {
 ========================================== */
 
 footer {
-    padding: 40px 20px;
+    padding: 25px 7%;
+
+    background: #050505;
+
+    border-top: 1px solid #202020;
 
     text-align: center;
 
-    border-top: 1px solid #222;
+    color: #555;
 
-    color: #666;
+    font-size: 9px;
 
-    background: rgba(5,5,5,0.92);
+    letter-spacing: 2px;
 }
 
-.footer-logo {
-    color: #ddd;
 
-    font-weight: bold;
+/* ==========================================
+   ANIMATIONS
+========================================== */
 
-    letter-spacing: 3px;
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
 }
 
-footer p {
-    margin: 12px 0;
 
-    font-size: 10px;
-
-    letter-spacing: 4px;
+.home-content {
+    animation: fadeUp 0.8s ease;
 }
 
 
@@ -1168,554 +1201,160 @@ footer p {
    MOBILE
 ========================================== */
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
 
-    .navbar {
-        flex-wrap: wrap;
+    nav {
+        padding: 0 5%;
     }
+
 
     .menu-toggle {
         display: block;
     }
 
-    nav {
-        display: none;
 
-        width: 100%;
+    .nav-links {
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+        right: 0;
+
+        display: none;
 
         flex-direction: column;
 
-        padding-top: 10px;
+        gap: 0;
+
+        background: rgba(5,5,5,0.97);
+
+        border-bottom: 1px solid #222;
     }
 
-    nav.open {
+
+    .nav-links.active {
         display: flex;
     }
 
-    nav button {
+
+    .nav-links li {
+        width: 100%;
+    }
+
+
+    .nav-links a {
+        display: block;
+
         width: 100%;
 
-        padding: 12px;
+        padding: 18px 25px;
+
+        border-bottom: 1px solid #181818;
     }
 
-    .section {
-        padding: 70px 5%;
 
-        background-attachment: scroll !important;
+    section {
+        padding: 100px 5% 70px;
     }
 
-    .hero {
-        padding-top: 30px;
+
+    .section-title {
+        font-size: 28px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 35px;
     }
 
-    .hero h1 {
-        letter-spacing: 5px;
-    }
 
-    .subtitle {
+    .home-content h1 {
+        font-size: 42px;
+
         letter-spacing: 4px;
-
-        font-size: 10px;
     }
 
-    .leader {
+
+    .home-content p {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .players-grid {
         grid-template-columns:
-            40px 1fr 65px 65px;
+            repeat(2, minmax(0, 1fr));
 
-        padding: 16px 12px;
-
-        font-size: 12px;
+        gap: 12px;
     }
+
+
+    .player-card {
+        padding: 22px 12px;
+    }
+
+
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
 
     .modal-box {
         padding: 35px 25px;
     }
-}
 
 
-/* ==========================================
-   MCTIERS-STYLE PVP TIER LIST
-========================================== */
+    .player-modal-box {
+        padding: 35px 22px;
+    }
 
-.mc-tiers {
-    max-width: 1000px;
 
-    margin: 45px auto 0;
-}
+    .player-modal-skin {
+        width: 125px;
+        height: 125px;
+    }
 
-.mc-tier-tabs {
-    display: flex;
 
-    overflow-x: auto;
+    .player-detail {
+        padding: 15px;
+    }
 
-    border: 1px solid #1d2936;
 
-    border-bottom: none;
-
-    background: #0d141c;
-
-    scrollbar-width: thin;
-}
-
-.mc-tier-tab {
-    min-width: 98px;
-
-    padding: 13px 12px 11px;
-
-    background: #0d141c;
-
-    border: none;
-
-    border-right: 1px solid #1a2633;
-
-    color: #657385;
-
-    font-family: inherit;
-
-    font-weight: bold;
-
-    font-size: 12px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.mc-tier-tab span {
-    display: block;
-
-    margin-bottom: 4px;
-
-    font-size: 17px;
-}
-
-.mc-tier-tab:hover,
-.mc-tier-tab.active {
-    color: #f0f3f7;
-
-    background: #111a24;
-
-    box-shadow: inset 0 -2px 0 #eeeeee;
-}
-
-.mc-tier-panel {
-    padding: 15px 12px 8px;
-
-    background: #111923;
-
-    border: 1px solid #1d2936;
-
-    box-shadow: 0 10px 35px rgba(0,0,0,0.28);
-}
-
-.mc-tier-topbar {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    gap: 12px;
-
-    min-height: 42px;
-}
-
-.mc-tier-info {
-    padding: 9px 13px;
-
-    background: #202b39;
-
-    border-radius: 7px;
-
-    color: #eef2f6;
-
-    font-size: 12px;
-
-    font-weight: bold;
-}
-
-.mc-tier-server {
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    color: #d5dce4;
-
-    font-size: 10px;
-
-    font-weight: bold;
-}
-
-.mc-tier-server b {
-    padding: 6px 8px;
-
-    background: #202b39;
-
-    border-radius: 5px;
-
-    color: #8fa4bb;
-}
-
-.mc-tier-server > span {
-    color: #6da7ff;
-
-    font-size: 16px;
-}
-
-.mc-tier-headings {
-    display: grid;
-
-    grid-template-columns:
-        145px minmax(240px, 1fr) 75px 360px;
-
-    gap: 0;
-
-    padding: 13px 12px 9px;
-
-    color: #465569;
-
-    font-size: 10px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.mc-tier-headings span:first-child {
-    text-align: left;
-}
-
-.mc-tier-headings span:nth-child(2) {
-    text-align: left;
-}
-
-.mc-tier-headings span:nth-child(3),
-.mc-tier-headings span:nth-child(4) {
-    text-align: center;
-}
-
-.mc-tier-row {
-    display: grid;
-
-    grid-template-columns:
-        145px minmax(240px, 1fr) 75px 360px;
-
-    align-items: center;
-
-    min-height: 80px;
-
-    margin-bottom: 8px;
-
-    overflow: hidden;
-
-    background: #141d27;
-
-    border: 1px solid #202d3a;
-
-    border-radius: 12px;
-
-    transition: 0.2s;
-}
-
-.mc-tier-row:hover {
-    background: #17222e;
-
-    border-color: #2d3d4e;
-}
-
-.mc-tier-number {
-    align-self: stretch;
-
-    display: flex;
-
-    align-items: center;
-
-    padding-left: 16px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #273543,
-            #1a2530
-        );
-
-    color: #f3f5f7;
-
-    font-size: 29px;
-
-    font-style: italic;
-
-    font-weight: 900;
-}
-
-.mc-tier-row:nth-child(1) .mc-tier-number {
-    background:
-        linear-gradient(
-            90deg,
-            #f2b632,
-            #d99d2d
-        );
-
-    color: white;
-}
-
-.mc-tier-row:nth-child(2) .mc-tier-number {
-    background:
-        linear-gradient(
-            90deg,
-            #a7b5bc,
-            #899aa3
-        );
-}
-
-.mc-tier-row:nth-child(3) .mc-tier-number {
-    background:
-        linear-gradient(
-            90deg,
-            #b96929,
-            #99521e
-        );
-}
-
-.mc-tier-player {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    min-width: 0;
-
-    padding: 8px;
-}
-
-.mc-tier-head {
-    width: 56px;
-    height: 56px;
-
-    flex: 0 0 56px;
-
-    image-rendering: pixelated;
-
-    object-fit: cover;
-
-    background: #202b37;
-
-    border: 1px solid #344352;
-}
-
-.mc-tier-player strong {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #dce8f7;
-
-    font-size: 19px;
-}
-
-.mc-tier-player span {
-    display: block;
-
-    color: #7890a9;
-
-    font-size: 12px;
-}
-
-.mc-tier-region {
-    justify-self: center;
-
-    padding: 9px 10px;
-
-    border-radius: 8px;
-
-    font-size: 14px;
-
-    font-weight: 900;
-}
-
-.mc-tier-region.na {
-    background: #48242c;
-
-    color: #e56b78;
-}
-
-.mc-tier-region.eu {
-    background: #193d24;
-
-    color: #65e877;
-}
-
-.mc-tier-badges {
-    display: flex;
-
-    justify-content: flex-start;
-
-    gap: 5px;
-
-    padding: 8px 10px;
-
-    background: #121a23;
-
-    min-height: 78px;
-}
-
-.mc-tier-badge-box {
-    width: 39px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 4px;
-}
-
-.mc-tier-badge-box.single {
-    width: 48px;
-}
-
-.mc-tier-mode-icon {
-    width: 27px;
-    height: 27px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border: 2px solid #273342;
-
-    border-radius: 50%;
-
-    background: #0d141c;
-
-    color: #d9e1ea;
-
-    font-size: 13px;
-}
-
-.mc-tier-badge {
-    min-width: 35px;
-
-    padding: 3px 5px;
-
-    border-radius: 8px;
-
-    color: #f1f3f5;
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    text-align: center;
-}
-
-.mc-tier-badge.ht1 {
-    background: #b28a24;
-
-    color: #fff0ad;
-}
-
-.mc-tier-badge.ht2 {
-    background: #49586a;
-
-    color: #d7e0ea;
-}
-
-.mc-tier-badge.ht3 {
-    background: #4c5261;
-
-    color: #d6d9df;
-}
-
-.mc-tier-badge.ht4 {
-    background: #5b5873;
-
-    color: #e1dcff;
-}
-
-.mc-tier-badge.lt1 {
-    background: #5c5420;
-
-    color: #f2e47c;
-}
-
-.mc-tier-badge.lt2 {
-    background: #333d4b;
-
-    color: #b9c6d5;
-}
-
-.mc-tier-badge.lt3 {
-    background: #6c4729;
-
-    color: #f0ad70;
-}
-
-.mc-tier-note {
-    margin-top: 12px;
-
-    color: #505f70;
-
-    font-size: 10px;
-
-    text-align: center;
-}
-
-
-/* ==========================================
-   TIER LIST RESPONSIVE
-========================================== */
-
-@media (max-width: 1050px) {
-
-    .mc-tier-headings,
-    .mc-tier-row {
-        grid-template-columns:
-            90px minmax(210px, 1fr) 60px 300px;
+    .count-box {
+        min-width: 70px;
     }
 }
 
-@media (max-width: 750px) {
 
-    .mc-tiers {
-        overflow: hidden;
+@media (max-width: 450px) {
+
+    .players-grid {
+        grid-template-columns: 1fr;
     }
 
-    .mc-tier-tabs {
-        border-bottom: 1px solid #1d2936;
+
+    .home-content h1 {
+        font-size: 34px;
     }
 
-    .mc-tier-tab {
-        min-width: 88px;
+
+    .home-buttons {
+        flex-direction: column;
+
+        align-items: center;
     }
 
-    .mc-tier-panel {
-        overflow-x: auto;
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+
+        max-width: 260px;
     }
 
-    .mc-tier-topbar {
-        justify-content: flex-start;
 
-        min-width: 720px;
-    }
-
-    .mc-tier-headings,
-    .mc-tier-row {
-        min-width: 720px;
-
-        grid-template-columns:
-            85px 230px 60px 300px;
-    }
-
-    .mc-tier-player strong {
-        font-size: 16px;
+    .player-modal-skin {
+        width: 110px;
+        height: 110px;
     }
 }
